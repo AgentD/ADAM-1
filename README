@@ -67,6 +67,23 @@
     data bus.
 
   1) Shift register module
+
+    The shift register module contains only an A register (74HC574), connected
+    to a 74HC245 output buffer, displaced by one line to implement a right
+    shift operation. The MSB of the 74HC245 input is connected with the SIN
+    line of the bus to ripple the LSB of the next stage through, while the LSB
+    of the 74HC574 is connected to the SOUT line of the bus to get rippled
+    through to the next lower stage.
+
+    There is a second 74HC245, connected directly to the 74HC574 without
+    displacement to allow the register to be used as temporary register for
+    intermediate results. The two buffers can be triggered seperately, the
+    shift buffer via the bus SHIFT line, the temporary register buffer via the
+    bus TEMP line.
+
+    The module only implements right shift/rotate as a left shift/rotate can
+    be implemented by adding a number to itself.
+
   2) Logic module
 
      BUS
