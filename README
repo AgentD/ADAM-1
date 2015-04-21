@@ -68,6 +68,24 @@
 
   1) Shift register module
 
+     BUS
+     | | SOUT
+     | |<---------+
+     | |          |
+     | |/|________|__________________________
+     | |  _________________________________  |
+     | |\|   ___  |LSB      ___________    | |
+     | |__|\|   |_|______|\|           |___| |
+     | |__  | A |___   __  | Tri-state |___  |
+     | |  |/|___|   | |  |/|   Buffer  |   | |
+     | |            | |    |___________|   | |
+     | |            | |     ___________    | |
+     | |            | |__|\|           |___| |
+     | |            |____  | Tri-state |_____|
+     | | SIN             |/|   Buffer  |
+     | |------------------>|___________|
+     | |              MSB
+
     The shift register module contains only an A register (74HC574), connected
     to a 74HC245 output buffer, displaced by one line to implement a right
     shift operation. The MSB of the 74HC245 input is connected with the SIN
@@ -136,6 +154,26 @@
 
   4) Register module
 
+    BUS
+    | |/|_____________
+    | |  __________   |
+    | |\|          |  |
+    | |      ____  |  |
+    | |___|\|    |_|  |
+    |  ___  | R0 |_   |
+    | |   |/|____| |  |
+    | |      ____  |  |
+    | |___|\|    |_|  |
+    |  ___  | R1 |_   |
+    | |   |/|____| |  |
+    | |             \/
+    | |      ....  .  .
+    | |      ____  .  .
+    | |___|\|    |_|\/|
+    |  ___  | R7 |____|
+    | |   |/|____|
+    | |
+
     The register module has a total of 8 74HC574 registers wired up in
     parallel and connected to the data bus.
 
@@ -147,6 +185,23 @@
     to another in a single step.
 
   5) Constant module
+
+                                        VCC
+    BUS                                  A
+    | |     ___________    Diode Matrix  |
+    | |    |           |---|-|-|-|-|-|-|-+
+    | |    |           |---|-|-|-|-|-|-|-+
+    | |/|__|           |---|-|-|-|-|-|-|-+
+    | |  __| Tri-state |---|-|-|-|-|-|-|-+
+    | |\|  |   Buffer  |---|-|-|-|-|-|-|-+
+    | |    |           |---|-|-|-|-|-|-|-+
+    | |    |           |---|-|-|-|-|-|-|-+
+    | |    |___________|---|-|-|-|-|-|-|-+
+    | |                   _|_|_|_|_|_|_|_
+    | |                  |               |
+    | |----------------->| Column-Select |
+    | |                  |_______________|
+
 
     The constant module allows writing numeric constants to the bus. It reuses
     the read select lines of the register module to select a constant.
