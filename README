@@ -1,4 +1,19 @@
 
+  Overview
+  ********
+
+    The Autonomous Digital Adding Machine 1, or short ADAM/1, is an electronic
+    digital computer based on 7400 series integrated circuits.
+
+    The CPU implements a microprogrammable CISC instruction set.
+    It can address individual 8 bit bytes within a 16 bit address range.
+    Programm and data are not seperated (Von Neumann architecture).
+
+    The initial design was sketched out on multiple napkins during a lunch
+    break and is still awaiting completion. For now, the files in this
+    directory contain a transcribed, sanitized subset of the design.
+
+
   CPU Design
   **********
 
@@ -178,7 +193,7 @@
     parallel and connected to the data bus.
 
     A 3 bit read and a 3 bit write select are decoded by two 74HC138 ICs,
-    with one negative enable control line for each connected to the bus.
+    with one positive enable control line for each connected to the bus.
 
     This setup allows latching bus contents to an arbitrary register, writing
     an arbitrary register to the bus, or transfering data from one register
