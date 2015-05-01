@@ -45,23 +45,15 @@
      | REGISTER |/|____|\| |    .    | |/|____|\| REGISTER |
      |  MODULE  |  ____  | |    .    | |  ____  |  MODULE  |
      |__________|\|    |/| |    .    | |\|    |/|__________|
+  ______________         | |    .    | |         ______________
+ | MEMORY & I/O |/|____|\| |    .    | |/|____|\| MEMORY & I/O |
+ |    MODULE    |  ____  | |    .    | |  ____  |    MODULE    |
+ |______________|\|    |/| |    .    | |\|    |/|______________|
                         _| |_   .   _| |_
                       __\___/_______\___/__
                      |                     |
-                     |    MERGING LOGIC    |
-                     |_____________________|
-                     |                     |
                      |    CONTROL LOGIC    |
                      |_____________________|
-                       /_   _\     /_   _\
-                         | |         | |
-                         | |         | |
-                        _| |_       _| |_
-                       _\___/_     _\___/_
-                      |       |   |       |
-                      |  RAM  |   |  I/O  |
-                      |_______|   |_______|
-
 
 
     Most of the CPU utilizes a bit-slice design and consits of individual
@@ -237,3 +229,30 @@
         110:
         110:
 
+  6) Memory & I/O module
+
+     BUS
+     | |
+     | |/|______________________________________________
+     | |  ____________________________________________  |
+     | |\|   ___      ________         ___________    | |
+     | |__|\|   |__|\|        |/|___|\|           |/|_| |
+     | |__  | A |__  | MEMORY |  ___  | Tri-state |  _  |
+     | |  |/|___|  |/|________|\|   |/|   Buffer  |\| | |
+     | |         Address      Data    |___________|   | |
+     | |                                              | |
+     | |     ___      _________        ___________    | |
+     | |__|\|   |__|\|         |/|__|\|           |/|_| |
+     | |__  | A |__  | I/O BUS |  __  | Tri-state |  ___|
+     | |  |/|___|  |/|_________|\|  |/|   Buffer  |\|
+     | |         Address      Data    |___________|
+     | |
+
+
+    The Memory & I/O module connects the CPU to the external memory & I/O
+    bus. The A register holds the memory or I/O device address, a tri-state
+    buffer is used to connect either the external data bus to the internal
+    bus or vice-versa (74HC245, direction controlable).
+
+    The actual memory request, I/O request and read/write lines are output
+    directly by the control logic.
