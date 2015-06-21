@@ -83,7 +83,7 @@
      | |  _________________________________  |
      | |\|   ___  |LSB      ___________    | |
      | |__|\|   |_|______|\|           |___| |
-     | |__  | A |___   __  | Tri-state |___  |
+     | |__  | B |___   __  | Tri-state |___  |
      | |  |/|___|   | |  |/|   Buffer  |   | |
      | |            | |    |___________|   | |
      | |            | |     ___________    | |
@@ -93,7 +93,7 @@
      | |------------------>|___________|
      | |              MSB
 
-    The shift register module contains only an A register (74HC574), connected
+    The shift register module contains only a B register (74HC574), connected
     to a 74HC245 output buffer, displaced by one line to implement a right
     shift operation. The MSB of the 74HC245 input is connected with the SIN
     line of the bus to ripple the LSB of the next stage through, while the LSB
@@ -221,10 +221,10 @@
     The currently intended constants are:
 
         000:  0
-        001: +1
-        010: -1
-        011: +2
-        100: -2
+        001: +1     (for incrementing using the adder)
+        010: -1     (for decrementing using the adder)
+        011:  2     (address of interrupt vector)
+        100:  4     (address of syscall vector)
         101:
         110:
         110:
