@@ -6,8 +6,9 @@
     digital computer based on 7400 series integrated circuits.
 
     The CPU implements a microprogrammable CISC instruction set.
-    It can address individual 8 bit bytes within a 16 bit address range.
-    Programm and data are not seperated (Von Neumann architecture).
+    It can address 16 bit words within a 16 bit address range.
+    Programm and data are not stored in the same address space (Von
+    Neumann architecture).
 
     The initial design was sketched out on multiple napkins during a lunch
     break and is still awaiting completion. For now, the files in this
@@ -16,6 +17,60 @@
 
   CPU Design
   **********
+      _____________________________________
+     |  _________________________________  |
+     | |    ___              _____       | |       ____
+     | |_|\|   |__________|\|     |/|__|\| |      |_R0_|
+     |  _  | A |______   _  | I/O |  __  | |      |_R1_|
+     | | |/|___|      | | |/|_____|\|  |/| |      |_R2_|
+     | |              | |    _____       | |/|__|\|_R3_|
+     | |              | |_|\|     |/|__|\| |  __  |_R4_|
+     | |              |  _  | RAM |  __  | |\|  |/|_R5_|
+     | |              | | |/|_____|\|  |/| |      |_R6_|
+     | |    ___       | |                | |      |_R7_|
+     | |_|\|   |______|_|______________|\| |     Register
+     |___  | B |_   ___________________  | |       File
+         |/|___| | |  | |              |/| |
+                 | |  | |    _______     | |       _____
+                 | |__|_|_|\|       |__|\| |/|__|\|     |
+                 |  ______  | SHIFT |__  | |  __  | PSW |
+                 | |  | | |/|_______|  |/| |\|  |/|_____|
+                 | |  | |    _____       | |
+                 | |  | |_|\|     |      | |       ___________
+                 | |  |  _  | AND |____|\| |/|____|           |
+                 | |  | | |/| OR  |____  | |  ____| Constants |
+                 | |__|_|_|\| XOR |    |/| |\|    |___________|
+                 |  ______  |     |      | |
+                 | |  | | |/|_____|      | |
+                 | |  | |    _____       | |
+                 | |  | |_|\|     \      | |
+                 | |  |___  |__    \ __|\| |
+                 | |      |/   \ +  \__  | |
+                 | |______|\ __/ -  /  |/|_|
+                 |________  |      /
+                          |/|_____/
+                         Adder/Subtractor
+
+
+    This drawing outlines the CPU architecture as seen by a programmer. The
+    registers "A" and "B" are internal temporary registers that are not
+    directly accessible by software and are used by the control logic for
+    storing operands and intermediate results.
+
+    The "PSW" file contains the processor status word and the block
+    "Constants" contains various constant values used by the CPU.
+
+    The CPU has a register file containing 8 registers. Most of them can be
+    used for general purpose computations, but R7 is used by the control logic
+    as program counter, R6 as a kernel mode stack pointer and R5 as user mode
+    stack pointer.
+
+
+
+
+    Below is a drawing illustrating the actual hardware design that
+    implements the CPU architecture.
+
 
                                 .
             HIGHER-HALF         .     LOWER-HALF
