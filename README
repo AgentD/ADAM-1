@@ -104,9 +104,14 @@
  | MEMORY & I/O |/|____|\| |    .    | |/|____|\| MEMORY & I/O |
  |    MODULE    |  ____  | |    .    | |  ____  |    MODULE    |
  |______________|\|    |/| |    .    | |\|    |/|______________|
-                        _| |_   .   _| |_
-                      __\___/_______\___/__
-                     |                     |
+                         | |    .    | |         ________
+                         | |    .    | |/|______| DECODE |
+                         | |    .    | |  ______| MODULE |
+                         | |    .    | |\|      |________|
+                         | |    .    | |           A
+                        _| |_   .   _| |_          |
+                      __\___/_______\___/__        |
+                     |                     |<------+
                      |    CONTROL LOGIC    |
                      |_____________________|
 
@@ -311,3 +316,26 @@
 
     The actual memory request, I/O request and read/write lines are output
     directly by the control logic.
+
+  7) Decode module
+
+    The decode module decodes a 4 bit selector and 2 control signals from the
+    control logic to control signals for the CPU internal bus as well as
+    control signals for the I/O bus.
+
+    The CPU internal bus has a seperate output enable line for each module,
+    but only one can be selected at a time. Doing otherwise would damage the
+    output drivers. The decode module decodes a 4 bit selector to the output
+    enable lines for the modules. Two values of the 16 selectors are reserved
+    for memory read and I/O read. For those selectors, the board generates the
+    necessary signals for the memory & I/O module, as well as the propper
+    control singnals for the external I/O bus.
+
+    In addition, the control logic supplies the memory write and I/O write
+    signals that also trigger the apropriate control lines for the memory &
+    I/O module.
+
+    The decode module does not have to be built symetrically. Only one has to
+    be installed, as the control lines can be simply rippled through to the
+    second half of the bus.
+
