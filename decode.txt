@@ -16,7 +16,7 @@
      MC-SEL0 -----|A0   Y0|o----------------------------- BUS-REGR
      MC-SEL1 -----|A1   Y1|o---------+------------------- IOBUS-IORD
      MC-SEL2 -----|A2   Y2|o---------|-+----------------- IOBUS-MRD
-                  |     Y3|o----     | |
+                  |     Y3|o---------|-|----------------- BUS-PSWOE
          GND ----o|E0   Y4|o----     | |
          GND ----o|E1   Y5|o----     | |
      MC-SEL3 -----|E2   Y6|o----     | |
@@ -52,7 +52,7 @@
       1000 | write GP register onto bus
       1001 | read from I/O bus and write onto bus
       1010 | read from memory and write onto bus
-      1011 | ---- data bus is in tri-state high impedance ----
+      1011 | write status word onto bus
       1100 | ---- data bus is in tri-state high impedance ----
       1101 | ---- data bus is in tri-state high impedance ----
       1110 | ---- data bus is in tri-state high impedance ----
