@@ -19,9 +19,9 @@
  BUS-A1 -------->|A1  Y1|---> R1-OE
  BUS-A2 -------->|A2  Y2|---> R2-OE
                  |    Y3|---> R3-OE
- BUS-REGR ------o|E0  Y4|---> R4-OE
- BUS-REGR ------o|E1  Y5|---> R5-OE
-      VCC -------|E2  Y6|---> R6-OE
+ BUS-A3 --------o|E0  Y4|---> R4-OE
+ BUS-A3 --------o|E1  Y5|---> R5-OE
+ BUS-A4 ---------|E2  Y6|---> R6-OE
                  |    Y7|---> R7-OE
                  |______|
 

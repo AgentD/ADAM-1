@@ -1,60 +1,72 @@
 
+            4B ___ 4Y  _
+     BUS-A4 --|  &|---|1|o--------------------------------- BUS-CONST
+     BUS-A3 --|___|  4A   4Y
+            4A
                    74HC138
                    _______
-     MC-SEL0 -----|A0   Y0|o----------------------------- BUS-LOG0
-     MC-SEL1 -----|A1   Y1|o----------------------------- BUS-LOG1
-     MC-SEL2 -----|A2   Y2|o----------------------------- BUS-LOG2
-                  |     Y3|o----------------------------- BUS-LOG3
-     MC-SEL3 ----o|E0   Y4|o----------------------------- BUS-TEMP
-         GND ----o|E1   Y5|o----------------------------- BUS-SHIFT
-         VCC -----|E2   Y6|o----------------------------- BUS-ADD
-                  |     Y7|o----------------------------- BUS-CONST
-                  |_______|
-
-                  74HC138_1
-                   _______
-     MC-SEL0 -----|A0   Y0|o----------------------------- BUS-REGR
-     MC-SEL1 -----|A1   Y1|o---------+------------------- IOBUS-IORD
-     MC-SEL2 -----|A2   Y2|o---------|-+----------------- IOBUS-MRD
-                  |     Y3|o---------|-|----------------- BUS-PSWOE
-         GND ----o|E0   Y4|o----     | |
-         GND ----o|E1   Y5|o----     | |
-     MC-SEL3 -----|E2   Y6|o----     | |
-                  |     Y7|o----     | |
-                  |_______|          | |1B
-                                     | |  ___ 1Y
-                                     | +-|  &|--+-------- BUS-BUSDIR
-                                     +---|___|  |
-                                        1A    2A|  ___ 2Y 3A___
-                                                +-|  &|----|  &|-- BUS-BUSOE
-                                              +---|___| +--|___|3Y
-                                              |2B       | 3B
-                                              |         |
-                                              | +-------+
-                                              | |
-    MC-MEMW ----------------------------------|-+-------- IOBUS-MEMW
-    MC-IOWD ----------------------------------+---------- IOBUS-IOWD
+      BUS-A0 -----|A0   Y0|o------------------------------- BUS-ALU0
+      BUS-A1 -----|A1   Y1|o------------------------------- BUS-ALU1
+      BUS-A2 -----|A2   Y2|o------------------------------- BUS-ALU2
+                  |     Y3|o------------------------------- BUS-ALU3
+         GND ----o|E0   Y4|o------------------------------- BUS-TEMP
+      BUS-A4 ----o|E1   Y5|o------------------------------- BUS-SHIFT
+      BUS-A3 -----|E2   Y6|o--+---------------------------- IOBUS-IORD
+                  |     Y7|o--|-+-------------------------- IOBUS-MRD
+                  |_______|   | |
+                              | |1B
+                              | |  ___ 1Y
+                              | +-|  &|--+----------------- BUS-BUSDIR
+                              +---|___|  |
+                                 1A      |  ___ 2Y 3A___
+                                      2A +-|  &|----|  &|-- BUS-BUSOE
+                                       +---|___| +--|___|3Y
+                                       |2B       | 3B
+                                       |         |
+                                       | +-------+
+                                       | |
+    MC-MEMW ---------------------------|-+----------------- IOBUS-MEMW
+    MC-IOWD ---------------------------+------------------- IOBUS-IOWD
 
 
 
-
-
-    MC-SEL | function
+         A | function
    --------+----------------------------------------------------
-      0000 | write LOG0 output onto bus
-      0001 | write LOG1 output onto bus
-      0010 | write LOG2 output onto bus
-      0011 | write LOG3 output onto bus
-      0100 | write temp register output onto bus
-      0101 | write shift register output onto bus
-      0110 | write constant onto bus
-      0111 | write adder output onto bus
-      1000 | write GP register onto bus
-      1001 | read from I/O bus and write onto bus
-      1010 | read from memory and write onto bus
-      1011 | write status word onto bus
-      1100 | ---- data bus is in tri-state high impedance ----
-      1101 | ---- data bus is in tri-state high impedance ----
-      1110 | ---- data bus is in tri-state high impedance ----
-      1111 | ---- data bus is in tri-state high impedance ----
+     00000 | write status word onto bus
+     00001 | ---- data bus is in tri-state high impedance ----
+     00010 | ---- data bus is in tri-state high impedance ----
+     00011 | ---- data bus is in tri-state high impedance ----
+     00100 | ---- data bus is in tri-state high impedance ----
+     00101 | ---- data bus is in tri-state high impedance ----
+     00110 | ---- data bus is in tri-state high impedance ----
+     00111 | ---- data bus is in tri-state high impedance ----
+     01000 | write ALU0 output onto bus
+     01001 | write ALU1 output onto bus
+     01010 | write ALU2 output onto bus
+     01011 | write ALU3 output onto bus
+     01100 | write temp register output onto bus
+     01101 | write shift register output onto bus
+     01110 | read from I/O bus and write onto bus
+     01111 | read from memory and write onto bus
+     10000 | write R0 register onto bus
+     10001 | write R1 register onto bus
+     10010 | write R2 register onto bus
+     10011 | write R3 register onto bus
+     10100 | write R4 register onto bus
+     10101 | write R5 register onto bus
+     10110 | write R6 register onto bus
+     10111 | write R7 register onto bus
+     11000 | write constant 0 onto bus
+     11001 | write constant 1 onto bus
+     11010 | write constant 2 onto bus
+     11011 | write constant 3 onto bus
+     11100 | write constant 4 onto bus
+     11101 | write constant 5 onto bus
+     11110 | write constant 6 onto bus
+     11111 | write constant 7 onto bus
+
+ Note:
+     - register address is decoded on register module
+     - status word address is decoded on PSW module
+
 
