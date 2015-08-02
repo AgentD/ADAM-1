@@ -44,7 +44,7 @@
                  | | | | | | | |
                 _V_V_V_V_V_V_V_V_
                |                 |
- BUS-CONST --->|OE   74HC245  DIR|<- VCC
+    BUS-A3 --->|OE1  74HC541  OE2|<--- BUS-A4
                |_________________|
                  | | | | | | | |
                  V V V V V V V V

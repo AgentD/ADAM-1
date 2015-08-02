@@ -1,8 +1,4 @@
 
-            4B ___ 4Y  _
-     BUS-A4 --|  &|---|1|o--------------------------------- BUS-CONST
-     BUS-A3 --|___|  4A   4Y
-            4A
                    74HC138
                    _______
       BUS-A0 -----|A0   Y0|o------------------------------- BUS-ALU0
@@ -32,14 +28,14 @@
 
          A | function
    --------+----------------------------------------------------
-     00000 | write status word onto bus
-     00001 | ---- data bus is in tri-state high impedance ----
-     00010 | ---- data bus is in tri-state high impedance ----
-     00011 | ---- data bus is in tri-state high impedance ----
-     00100 | ---- data bus is in tri-state high impedance ----
-     00101 | ---- data bus is in tri-state high impedance ----
-     00110 | ---- data bus is in tri-state high impedance ----
-     00111 | ---- data bus is in tri-state high impedance ----
+     00000 | write constant 0 onto bus
+     00001 | write constant 1 onto bus
+     00010 | write constant 2 onto bus
+     00011 | write constant 3 onto bus
+     00100 | write constant 4 onto bus
+     00101 | write constant 5 onto bus
+     00110 | write constant 6 onto bus
+     00111 | write constant 7 onto bus
      01000 | write ALU0 output onto bus
      01001 | write ALU1 output onto bus
      01010 | write ALU2 output onto bus
@@ -56,17 +52,17 @@
      10101 | write R5 register onto bus
      10110 | write R6 register onto bus
      10111 | write R7 register onto bus
-     11000 | write constant 0 onto bus
-     11001 | write constant 1 onto bus
-     11010 | write constant 2 onto bus
-     11011 | write constant 3 onto bus
-     11100 | write constant 4 onto bus
-     11101 | write constant 5 onto bus
-     11110 | write constant 6 onto bus
-     11111 | write constant 7 onto bus
+     11000 | write status word onto bus
+     11001 | ---- data bus is in tri-state high impedance ----
+     11010 | ---- data bus is in tri-state high impedance ----
+     11011 | ---- data bus is in tri-state high impedance ----
+     11100 | ---- data bus is in tri-state high impedance ----
+     11101 | ---- data bus is in tri-state high impedance ----
+     11110 | ---- data bus is in tri-state high impedance ----
+     11111 | ---- data bus is in tri-state high impedance ----
 
  Note:
      - register address is decoded on register module
+     - constant address is decoded on constant module
      - status word address is decoded on PSW module
-
 
