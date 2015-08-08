@@ -12,7 +12,7 @@
 
     The initial design was sketched out on multiple napkins during a lunch
     break and is still awaiting completion. For now, the files in this
-    directory contain a transcribed, sanitized subset of the design.
+    directory contain a transcribed, sanitized version of the design.
 
 
   CPU Design
@@ -201,8 +201,11 @@
      | |____________  | A |__  |__    \ _____|\| Tri-state |_____|
      | |    _____   |/|___|  |/   \ +  \_____  |   Buffer  |
      | |_|\|     |__|\|   |__|\ __/    /     |/|___________|
-     | |_  | NOT |__  | B |__  |      /
+     | |_  | XOR |__  | B |__  |      /
      | | |/|_____|  |/|___|  |/|_____/
+     | |      A
+     | |      |
+     | |------+
      | |
 
 
@@ -287,31 +290,31 @@
     The currently intended constants are:
 
         000:  0
-        001: +1     (for incrementing using the adder)
-        010: -1     (for decrementing using the adder)
-        011:  2     (address of interrupt vector)
-        100:  4     (address of syscall vector)
-        101:
-        110:
-        110:
+        001:  1     (for incrementing using the adder)
+        010:  2     (address of syscall vector)
+        011:  4     (address of interrupt vector)
+        100: -1     (for decrementing using the adder and sign extending)
+        101: 0x00FF (for low byte masking using the AND logic module)
+        110: 0x8000 (for MSB masking using the AND logic module)
+        111:
 
   6) Memory & I/O module
 
      BUS
      | |
-     | |/|______________________________________________
-     | |  ____________________________________________  |
-     | |\|   ___      ________         ___________    | |
-     | |__|\|   |__|\|        |/|___|\|           |/|_| |
-     | |__  | A |__  | MEMORY |  ___  | Tri-state |  _  |
-     | |  |/|___|  |/|________|\|   |/|   Buffer  |\| | |
-     | |         Address      Data    |___________|   | |
-     | |                                              | |
-     | |     ___      _________        ___________    | |
-     | |__|\|   |__|\|         |/|__|\|           |/|_| |
-     | |__  | A |__  | I/O BUS |  __  | Tri-state |  ___|
-     | |  |/|___|  |/|_________|\|  |/|   Buffer  |\|
-     | |         Address      Data    |___________|
+     | |/|__________________________________________________
+     | |  ________________________________________________  |
+     | |\|   ___          ________         ___________    | |
+     | |__|\|   |______|\|        |/|___|\|           |/|_| |
+     | |__  | A |_   __  | MEMORY |  ___  | Tri-state |  _  |
+     | |  |/|___| | |  |/|________|\|   |/|   Buffer  |\| | |
+     | |          | | Address     Data    |___________|   | |
+     | |          | |                                     | |
+     | |          | |    _________        ___________     | |
+     | |          | |_|\|         |/|__|\|           |/|__| |
+     | |          |___  | I/O BUS |  __  | Tri-state |  ____|
+     | |              |/|_________|\|  |/|   Buffer  |\|
+     | |            Address      Data    |___________|
      | |
 
 
@@ -339,6 +342,6 @@
     the control logic.
 
     The decode module does not have to be built symetrically. Only one has to
-    be installed, as the control lines can be simply rippled through to the
-    second half of the bus.
+    be installed, as the control lines can be simply connected to the second
+    half of the bus.
 
