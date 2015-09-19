@@ -1,9 +1,9 @@
 
             74HC138
              ______
- BUS-A0 --->|A0  Y0|---> RAIL0
- BUS-A1 --->|A1  Y1|---> RAIL1
- BUS-A2 --->|A2  Y2|---> RAIL2
+CBUS-A0 --->|A0  Y0|---> RAIL0
+CBUS-A1 --->|A1  Y1|---> RAIL1
+CBUS-A2 --->|A2  Y2|---> RAIL2
             |    Y3|---> RAIL3
       GND -o|E0  Y4|---> RAIL4
       GND -o|E1  Y5|---> RAIL5
@@ -44,9 +44,9 @@
                  | | | | | | | |
                 _V_V_V_V_V_V_V_V_
                |                 |
-    BUS-A3 --->|OE1  74HC541  OE2|<--- BUS-A4
+   CBUS-A3 --->|OE1  74HC541  OE2|<--- CBUS-A4
                |_________________|
                  | | | | | | | |
                  V V V V V V V V
-                   BUS[D0...D7]
+                  DBUS[D0...D7]
 
