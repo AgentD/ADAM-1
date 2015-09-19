@@ -15,6 +15,14 @@
     directory contain a transcribed, sanitized version of the design.
 
 
+  Directory Layout
+  ****************
+
+    README      - This file
+    pcb/        - Contains geda PCB files for the CPU modules
+    doc/        - Contains all the documentation
+    doc/pcb/    - Contains circuit descriptions for the files in "pcb/"
+
   CPU Design
   **********
       _____________________________________
@@ -62,8 +70,7 @@
 
     The CPU has a register file containing 8 registers. Most of them can be
     used for general purpose computations, except for R7, which is used by the
-    control logic as program counter, R6 (kernel mode stack pointer) and
-    R5 (user mode stack pointer).
+    control logic as program counter and R6 (kernel mode stack pointer).
 
 
 
@@ -118,18 +125,17 @@
 
     Most of the CPU utilizes a bit-slice design and consits of individual
     8 bit modules that can be cascaded. The 8 bit modules are wired to a
-    common bus using 2*20 pin connectors. The central control logic has to
-    merge two such busses in order to build a 16 bit CPU.
+    common control bus using 2*20 pin connectors and each half has its own
+    8 bit tri-state data bus.
 
     Every modules has two temporary operand registers, A and B. All A
     registers are triggered at the same time and all B registers are triggered
     at the same time, but each module output can be selected individually.
 
-    The interconnecting bus itself consists of a 16 bit tri-state data bus
-    (8 bit per half), a 5 bit source select for selecting modules to write
-    results to the bus, a 3 bit destination register index and write control
-    lines for writing the current bus word to one or more of the following:
-    GP register, A operand, B operand, memory bus, I/O bus.
+    The control bus has a 5 bit source select address for selecting modules
+    to write results to the data bus, a 3 bit destination register index and
+    write control lines for writing the current bus word to one or more of the
+    following: GP register, A operand, B operand, memory bus, I/O bus.
 
   1) Shift register module
 
@@ -213,8 +219,8 @@
     adder ICs.
 
     In addition to the A, B and output control lines, the adder module has the
-    total carry input and carry output connected to the bus to allow cascading
-    of multiple adder modules.
+    total carry input and carry output connected to the control bus to allow
+    cascading of multiple adder modules.
 
     An additional control line allows the B register to be inverted BEFORE
     being latched, allowing the adder to be used for twos complement
@@ -302,20 +308,13 @@
 
      BUS
      | |
-     | |/|__________________________________________________
-     | |  ________________________________________________  |
-     | |\|   ___          ________         ___________    | |
-     | |__|\|   |______|\|        |/|___|\|           |/|_| |
-     | |__  | A |_   __  | MEMORY |  ___  | Tri-state |  _  |
-     | |  |/|___| | |  |/|________|\|   |/|   Buffer  |\| | |
-     | |          | | Address     Data    |___________|   | |
-     | |          | |                                     | |
-     | |          | |    _________        ___________     | |
-     | |          | |_|\|         |/|__|\|           |/|__| |
-     | |          |___  | I/O BUS |  __  | Tri-state |  ____|
-     | |              |/|_________|\|  |/|   Buffer  |\|
-     | |            Address      Data    |___________|
-     | |
+     | |/|______________________________________________
+     | |  ____________________________________________  |
+     | |\|   ___       _______         ___________    | |
+     | |__|\|   |___|\|       |/|___|\|           |/|_| |
+     | |__  | A |___  |  BUS  |  ___  | Tri-state |  ___|
+     | |  |/|___|   |/|_______|\|   |/|   Buffer  |\|
+     | |           Address    Data    |___________|
 
 
     The Memory & I/O module connects the CPU to the external memory & I/O
