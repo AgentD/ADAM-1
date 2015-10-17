@@ -22,6 +22,7 @@
     pcb/        - Contains geda PCB files for the CPU modules
     doc/        - Contains all the documentation
     doc/pcb/    - Contains circuit descriptions for the files in "pcb/"
+    doc/man.txt - Programmers Manual
 
   CPU Design
   **********

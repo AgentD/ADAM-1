@@ -1,0 +1,509 @@
+
+  Programmers Manual
+  ******************
+
+
+    0.......Data quantities
+    1.......CPU Registers
+      1.1...Status Word
+      1.2...Assembly names
+    2.......Instruction Format
+    3.......CPU Instruction Set
+      3.1...Pseudo instruction and assembler directives
+      3.2...Assember expressions
+    4.......Interrupts and Traps
+
+
+
+  0) Data quantities
+
+    The CPU itself has a 16 bit word size and cannot address smaller
+    quanitites of bits. Nevertheless, an octet (8 bits) is refererred to
+    as a byte and instructions exist that operate on bytes in a register.
+    See the table below for naming conventions:
+
+    Bits  Name
+       1  bit
+       2  tayste
+       4  nybble
+       8  byte, octet, half word
+      16  chomp, word
+      32  playte, double word
+      64  dynner, quad
+
+
+  1) CPU Registers
+
+    The CPU has a total of 8 general purpose registers (R0...R7). The
+    registers are treated equally and can be used by all instructions,
+    however the control logic uses some of the register for internal
+    purposes. Specifically, R7 is used as program counter. This removes
+    the need for special jump instructions and special program counter
+    hardware, as a value can be simply written into R7 or added to R7.
+
+    The register R6 is intended as kernel stack pointer. When a trap or
+    interrupt occoures, the programm counter, status word and trap/interrupt
+    number are pushed to the assumed kernel stack that R6 points to. If the
+    user mode flag is set, all instructions accessing R6 cause a trap numer 1.
+
+    Other than that, the machine has no dedicated PUSH/POP instructions but
+    instead provides indirect post-increment or pre-decrement addressing modes
+    that can be used for building a stack. The assembler provides pseudo
+    instructions that assume that R6 as stack pointer in kernel mode and R5
+    in user mode.
+
+  1.1) Status Word
+
+    The processor control logic has an internal status word register
+    with the following contents:
+
+        15 14 13 12 11 10  9  8  7  6  5  4  3  2  1  0
+        I7 I6 I5 I4 I3 I2 I1 I0  *  *  M  U  I  S  Z  C
+        |_____________________||_____| |  |  |  |  |  |
+                   |              |    |  |  |  |  |  +-- carry
+                   |              |    |  |  |  |  +----- zero
+                   |              |    |  |  |  +-------- sign
+                   |              |    |  |  +----------- interrupt enable
+                   |              |    |  +-------------- user mode
+                   |              |    +----------------- MMU enable
+                   |              +---------------------- reserved
+                   +------------------------------------- interrupt mask
+
+    The carry, zero and sign flags are altered by arithmetic or logic
+    instructions.
+
+    The interrupt enable flag dictates whether the CPU handles hardware
+    interrupts at all. In addition, for each hardware interrupt, a flag
+    bit (I0 to I7) can enable or disable individual interrupts.
+
+    When the U flag (user mode) is set, certain instructions cannot be
+    executed (e.g. I/O), the R6 register is not accessible and only the
+    S, Z and C flags in the status register can be changed.
+
+    The M flag can be used to enable or disable a memory management unit (if
+    one is attached to the CPU).
+
+    The status register cannot be accessed like the general purpose registers.
+    Special instructions exists for transfering it back and forth between GP
+    registers or memory. A special instruction exists for setting or clearing
+    the C, Z, S and I flags.
+
+    The remaining bits marked as reserved will always read zero and cannot
+    be changed.
+
+  1.2) Assembly names
+
+    The assembler prefixes registers with '$', so register XY becomes $XY.
+
+       Name | Description
+      ------+--------------------------------------------------------
+        $R0 | General purpose register 0
+        $R1 | General purpose register 1
+        $R2 | General purpose register 2
+        $R3 | General purpose register 3
+        $R4 | General purpose register 4
+        $R5 | General purpose register 5
+        $R6 | General purpose register 6 (kernel stack pointer)
+        $R7 | General purpose register 7 (program counter)
+            |
+        $SW | Processor status word
+
+  2) Instruction Format
+
+    All instructions are 16 bit in width and of the following format:
+
+        15 14 13 12 11 10|9|8  7  6|5  4  3|2  1  0
+              OPCODE     |I|M  M  M|  dst  |  src
+                 |        |    |       |       |
+                 |        |    |       |       +------- Source register index
+                 |        |    |       |
+                 |        |    |       +--------------- Desination register or
+                 |        |    |                        flag index
+                 |        |    |
+                 |        |    +----------------------- Condition mode
+                 |        |
+                 |        +---------------------------- Immediate flag
+                 |
+                 +------------------------------------- Operation
+
+    Immediate flag:
+      Set if an immediate value follows, cleared if the next word is an
+      instruction.
+
+    Condition mode:
+      0 0 0  Always execute the instruction
+      0 0 1  Skip instruction if carry flag is set
+      0 1 0  Skip instruction if zero flag is set
+      0 1 1  Skip instruction if sign flag is set
+      1 0 0  Never execute the instruction
+      1 0 1  Skip instruction if carry flag is NOT set
+      1 1 0  Skip instruction if zero flag is NOT set
+      1 1 1  Skip instruction if sign flag is NOT set
+
+
+    If the destination index is used for addressing flag bits, the
+    destionation values are interpreted as follows:
+      0 0 0  clear carry
+      0 0 1  clear zero
+      0 1 0  clear sign
+      0 1 1  clear interrupt enable
+      1 0 0  set carry
+      1 0 1  set zero
+      1 1 0  set sign
+      1 1 1  set interrupt enable
+
+
+
+  3) CPU Instruction Set
+
+    The table below lists the mnemonics of instructions, the coresponding
+    opcodes and immediate flags, and the effect of an instruction. If an
+    instruction or block of instructions requires further explanation, a
+    comment is written below. C-style operators are used to indicate what
+    an instruction does.
+
+    The assembler uses square bracktes [...] to denote memory addresses and
+    braces {...} to denote I/O bus addresses. C-style '++' and '--' are used
+    to indicate pre/post increment/decrement addressing modes.
+
+
+
+    MOV dst, src            op=0x00 I=0     $dst := $src
+    MOV dst, imm            op=0x00 I=1     $dst := imm
+    MOV dst, [src]          op=0x01 I=0     $dst := *($src)
+    MOV dst, [imm]          op=0x01 I=1     $dst := *(imm)
+    MOV [dst], src          op=0x02 I=0     *($dst) := $src
+    MOV [dst], imm          op=0x02 I=1     *($dst) := imm
+    MOV [dst], [src]        op=0x03 I=0     *($dst) := *($src)
+    MOV [dst], [imm]        op=0x03 I=1     *($dst) := *(imm)
+
+    MOV [imm], src          op=0x04 I=1     *(imm) := $src
+    MOV [imm], [src]        op=0x05 I=1     *(imm) := *($src)
+
+    MOV dst, [src++]        op=0x04 I=0     $dst := *($src++)
+    MOV [dst++], src        op=0x05 I=0     *($dst++) := $src
+
+    MOV dst, [src+imm]      op=0x06 I=1     $dst := *($src + imm)
+    MOV [dst], [src+imm]    op=0x07 I=1     *($dst) := *($src + imm)
+
+    MVL dst, src            op=0x06 I=0     $dst := $src & 0x00FF
+    MVH dst, src            op=0x07 I=0     $dst := ($src >> 8) & 0x00FF
+
+    MOV [dst+imm], src      op=0x08 I=1     *($dst + imm) := $src
+    MOV [dst+imm], [src]    op=0x09 I=1     *($dst + imm) := *($src)
+
+    NUL dst                 op=0x08 I=0     $dst := 0x0000
+    MKW dst, src            op=0x09 I=0     $dst := $dst | ($src & 0x00FF)<<8
+
+    MOV dst, $SW            op=0x0A I=0     $dst := $SW
+    MOV [imm], $SW          op=0x0A I=1     *(imm) := $SW
+
+    MOV $SW, dst            op=0x0B I=0     $SW := $dst
+    MOV $SW, imm            op=0x0B I=1     $SW := imm
+
+    MOV [dst--], src        op=0x0C I=0     *($dst--) := $src
+    MOV [dst--], imm        op=0x0C I=1     *($dst--) := imm
+
+    MOV [dst--], $SW        op=0x0D I=0     *($dst--) := $SW
+
+    MOV dst, [++src]        op=0x0E I=0     $dst := *(++$src)
+    MOV $SW, [++src]        op=0x0F I=0     $SW := *(++$src)
+
+    ADD dst, src            op=0x10 I=0     $dst += $src
+    ADD dst, imm            op=0x10 I=1     $dst += imm
+    ADC dst, src            op=0x11 I=0     $dst += $src + carry
+    ADC dst, imm            op=0x11 I=1     $dst += imm + carry
+        carry: carry output of adder
+        zero:  set if result is 0
+        sign:  set to MSB of result
+
+    ASS dst, src            op=0x12 I=0     $dst += $src
+    ASS dst, imm            op=0x12 I=1     $dst += imm
+        Add without carry, status bits are left unchanged
+
+    SUB dst, src            op=0x13 I=0     $dst += twos_comp($src)
+    SBC dst, src            op=0x14 I=0     $dst += not($src) + carry
+        carry: carry output of adder
+        zero:  set if result is 0
+        sign:  set to MSB of result
+
+    INC dst, src            op=0x15 I=0     $dst := $src + 1
+    DEC dst, src            op=0x16 I=0     $dst := $src - 1
+        carry: carry output of adder
+        zero:  set if result is 0
+        sign:  set to MSB of result
+
+    SHL dst, src            op=0x17 I=0     $dst := $src << 1
+    ROL dst, src            op=0x18 I=0     $dst := ($src << 1) | carry
+        carry: set to MSB of source
+        zero:  set if result is 0
+        sign:  set to MSB of result
+
+    SHR dst, src            op=0x19 I=0     $dst := $src >> 1
+    ROR dst, src            op=0x1A I=0     $dst := ($src >> 1) | (carry<<15)
+        carry: set to LSB of source
+        zero:  set if result is 0
+        sign:  set to MSB of result
+
+    NOT dst, src            op=0x1B I=0     $dst := not($src)
+        zero:  set if result is 0
+        sign:  set to MSB of result
+
+    NEG dst, src            op=0x1C I=0     $dst := twos_comp($src)
+        carry: carry ouput from two's complement +1 addition
+        zero:  set if result is 0
+        sign:  set to MSB of result
+
+    ANL dst, src            op=0x1D I=0     $dst &= $src
+    ANL dst, imm            op=0x1D I=1     $dst &= imm
+    ORL dst, src            op=0x1E I=0     $dst |= $src
+    ORL dst, imm            op=0x1E I=1     $dst |= imm
+    XOR dst, src            op=0x1F I=0     $dst ^= $src
+    XOR dst, imm            op=0x1F I=1     $dst ^= imm
+        zero: set if result is 0
+        sign: set to MSB of result
+
+    SFL index               op=0x20 I=0     set or clear flag
+      Only the C, Z, S and I flags can be changed by this instruction.
+
+      The I flag cannot be changed if the user mode flag is set.
+
+      The flag index is stored in the instruction destination index.
+
+    SEX dst, src            op=0x21 I=0     subroutine execute
+    SEX dst, imm            op=0x21 I=1     subroutine execute
+      atomically execute the following:
+        1. MOV [$dst--], $R7
+        2. MOV $R7, $src|imm
+
+    TMC                     op=0x22 I=0     transfer machine control
+    TMC src                 op=0x22 I=0
+    TMC imm                 op=0x22 I=1
+      if user mode flag is set, atomically execute the following:
+        1. *($R6--) := $R7
+        2. *($R6--) := $SW
+        3. *($R6--) := <$src|imm>
+        4. $R7 = 0x0004
+        5. clear user mode flag
+
+      if user mode flag is cleared, atomically execute the following:
+        1. $SW := *(++$R6)
+        2. $R7 := *(++$R6)
+
+    CMP dst, src            op=0x23 I=0     compare register values
+    CMP dst, imm            op=0x23 I=1     compare register with immediate
+      subtract source or immediate from destination, ignore result.
+        carry: set to carry output of adder
+        zero: set if result is zero ($dst==$src or $dst==imm)
+        sign: set to MSB of result
+
+    TST dst, src            op=0x24 I=0     test if bits are set
+    TST dst, imm            op=0x24 I=1     test if bits are set
+        zero: set if destination and source register have no overlapping bits,
+              cleared if they do have overlapping bits
+        sign: set to MSB of destination ANDed to MSB of source
+
+    MOV {imm}, src          op=0x0D I=1     write to immediate I/O address
+    MOV {dst}, src          op=0x25 I=0     write register to I/O bus
+    MOV {dst}, imm          op=0x25 I=1     write immediate to I/O bus
+    MOV dst, {src}          op=0x26 I=0     read from I/O bus
+    MOV dst, {imm}          op=0x26 I=1     read from immediate I/O address
+        If used in user mode, a trap number 1 is generated.
+
+
+    unused opcodes with immediate:
+        0x0E, 0x0F,
+        0x13, 0x14, 0x15, 0x16, 0x17, 0x18, 0x19, 0x1A, 0x1B, 0x1C,
+        0x20
+
+    entirely unused opcodes:
+        0x27, 0x28, 0x29, 0x2A, 0x2B, 0x2C, 0x2D, 0x2E, 0x2F,
+        0x30, 0x31, 0x32, 0x33, 0x34, 0x35, 0x36, 0x37, 0x38, 0x39,
+        0x3A, 0x3B, 0x3C, 0x3D, 0x3E, 0x3F
+
+
+  3.1) Pseudo instruction and assembler directives
+
+    In addition to the pseudo instructions below, the assembler supports
+    using the pseudo register $SP that it translates to $R6 for code
+    that is set to run in kernel mode, or to $R5 for user mode.
+
+
+    .usr                user mode               assume stack pointer is $R5
+    .sys                kernel mode             assume stack pointer is $R6
+    .org <exp>          set base address        assume program base address
+
+    .def <name> <exp>
+        All occourances of the given name within expressions is replaced
+        with the parse tree of the given expression that is then evaluated,
+        i.e. AFTER being inserted.
+
+    .equ <name> <exp>
+        All occourances of the given name within expressions is replaced
+        with the VALUE of the given expression, i.e. the expression is
+        evaluated BEFORE being inserted.
+
+    .imp <name>                                 import label
+        If the target format supports a symbol table for imported symbols and
+        is intended for usage in a linking phase, resolve the value of the
+        given symbol at link time. All labels that are unresolved after
+        assembly and not marked as imported generate errors.
+
+    .exp <name>                                 export label
+        If the target format supports a symbol table for exported symbols,
+        export the value of the given label with the name of the label.
+
+    .txt                                        enter text section
+    .dat                                        enter data section
+        If the target format supports different sections in the output,
+        these directives can be used to switch sections.
+
+    .dmw imm            dump machine word       write a value, truncated to
+                                                the size of a word directly
+                                                to the output
+
+    .psh                push label scope        enter a 'scope'. All labels
+                                                defined afterwards are
+                                                forgotten as soon a .pop is
+                                                encountered. Labels from the
+                                                previous scope can still be
+                                                used.
+
+    .pop                pop label scope         Go back to parent scope and
+                                                forget all labels in the
+                                                curent scope.
+
+    <name> ':'                                  label definition
+
+    NOP                 no operation            MOV $R0, $R0
+
+    SEX reg                                     SEX $SP, reg
+    SEX imm                                     SEX $SP, imm
+
+    RET reg             return from subroutine  MOV $R7, [++$reg]
+    RET                                         MOV $R7, [++$SP]
+
+    JMP reg                                     MOV $R7, reg
+    JMP [reg]                                   MOV $R7, [reg]
+    JMP imm                                     MOV $R7, imm
+    JMP [imm]                                   MOV $R7, [imm]
+    JMP [reg+imm]                               MOV $R7, [reg+imm]
+
+    HOP reg             relative jump           ASS $R7, reg
+    HOP imm             relative jump           ASS $R7, imm
+    HOP label           relative jump to label  ASS $R7, label-$$
+
+    SUB dst, imm                                ADD dst, -imm
+    SBC dst, imm                                ADC dst, ~imm
+
+    INC reg                                     INC reg, reg
+    DEC reg                                     DEC reg, reg
+    SHL reg                                     SHL reg, reg
+    ROL reg                                     ROL reg, reg
+    SHR reg                                     SHR reg, reg
+    ROR reg                                     ROR reg, reg
+    NOT reg                                     NOT reg, reg
+    NEG reg                                     NEG reg, reg
+
+    SET reg, imm        set bit in register     ORL reg, (1<<imm)
+    CLR reg, imm        clear bit in register   ANL reg, ~(1<<imm)
+    BIT reg, imm        test if bit is set      TST reg, (1<<imm)
+
+    PSH dst, src        push GP register        MOV [$dst--], src
+    PSH dst, imm        push immediate value    MOV [$dst--], imm
+    PSH dst, $SW        push status word        MOV [$dst--], $SW
+
+    PSH src                                     MOV [$SP--], src
+    PSH imm                                     MOV [$SP--], imm
+    PSH $SW                                     MOV [$SP--], $SW
+
+    POP dst, src        pop register            MOV dst, [++src]
+    POP $SW, src        pop status word         MOV $SW, [++src]
+
+    POP dst                                     MOV dst, [++$SP]
+    POP $SW                                     MOV $SW, [++$SP]
+
+    NAY C               clear flag              SFL 0
+    NAY Z                                       SFL 1
+    NAY S                                       SFL 2
+    NAY I                                       SFL 3
+
+    YAY C               set flag                SFL 4
+    YAY Z                                       SFL 5
+    YAY S                                       SFL 6
+    YAY I                                       SFL 7
+
+    NC.<instructon>     skip mode 1             execute if carry is not set
+    NZ.<instructon>     skip mode 2             execute if zero is not set
+    NS.<instructon>     skip mode 3             execute if sign is not set
+    NX.<instructon>     skip mode 4             never execute instruction
+
+    C.<instructon>      skip mode 5             execute if carry is set
+    Z.<instructon>      skip mode 6             execute if zero is set
+    S.<instructon>      skip mode 7             execute if sign is set
+
+
+  3.2) Assember expressions
+
+    In place of immediate values, the assembler supports simple arithmetic
+    expressions that can be evaluated at translation time.
+
+    The expression grammar is as follows (starting at ADDEXPR):
+
+        ADDEXPR ::= MULEXPR ['+'|'-' ADDEXPR]
+        MULEXPR ::= BITEXPR ['*'|'/' MULEXPR]
+        BITEXPR ::= SHEXPR ['|'|'&'|'^' OREXPR]
+        SHEXPR ::= UNARY ['<<'|'>>' SHEXPR]
+
+        UNARY ::= ['-'|'~'] PRIMEXPR
+        PRIMEXPR ::= RECEXPR | NUMBER | NAMESTRING | '$$' | '$'
+        RECEXPR ::= '(' ADDEXPR ')'
+
+
+        NUMBER ::= HEXNUMBER | OCTNUMBER | DECNUMBER | BINNUMBER
+
+        HEXNUMBER ::= '0x' [0-9a-fA-F]+
+        OCTNUMBER ::= '0' [0-7]*
+        DECNUMBER ::= [1-9] [0-9]*
+        BINNUMBER ::= '0b' ('0'|'1')+
+
+        NAMESTRING ::= [a-zA-Z_@.-] [a-zA-Z0-9_@.-]*
+
+    The element DECNUMBER represents a numeric constant in decimal notation,
+    OCTNUMBER in octal notation, HEXNUMBER in hexadecimal notation and
+    BINNUMBER in binary notation.
+
+    The element NAMESTRING represents the name of a label or constant defined
+    with the ".equ" directive or a sub expression defined with ".def".
+
+    The special constant '$$' resolves to the absolute address of the next
+    instruction and '$' resolves to the absolute address of the current
+    instruction.
+
+
+  4) Interrupts and Traps
+
+    The CPU has a priority decoder that translates one of 8 interrupt
+    signals into a number.
+
+    When an interrupt is triggered, the register R7 is pushed to the kernel
+    stack (R6 used as stack pointer), followed by the status word and finnaly
+    the interrupt number. The processor then writes the value 0x0002 to the
+    register R7 (the interrupt vector adress) and finally clears both the
+    user mode and interrupt enable flags. Thus an interrupt behaves similar
+    to the TMC instruction, except that it jumps to a different adress and
+    changes more flags. The TMC instruction can be used to return from an
+    interrupt after the interrupt number has been removed from the stack.
+
+    A trap occours when the TMC instruction is issued in user mode, user mode
+    code attempts to execute a privileged instruction or an invalid opcode is
+    encountered. Traps behave exactely like interrupts, except the CPU jumps
+    to adress 0x0004 and does NOT clear the interrupt enable flag (only the
+    user mode flag). The trap number pushed onto the stack is either generated
+    by the CPU or by the TMC instruction.
+
+    The following trap numbers are generated by the CPU internally:
+        0   Illegal OP-Code encountered
+        1   Privileged instruction encountered in user mode
+        2   MMU Page fault
+
