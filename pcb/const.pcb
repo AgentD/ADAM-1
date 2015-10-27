@@ -3,10 +3,10 @@
 # To read pcb files, the pcb version (or the git source date) must be >= the file version
 FileVersion[20070407]
 
-PCB["" 335000 205000]
+PCB["" 275000 180000]
 
 Grid[5000.0 0 0 1]
-Cursor[140000 90000 0.000000]
+Cursor[82500 132500 0.000000]
 PolyArea[3100.006200]
 Thermal[0.500000]
 DRC[1000 1000 1000 1000 1500 1000]
@@ -788,798 +788,8 @@ Symbol['~' 1200]
 )
 Attribute("PCB::grid::unit" "mil")
 
-Element["" "SMD Cap" "C0" "" 50000 130000 -4400 17000 1 150 ""]
+Element["" "Axial polar component (typically capacitor)," "D7G1" "ACY100P" 47500 80000 4500 -2200 0 100 ""]
 (
-	Pin[0 0 8000 3000 11000 3500 "1" "1" "thermal(0X,5)"]
-	Pin[0 20000 8000 3000 11000 3500 "2" "2" "thermal(4,5X)"]
-	ElementLine [-5000 -5000 5000 -5000 1000]
-	ElementLine [-5000 -5000 -5000 25000 1000]
-	ElementLine [-5000 25000 5000 25000 1000]
-	ElementLine [5000 -5000 5000 25000 1000]
-
-	)
-
-Element["" "SMD Cap" "C1" "" 255000 115000 -12000 -4400 0 150 ""]
-(
-	Pin[0 0 8000 3000 11000 3500 "1" "1" "edge2,thermal(0X,5)"]
-	Pin[-20000 0 8000 3000 11000 3500 "2" "2" "edge2,thermal(4,5X)"]
-	ElementLine [5000 -5000 5000 5000 1000]
-	ElementLine [-25000 -5000 5000 -5000 1000]
-	ElementLine [-25000 -5000 -25000 5000 1000]
-	ElementLine [-25000 5000 5000 5000 1000]
-
-	)
-
-Element["" "Axial polar component (typically capacitor)," "D7G7" "ACY100P" 205000 90000 4500 -2200 0 100 ""]
-(
-	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
-	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
-	ElementLine [0 0 2500 0 1000]
-	ElementLine [7500 0 10000 0 1000]
-	ElementLine [2500 -800 7500 -800 1000]
-	ElementLine [7500 -800 7500 800 1000]
-	ElementLine [2500 800 7500 800 1000]
-	ElementLine [2500 -800 2500 800 1000]
-	ElementLine [0 -7700 0 -3700 1000]
-	ElementLine [-2000 -5700 2000 -5700 1000]
-	ElementLine [8000 -5700 12000 -5700 1000]
-
-	)
-
-Element["" "Axial polar component (typically capacitor)," "D6G7" "ACY100P" 205000 80000 4500 -2200 0 100 ""]
-(
-	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
-	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
-	ElementLine [0 0 2500 0 1000]
-	ElementLine [7500 0 10000 0 1000]
-	ElementLine [2500 -800 7500 -800 1000]
-	ElementLine [7500 -800 7500 800 1000]
-	ElementLine [2500 800 7500 800 1000]
-	ElementLine [2500 -800 2500 800 1000]
-	ElementLine [0 -7700 0 -3700 1000]
-	ElementLine [-2000 -5700 2000 -5700 1000]
-	ElementLine [8000 -5700 12000 -5700 1000]
-
-	)
-
-Element["" "Axial polar component (typically capacitor)," "D5G7" "ACY100P" 205000 70000 4500 -2200 0 100 ""]
-(
-	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
-	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
-	ElementLine [0 0 2500 0 1000]
-	ElementLine [7500 0 10000 0 1000]
-	ElementLine [2500 -800 7500 -800 1000]
-	ElementLine [7500 -800 7500 800 1000]
-	ElementLine [2500 800 7500 800 1000]
-	ElementLine [2500 -800 2500 800 1000]
-	ElementLine [0 -7700 0 -3700 1000]
-	ElementLine [-2000 -5700 2000 -5700 1000]
-	ElementLine [8000 -5700 12000 -5700 1000]
-
-	)
-
-Element["" "Axial polar component (typically capacitor)," "D4G7" "ACY100P" 205000 60000 4500 -2200 0 100 ""]
-(
-	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
-	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
-	ElementLine [0 0 2500 0 1000]
-	ElementLine [7500 0 10000 0 1000]
-	ElementLine [2500 -800 7500 -800 1000]
-	ElementLine [7500 -800 7500 800 1000]
-	ElementLine [2500 800 7500 800 1000]
-	ElementLine [2500 -800 2500 800 1000]
-	ElementLine [0 -7700 0 -3700 1000]
-	ElementLine [-2000 -5700 2000 -5700 1000]
-	ElementLine [8000 -5700 12000 -5700 1000]
-
-	)
-
-Element["" "Axial polar component (typically capacitor)," "D3G7" "ACY100P" 205000 50000 4500 -2200 0 100 ""]
-(
-	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
-	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
-	ElementLine [0 0 2500 0 1000]
-	ElementLine [7500 0 10000 0 1000]
-	ElementLine [2500 -800 7500 -800 1000]
-	ElementLine [7500 -800 7500 800 1000]
-	ElementLine [2500 800 7500 800 1000]
-	ElementLine [2500 -800 2500 800 1000]
-	ElementLine [0 -7700 0 -3700 1000]
-	ElementLine [-2000 -5700 2000 -5700 1000]
-	ElementLine [8000 -5700 12000 -5700 1000]
-
-	)
-
-Element["" "Axial polar component (typically capacitor)," "D2G7" "ACY100P" 205000 40000 4500 -2200 0 100 ""]
-(
-	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
-	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
-	ElementLine [0 0 2500 0 1000]
-	ElementLine [7500 0 10000 0 1000]
-	ElementLine [2500 -800 7500 -800 1000]
-	ElementLine [7500 -800 7500 800 1000]
-	ElementLine [2500 800 7500 800 1000]
-	ElementLine [2500 -800 2500 800 1000]
-	ElementLine [0 -7700 0 -3700 1000]
-	ElementLine [-2000 -5700 2000 -5700 1000]
-	ElementLine [8000 -5700 12000 -5700 1000]
-
-	)
-
-Element["" "Axial polar component (typically capacitor)," "D1G7" "ACY100P" 205000 30000 4500 -2200 0 100 ""]
-(
-	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
-	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
-	ElementLine [0 0 2500 0 1000]
-	ElementLine [7500 0 10000 0 1000]
-	ElementLine [2500 -800 7500 -800 1000]
-	ElementLine [7500 -800 7500 800 1000]
-	ElementLine [2500 800 7500 800 1000]
-	ElementLine [2500 -800 2500 800 1000]
-	ElementLine [0 -7700 0 -3700 1000]
-	ElementLine [-2000 -5700 2000 -5700 1000]
-	ElementLine [8000 -5700 12000 -5700 1000]
-
-	)
-
-Element["" "Axial polar component (typically capacitor)," "D0G7" "ACY100P" 205000 20000 4500 -2200 0 100 ""]
-(
-	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
-	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
-	ElementLine [0 0 2500 0 1000]
-	ElementLine [7500 0 10000 0 1000]
-	ElementLine [2500 -800 7500 -800 1000]
-	ElementLine [7500 -800 7500 800 1000]
-	ElementLine [2500 800 7500 800 1000]
-	ElementLine [2500 -800 2500 800 1000]
-	ElementLine [0 -7700 0 -3700 1000]
-	ElementLine [-2000 -5700 2000 -5700 1000]
-	ElementLine [8000 -5700 12000 -5700 1000]
-
-	)
-
-Element["" "Axial polar component (typically capacitor)," "D7G6" "ACY100P" 180000 90000 4500 -2200 0 100 ""]
-(
-	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
-	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
-	ElementLine [0 0 2500 0 1000]
-	ElementLine [7500 0 10000 0 1000]
-	ElementLine [2500 -800 7500 -800 1000]
-	ElementLine [7500 -800 7500 800 1000]
-	ElementLine [2500 800 7500 800 1000]
-	ElementLine [2500 -800 2500 800 1000]
-	ElementLine [0 -7700 0 -3700 1000]
-	ElementLine [-2000 -5700 2000 -5700 1000]
-	ElementLine [8000 -5700 12000 -5700 1000]
-
-	)
-
-Element["" "Axial polar component (typically capacitor)," "D6G6" "ACY100P" 180000 80000 4500 -2200 0 100 ""]
-(
-	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
-	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
-	ElementLine [0 0 2500 0 1000]
-	ElementLine [7500 0 10000 0 1000]
-	ElementLine [2500 -800 7500 -800 1000]
-	ElementLine [7500 -800 7500 800 1000]
-	ElementLine [2500 800 7500 800 1000]
-	ElementLine [2500 -800 2500 800 1000]
-	ElementLine [0 -7700 0 -3700 1000]
-	ElementLine [-2000 -5700 2000 -5700 1000]
-	ElementLine [8000 -5700 12000 -5700 1000]
-
-	)
-
-Element["" "Axial polar component (typically capacitor)," "D5G6" "ACY100P" 180000 70000 4500 -2200 0 100 ""]
-(
-	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
-	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
-	ElementLine [0 0 2500 0 1000]
-	ElementLine [7500 0 10000 0 1000]
-	ElementLine [2500 -800 7500 -800 1000]
-	ElementLine [7500 -800 7500 800 1000]
-	ElementLine [2500 800 7500 800 1000]
-	ElementLine [2500 -800 2500 800 1000]
-	ElementLine [0 -7700 0 -3700 1000]
-	ElementLine [-2000 -5700 2000 -5700 1000]
-	ElementLine [8000 -5700 12000 -5700 1000]
-
-	)
-
-Element["" "Axial polar component (typically capacitor)," "D4G6" "ACY100P" 180000 60000 4500 -2200 0 100 ""]
-(
-	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
-	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
-	ElementLine [0 0 2500 0 1000]
-	ElementLine [7500 0 10000 0 1000]
-	ElementLine [2500 -800 7500 -800 1000]
-	ElementLine [7500 -800 7500 800 1000]
-	ElementLine [2500 800 7500 800 1000]
-	ElementLine [2500 -800 2500 800 1000]
-	ElementLine [0 -7700 0 -3700 1000]
-	ElementLine [-2000 -5700 2000 -5700 1000]
-	ElementLine [8000 -5700 12000 -5700 1000]
-
-	)
-
-Element["" "Axial polar component (typically capacitor)," "D3G6" "ACY100P" 180000 50000 4500 -2200 0 100 ""]
-(
-	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
-	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
-	ElementLine [0 0 2500 0 1000]
-	ElementLine [7500 0 10000 0 1000]
-	ElementLine [2500 -800 7500 -800 1000]
-	ElementLine [7500 -800 7500 800 1000]
-	ElementLine [2500 800 7500 800 1000]
-	ElementLine [2500 -800 2500 800 1000]
-	ElementLine [0 -7700 0 -3700 1000]
-	ElementLine [-2000 -5700 2000 -5700 1000]
-	ElementLine [8000 -5700 12000 -5700 1000]
-
-	)
-
-Element["" "Axial polar component (typically capacitor)," "D2G6" "ACY100P" 180000 40000 4500 -2200 0 100 ""]
-(
-	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
-	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
-	ElementLine [0 0 2500 0 1000]
-	ElementLine [7500 0 10000 0 1000]
-	ElementLine [2500 -800 7500 -800 1000]
-	ElementLine [7500 -800 7500 800 1000]
-	ElementLine [2500 800 7500 800 1000]
-	ElementLine [2500 -800 2500 800 1000]
-	ElementLine [0 -7700 0 -3700 1000]
-	ElementLine [-2000 -5700 2000 -5700 1000]
-	ElementLine [8000 -5700 12000 -5700 1000]
-
-	)
-
-Element["" "Axial polar component (typically capacitor)," "D1G6" "ACY100P" 180000 30000 4500 -2200 0 100 ""]
-(
-	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
-	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
-	ElementLine [0 0 2500 0 1000]
-	ElementLine [7500 0 10000 0 1000]
-	ElementLine [2500 -800 7500 -800 1000]
-	ElementLine [7500 -800 7500 800 1000]
-	ElementLine [2500 800 7500 800 1000]
-	ElementLine [2500 -800 2500 800 1000]
-	ElementLine [0 -7700 0 -3700 1000]
-	ElementLine [-2000 -5700 2000 -5700 1000]
-	ElementLine [8000 -5700 12000 -5700 1000]
-
-	)
-
-Element["" "Axial polar component (typically capacitor)," "D0G6" "ACY100P" 180000 20000 4500 -2200 0 100 ""]
-(
-	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
-	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
-	ElementLine [0 0 2500 0 1000]
-	ElementLine [7500 0 10000 0 1000]
-	ElementLine [2500 -800 7500 -800 1000]
-	ElementLine [7500 -800 7500 800 1000]
-	ElementLine [2500 800 7500 800 1000]
-	ElementLine [2500 -800 2500 800 1000]
-	ElementLine [0 -7700 0 -3700 1000]
-	ElementLine [-2000 -5700 2000 -5700 1000]
-	ElementLine [8000 -5700 12000 -5700 1000]
-
-	)
-
-Element["" "Axial polar component (typically capacitor)," "D7G5" "ACY100P" 155000 90000 4500 -2200 0 100 ""]
-(
-	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
-	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
-	ElementLine [0 0 2500 0 1000]
-	ElementLine [7500 0 10000 0 1000]
-	ElementLine [2500 -800 7500 -800 1000]
-	ElementLine [7500 -800 7500 800 1000]
-	ElementLine [2500 800 7500 800 1000]
-	ElementLine [2500 -800 2500 800 1000]
-	ElementLine [0 -7700 0 -3700 1000]
-	ElementLine [-2000 -5700 2000 -5700 1000]
-	ElementLine [8000 -5700 12000 -5700 1000]
-
-	)
-
-Element["" "Axial polar component (typically capacitor)," "D6G5" "ACY100P" 155000 80000 4500 -2200 0 100 ""]
-(
-	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
-	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
-	ElementLine [0 0 2500 0 1000]
-	ElementLine [7500 0 10000 0 1000]
-	ElementLine [2500 -800 7500 -800 1000]
-	ElementLine [7500 -800 7500 800 1000]
-	ElementLine [2500 800 7500 800 1000]
-	ElementLine [2500 -800 2500 800 1000]
-	ElementLine [0 -7700 0 -3700 1000]
-	ElementLine [-2000 -5700 2000 -5700 1000]
-	ElementLine [8000 -5700 12000 -5700 1000]
-
-	)
-
-Element["" "Axial polar component (typically capacitor)," "D5G5" "ACY100P" 155000 70000 4500 -2200 0 100 ""]
-(
-	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
-	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
-	ElementLine [0 0 2500 0 1000]
-	ElementLine [7500 0 10000 0 1000]
-	ElementLine [2500 -800 7500 -800 1000]
-	ElementLine [7500 -800 7500 800 1000]
-	ElementLine [2500 800 7500 800 1000]
-	ElementLine [2500 -800 2500 800 1000]
-	ElementLine [0 -7700 0 -3700 1000]
-	ElementLine [-2000 -5700 2000 -5700 1000]
-	ElementLine [8000 -5700 12000 -5700 1000]
-
-	)
-
-Element["" "Axial polar component (typically capacitor)," "D4G5" "ACY100P" 155000 60000 4500 -2200 0 100 ""]
-(
-	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
-	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
-	ElementLine [0 0 2500 0 1000]
-	ElementLine [7500 0 10000 0 1000]
-	ElementLine [2500 -800 7500 -800 1000]
-	ElementLine [7500 -800 7500 800 1000]
-	ElementLine [2500 800 7500 800 1000]
-	ElementLine [2500 -800 2500 800 1000]
-	ElementLine [0 -7700 0 -3700 1000]
-	ElementLine [-2000 -5700 2000 -5700 1000]
-	ElementLine [8000 -5700 12000 -5700 1000]
-
-	)
-
-Element["" "Axial polar component (typically capacitor)," "D3G5" "ACY100P" 155000 50000 4500 -2200 0 100 ""]
-(
-	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
-	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
-	ElementLine [0 0 2500 0 1000]
-	ElementLine [7500 0 10000 0 1000]
-	ElementLine [2500 -800 7500 -800 1000]
-	ElementLine [7500 -800 7500 800 1000]
-	ElementLine [2500 800 7500 800 1000]
-	ElementLine [2500 -800 2500 800 1000]
-	ElementLine [0 -7700 0 -3700 1000]
-	ElementLine [-2000 -5700 2000 -5700 1000]
-	ElementLine [8000 -5700 12000 -5700 1000]
-
-	)
-
-Element["" "Axial polar component (typically capacitor)," "D2G5" "ACY100P" 155000 40000 4500 -2200 0 100 ""]
-(
-	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
-	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
-	ElementLine [0 0 2500 0 1000]
-	ElementLine [7500 0 10000 0 1000]
-	ElementLine [2500 -800 7500 -800 1000]
-	ElementLine [7500 -800 7500 800 1000]
-	ElementLine [2500 800 7500 800 1000]
-	ElementLine [2500 -800 2500 800 1000]
-	ElementLine [0 -7700 0 -3700 1000]
-	ElementLine [-2000 -5700 2000 -5700 1000]
-	ElementLine [8000 -5700 12000 -5700 1000]
-
-	)
-
-Element["" "Axial polar component (typically capacitor)," "D1G5" "ACY100P" 155000 30000 4500 -2200 0 100 ""]
-(
-	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
-	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
-	ElementLine [0 0 2500 0 1000]
-	ElementLine [7500 0 10000 0 1000]
-	ElementLine [2500 -800 7500 -800 1000]
-	ElementLine [7500 -800 7500 800 1000]
-	ElementLine [2500 800 7500 800 1000]
-	ElementLine [2500 -800 2500 800 1000]
-	ElementLine [0 -7700 0 -3700 1000]
-	ElementLine [-2000 -5700 2000 -5700 1000]
-	ElementLine [8000 -5700 12000 -5700 1000]
-
-	)
-
-Element["" "Axial polar component (typically capacitor)," "D0G5" "ACY100P" 155000 20000 4500 -2200 0 100 ""]
-(
-	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
-	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
-	ElementLine [0 0 2500 0 1000]
-	ElementLine [7500 0 10000 0 1000]
-	ElementLine [2500 -800 7500 -800 1000]
-	ElementLine [7500 -800 7500 800 1000]
-	ElementLine [2500 800 7500 800 1000]
-	ElementLine [2500 -800 2500 800 1000]
-	ElementLine [0 -7700 0 -3700 1000]
-	ElementLine [-2000 -5700 2000 -5700 1000]
-	ElementLine [8000 -5700 12000 -5700 1000]
-
-	)
-
-Element["" "Axial polar component (typically capacitor)," "D0G4" "ACY100P" 130000 20000 4500 -2200 0 100 ""]
-(
-	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
-	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
-	ElementLine [0 0 2500 0 1000]
-	ElementLine [7500 0 10000 0 1000]
-	ElementLine [2500 -800 7500 -800 1000]
-	ElementLine [7500 -800 7500 800 1000]
-	ElementLine [2500 800 7500 800 1000]
-	ElementLine [2500 -800 2500 800 1000]
-	ElementLine [0 -7700 0 -3700 1000]
-	ElementLine [-2000 -5700 2000 -5700 1000]
-	ElementLine [8000 -5700 12000 -5700 1000]
-
-	)
-
-Element["" "Axial polar component (typically capacitor)," "D7G4" "ACY100P" 130000 90000 4500 -2200 0 100 ""]
-(
-	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
-	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
-	ElementLine [0 0 2500 0 1000]
-	ElementLine [7500 0 10000 0 1000]
-	ElementLine [2500 -800 7500 -800 1000]
-	ElementLine [7500 -800 7500 800 1000]
-	ElementLine [2500 800 7500 800 1000]
-	ElementLine [2500 -800 2500 800 1000]
-	ElementLine [0 -7700 0 -3700 1000]
-	ElementLine [-2000 -5700 2000 -5700 1000]
-	ElementLine [8000 -5700 12000 -5700 1000]
-
-	)
-
-Element["" "Axial polar component (typically capacitor)," "D6G4" "ACY100P" 130000 80000 4500 -2200 0 100 ""]
-(
-	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
-	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
-	ElementLine [0 0 2500 0 1000]
-	ElementLine [7500 0 10000 0 1000]
-	ElementLine [2500 -800 7500 -800 1000]
-	ElementLine [7500 -800 7500 800 1000]
-	ElementLine [2500 800 7500 800 1000]
-	ElementLine [2500 -800 2500 800 1000]
-	ElementLine [0 -7700 0 -3700 1000]
-	ElementLine [-2000 -5700 2000 -5700 1000]
-	ElementLine [8000 -5700 12000 -5700 1000]
-
-	)
-
-Element["" "Axial polar component (typically capacitor)," "D5G4" "ACY100P" 130000 70000 4500 -2200 0 100 ""]
-(
-	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
-	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
-	ElementLine [0 0 2500 0 1000]
-	ElementLine [7500 0 10000 0 1000]
-	ElementLine [2500 -800 7500 -800 1000]
-	ElementLine [7500 -800 7500 800 1000]
-	ElementLine [2500 800 7500 800 1000]
-	ElementLine [2500 -800 2500 800 1000]
-	ElementLine [0 -7700 0 -3700 1000]
-	ElementLine [-2000 -5700 2000 -5700 1000]
-	ElementLine [8000 -5700 12000 -5700 1000]
-
-	)
-
-Element["" "Axial polar component (typically capacitor)," "D4G4" "ACY100P" 130000 60000 4500 -2200 0 100 ""]
-(
-	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
-	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
-	ElementLine [0 0 2500 0 1000]
-	ElementLine [7500 0 10000 0 1000]
-	ElementLine [2500 -800 7500 -800 1000]
-	ElementLine [7500 -800 7500 800 1000]
-	ElementLine [2500 800 7500 800 1000]
-	ElementLine [2500 -800 2500 800 1000]
-	ElementLine [0 -7700 0 -3700 1000]
-	ElementLine [-2000 -5700 2000 -5700 1000]
-	ElementLine [8000 -5700 12000 -5700 1000]
-
-	)
-
-Element["" "Axial polar component (typically capacitor)," "D3G4" "ACY100P" 130000 50000 4500 -2200 0 100 ""]
-(
-	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
-	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
-	ElementLine [0 0 2500 0 1000]
-	ElementLine [7500 0 10000 0 1000]
-	ElementLine [2500 -800 7500 -800 1000]
-	ElementLine [7500 -800 7500 800 1000]
-	ElementLine [2500 800 7500 800 1000]
-	ElementLine [2500 -800 2500 800 1000]
-	ElementLine [0 -7700 0 -3700 1000]
-	ElementLine [-2000 -5700 2000 -5700 1000]
-	ElementLine [8000 -5700 12000 -5700 1000]
-
-	)
-
-Element["" "Axial polar component (typically capacitor)," "D2G4" "ACY100P" 130000 40000 4500 -2200 0 100 ""]
-(
-	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
-	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
-	ElementLine [0 0 2500 0 1000]
-	ElementLine [7500 0 10000 0 1000]
-	ElementLine [2500 -800 7500 -800 1000]
-	ElementLine [7500 -800 7500 800 1000]
-	ElementLine [2500 800 7500 800 1000]
-	ElementLine [2500 -800 2500 800 1000]
-	ElementLine [0 -7700 0 -3700 1000]
-	ElementLine [-2000 -5700 2000 -5700 1000]
-	ElementLine [8000 -5700 12000 -5700 1000]
-
-	)
-
-Element["" "Axial polar component (typically capacitor)," "D1G4" "ACY100P" 130000 30000 4500 -2200 0 100 ""]
-(
-	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
-	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
-	ElementLine [0 0 2500 0 1000]
-	ElementLine [7500 0 10000 0 1000]
-	ElementLine [2500 -800 7500 -800 1000]
-	ElementLine [7500 -800 7500 800 1000]
-	ElementLine [2500 800 7500 800 1000]
-	ElementLine [2500 -800 2500 800 1000]
-	ElementLine [0 -7700 0 -3700 1000]
-	ElementLine [-2000 -5700 2000 -5700 1000]
-	ElementLine [8000 -5700 12000 -5700 1000]
-
-	)
-
-Element["" "Axial polar component (typically capacitor)," "D7G3" "ACY100P" 105000 90000 4500 -2200 0 100 ""]
-(
-	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
-	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
-	ElementLine [0 0 2500 0 1000]
-	ElementLine [7500 0 10000 0 1000]
-	ElementLine [2500 -800 7500 -800 1000]
-	ElementLine [7500 -800 7500 800 1000]
-	ElementLine [2500 800 7500 800 1000]
-	ElementLine [2500 -800 2500 800 1000]
-	ElementLine [0 -7700 0 -3700 1000]
-	ElementLine [-2000 -5700 2000 -5700 1000]
-	ElementLine [8000 -5700 12000 -5700 1000]
-
-	)
-
-Element["" "Axial polar component (typically capacitor)," "D6G3" "ACY100P" 105000 80000 4500 -2200 0 100 ""]
-(
-	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
-	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
-	ElementLine [0 0 2500 0 1000]
-	ElementLine [7500 0 10000 0 1000]
-	ElementLine [2500 -800 7500 -800 1000]
-	ElementLine [7500 -800 7500 800 1000]
-	ElementLine [2500 800 7500 800 1000]
-	ElementLine [2500 -800 2500 800 1000]
-	ElementLine [0 -7700 0 -3700 1000]
-	ElementLine [-2000 -5700 2000 -5700 1000]
-	ElementLine [8000 -5700 12000 -5700 1000]
-
-	)
-
-Element["" "Axial polar component (typically capacitor)," "D5G3" "ACY100P" 105000 70000 4500 -2200 0 100 ""]
-(
-	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
-	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
-	ElementLine [0 0 2500 0 1000]
-	ElementLine [7500 0 10000 0 1000]
-	ElementLine [2500 -800 7500 -800 1000]
-	ElementLine [7500 -800 7500 800 1000]
-	ElementLine [2500 800 7500 800 1000]
-	ElementLine [2500 -800 2500 800 1000]
-	ElementLine [0 -7700 0 -3700 1000]
-	ElementLine [-2000 -5700 2000 -5700 1000]
-	ElementLine [8000 -5700 12000 -5700 1000]
-
-	)
-
-Element["" "Axial polar component (typically capacitor)," "D4G3" "ACY100P" 105000 60000 4500 -2200 0 100 ""]
-(
-	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
-	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
-	ElementLine [0 0 2500 0 1000]
-	ElementLine [7500 0 10000 0 1000]
-	ElementLine [2500 -800 7500 -800 1000]
-	ElementLine [7500 -800 7500 800 1000]
-	ElementLine [2500 800 7500 800 1000]
-	ElementLine [2500 -800 2500 800 1000]
-	ElementLine [0 -7700 0 -3700 1000]
-	ElementLine [-2000 -5700 2000 -5700 1000]
-	ElementLine [8000 -5700 12000 -5700 1000]
-
-	)
-
-Element["" "Axial polar component (typically capacitor)," "D3G3" "ACY100P" 105000 50000 4500 -2200 0 100 ""]
-(
-	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
-	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
-	ElementLine [0 0 2500 0 1000]
-	ElementLine [7500 0 10000 0 1000]
-	ElementLine [2500 -800 7500 -800 1000]
-	ElementLine [7500 -800 7500 800 1000]
-	ElementLine [2500 800 7500 800 1000]
-	ElementLine [2500 -800 2500 800 1000]
-	ElementLine [0 -7700 0 -3700 1000]
-	ElementLine [-2000 -5700 2000 -5700 1000]
-	ElementLine [8000 -5700 12000 -5700 1000]
-
-	)
-
-Element["" "Axial polar component (typically capacitor)," "D2G3" "ACY100P" 105000 40000 4500 -2200 0 100 ""]
-(
-	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
-	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
-	ElementLine [0 0 2500 0 1000]
-	ElementLine [7500 0 10000 0 1000]
-	ElementLine [2500 -800 7500 -800 1000]
-	ElementLine [7500 -800 7500 800 1000]
-	ElementLine [2500 800 7500 800 1000]
-	ElementLine [2500 -800 2500 800 1000]
-	ElementLine [0 -7700 0 -3700 1000]
-	ElementLine [-2000 -5700 2000 -5700 1000]
-	ElementLine [8000 -5700 12000 -5700 1000]
-
-	)
-
-Element["" "Axial polar component (typically capacitor)," "D1G3" "ACY100P" 105000 30000 4500 -2200 0 100 ""]
-(
-	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
-	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
-	ElementLine [0 0 2500 0 1000]
-	ElementLine [7500 0 10000 0 1000]
-	ElementLine [2500 -800 7500 -800 1000]
-	ElementLine [7500 -800 7500 800 1000]
-	ElementLine [2500 800 7500 800 1000]
-	ElementLine [2500 -800 2500 800 1000]
-	ElementLine [0 -7700 0 -3700 1000]
-	ElementLine [-2000 -5700 2000 -5700 1000]
-	ElementLine [8000 -5700 12000 -5700 1000]
-
-	)
-
-Element["" "Axial polar component (typically capacitor)," "D0G3" "ACY100P" 105000 20000 4500 -2200 0 100 ""]
-(
-	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
-	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
-	ElementLine [0 0 2500 0 1000]
-	ElementLine [7500 0 10000 0 1000]
-	ElementLine [2500 -800 7500 -800 1000]
-	ElementLine [7500 -800 7500 800 1000]
-	ElementLine [2500 800 7500 800 1000]
-	ElementLine [2500 -800 2500 800 1000]
-	ElementLine [0 -7700 0 -3700 1000]
-	ElementLine [-2000 -5700 2000 -5700 1000]
-	ElementLine [8000 -5700 12000 -5700 1000]
-
-	)
-
-Element["" "Axial polar component (typically capacitor)," "D7G2" "ACY100P" 80000 90000 4500 -2200 0 100 ""]
-(
-	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
-	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
-	ElementLine [0 0 2500 0 1000]
-	ElementLine [7500 0 10000 0 1000]
-	ElementLine [2500 -800 7500 -800 1000]
-	ElementLine [7500 -800 7500 800 1000]
-	ElementLine [2500 800 7500 800 1000]
-	ElementLine [2500 -800 2500 800 1000]
-	ElementLine [0 -7700 0 -3700 1000]
-	ElementLine [-2000 -5700 2000 -5700 1000]
-	ElementLine [8000 -5700 12000 -5700 1000]
-
-	)
-
-Element["" "Axial polar component (typically capacitor)," "D6G2" "ACY100P" 80000 80000 4500 -2200 0 100 ""]
-(
-	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
-	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
-	ElementLine [0 0 2500 0 1000]
-	ElementLine [7500 0 10000 0 1000]
-	ElementLine [2500 -800 7500 -800 1000]
-	ElementLine [7500 -800 7500 800 1000]
-	ElementLine [2500 800 7500 800 1000]
-	ElementLine [2500 -800 2500 800 1000]
-	ElementLine [0 -7700 0 -3700 1000]
-	ElementLine [-2000 -5700 2000 -5700 1000]
-	ElementLine [8000 -5700 12000 -5700 1000]
-
-	)
-
-Element["" "Axial polar component (typically capacitor)," "D5G2" "ACY100P" 80000 70000 4500 -2200 0 100 ""]
-(
-	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
-	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
-	ElementLine [0 0 2500 0 1000]
-	ElementLine [7500 0 10000 0 1000]
-	ElementLine [2500 -800 7500 -800 1000]
-	ElementLine [7500 -800 7500 800 1000]
-	ElementLine [2500 800 7500 800 1000]
-	ElementLine [2500 -800 2500 800 1000]
-	ElementLine [0 -7700 0 -3700 1000]
-	ElementLine [-2000 -5700 2000 -5700 1000]
-	ElementLine [8000 -5700 12000 -5700 1000]
-
-	)
-
-Element["" "Axial polar component (typically capacitor)," "D4G2" "ACY100P" 80000 60000 4500 -2200 0 100 ""]
-(
-	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
-	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
-	ElementLine [0 0 2500 0 1000]
-	ElementLine [7500 0 10000 0 1000]
-	ElementLine [2500 -800 7500 -800 1000]
-	ElementLine [7500 -800 7500 800 1000]
-	ElementLine [2500 800 7500 800 1000]
-	ElementLine [2500 -800 2500 800 1000]
-	ElementLine [0 -7700 0 -3700 1000]
-	ElementLine [-2000 -5700 2000 -5700 1000]
-	ElementLine [8000 -5700 12000 -5700 1000]
-
-	)
-
-Element["" "Axial polar component (typically capacitor)," "D3G2" "ACY100P" 80000 50000 4500 -2200 0 100 ""]
-(
-	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
-	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
-	ElementLine [0 0 2500 0 1000]
-	ElementLine [7500 0 10000 0 1000]
-	ElementLine [2500 -800 7500 -800 1000]
-	ElementLine [7500 -800 7500 800 1000]
-	ElementLine [2500 800 7500 800 1000]
-	ElementLine [2500 -800 2500 800 1000]
-	ElementLine [0 -7700 0 -3700 1000]
-	ElementLine [-2000 -5700 2000 -5700 1000]
-	ElementLine [8000 -5700 12000 -5700 1000]
-
-	)
-
-Element["" "Axial polar component (typically capacitor)," "D2G2" "ACY100P" 80000 40000 4500 -2200 0 100 ""]
-(
-	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
-	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
-	ElementLine [0 0 2500 0 1000]
-	ElementLine [7500 0 10000 0 1000]
-	ElementLine [2500 -800 7500 -800 1000]
-	ElementLine [7500 -800 7500 800 1000]
-	ElementLine [2500 800 7500 800 1000]
-	ElementLine [2500 -800 2500 800 1000]
-	ElementLine [0 -7700 0 -3700 1000]
-	ElementLine [-2000 -5700 2000 -5700 1000]
-	ElementLine [8000 -5700 12000 -5700 1000]
-
-	)
-
-Element["" "Axial polar component (typically capacitor)," "D1G2" "ACY100P" 80000 30000 4500 -2200 0 100 ""]
-(
-	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
-	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
-	ElementLine [0 0 2500 0 1000]
-	ElementLine [7500 0 10000 0 1000]
-	ElementLine [2500 -800 7500 -800 1000]
-	ElementLine [7500 -800 7500 800 1000]
-	ElementLine [2500 800 7500 800 1000]
-	ElementLine [2500 -800 2500 800 1000]
-	ElementLine [0 -7700 0 -3700 1000]
-	ElementLine [-2000 -5700 2000 -5700 1000]
-	ElementLine [8000 -5700 12000 -5700 1000]
-
-	)
-
-Element["" "Axial polar component (typically capacitor)," "D0G2" "ACY100P" 80000 20000 4500 -2200 0 100 ""]
-(
-	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
-	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
-	ElementLine [0 0 2500 0 1000]
-	ElementLine [7500 0 10000 0 1000]
-	ElementLine [2500 -800 7500 -800 1000]
-	ElementLine [7500 -800 7500 800 1000]
-	ElementLine [2500 800 7500 800 1000]
-	ElementLine [2500 -800 2500 800 1000]
-	ElementLine [0 -7700 0 -3700 1000]
-	ElementLine [-2000 -5700 2000 -5700 1000]
-	ElementLine [8000 -5700 12000 -5700 1000]
-
-	)
-
-Element["" "Axial polar component (typically capacitor)," "D7G1" "ACY100P" 55000 90000 4500 -2200 0 100 ""]
-(
 	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
 	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
 	ElementLine [0 0 2500 0 1000]
@@ -1594,7 +804,7 @@ Element["" "Axial polar component (typically capacitor)," "D7G1" "ACY100P" 55000
 
 	)
 
-Element["" "Axial polar component (typically capacitor)," "D6G1" "ACY100P" 55000 80000 4500 -2200 0 100 ""]
+Element["" "Axial polar component (typically capacitor)," "D6G1" "ACY100P" 47500 70000 4500 -2200 0 100 ""]
 (
 	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
 	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
@@ -1610,7 +820,7 @@ Element["" "Axial polar component (typically capacitor)," "D6G1" "ACY100P" 55000
 
 	)
 
-Element["" "Axial polar component (typically capacitor)," "D5G1" "ACY100P" 55000 70000 4500 -2200 0 100 ""]
+Element["" "Axial polar component (typically capacitor)," "D5G1" "ACY100P" 47500 60000 4500 -2200 0 100 ""]
 (
 	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
 	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
@@ -1626,7 +836,7 @@ Element["" "Axial polar component (typically capacitor)," "D5G1" "ACY100P" 55000
 
 	)
 
-Element["" "Axial polar component (typically capacitor)," "D4G1" "ACY100P" 55000 60000 4500 -2200 0 100 ""]
+Element["" "Axial polar component (typically capacitor)," "D4G1" "ACY100P" 47500 50000 4500 -2200 0 100 ""]
 (
 	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
 	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
@@ -1642,7 +852,7 @@ Element["" "Axial polar component (typically capacitor)," "D4G1" "ACY100P" 55000
 
 	)
 
-Element["" "Axial polar component (typically capacitor)," "D3G1" "ACY100P" 55000 50000 4500 -2200 0 100 ""]
+Element["" "Axial polar component (typically capacitor)," "D3G1" "ACY100P" 47500 40000 4500 -2200 0 100 ""]
 (
 	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
 	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
@@ -1658,7 +868,7 @@ Element["" "Axial polar component (typically capacitor)," "D3G1" "ACY100P" 55000
 
 	)
 
-Element["" "Axial polar component (typically capacitor)," "D2G1" "ACY100P" 55000 40000 4500 -2200 0 100 ""]
+Element["" "Axial polar component (typically capacitor)," "D2G1" "ACY100P" 47500 30000 4500 -2200 0 100 ""]
 (
 	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
 	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
@@ -1674,7 +884,7 @@ Element["" "Axial polar component (typically capacitor)," "D2G1" "ACY100P" 55000
 
 	)
 
-Element["" "Axial polar component (typically capacitor)," "D1G1" "ACY100P" 55000 30000 4500 -2200 0 100 ""]
+Element["" "Axial polar component (typically capacitor)," "D1G1" "ACY100P" 47500 20000 4500 -2200 0 100 ""]
 (
 	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
 	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
@@ -1690,7 +900,7 @@ Element["" "Axial polar component (typically capacitor)," "D1G1" "ACY100P" 55000
 
 	)
 
-Element["" "Axial polar component (typically capacitor)," "D0G1" "ACY100P" 55000 20000 4500 -2200 0 100 ""]
+Element["" "Axial polar component (typically capacitor)," "D0G1" "ACY100P" 47500 10000 4500 -2200 0 100 ""]
 (
 	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
 	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
@@ -1706,7 +916,7 @@ Element["" "Axial polar component (typically capacitor)," "D0G1" "ACY100P" 55000
 
 	)
 
-Element["" "Axial polar component (typically capacitor)," "D7G0" "ACY100P" 30000 90000 4500 -2200 0 100 ""]
+Element["" "Axial polar component (typically capacitor)," "D7G0" "ACY100P" 27500 80000 4500 -2200 0 100 ""]
 (
 	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
 	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
@@ -1722,7 +932,7 @@ Element["" "Axial polar component (typically capacitor)," "D7G0" "ACY100P" 30000
 
 	)
 
-Element["" "Axial polar component (typically capacitor)," "D6G0" "ACY100P" 30000 80000 4500 -2200 0 100 ""]
+Element["" "Axial polar component (typically capacitor)," "D6G0" "ACY100P" 27500 70000 4500 -2200 0 100 ""]
 (
 	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
 	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
@@ -1738,7 +948,7 @@ Element["" "Axial polar component (typically capacitor)," "D6G0" "ACY100P" 30000
 
 	)
 
-Element["" "Axial polar component (typically capacitor)," "D5G0" "ACY100P" 30000 70000 4500 -2200 0 100 ""]
+Element["" "Axial polar component (typically capacitor)," "D5G0" "ACY100P" 27500 60000 4500 -2200 0 100 ""]
 (
 	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
 	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
@@ -1754,7 +964,7 @@ Element["" "Axial polar component (typically capacitor)," "D5G0" "ACY100P" 30000
 
 	)
 
-Element["" "Axial polar component (typically capacitor)," "D4G0" "ACY100P" 30000 60000 4500 -2200 0 100 ""]
+Element["" "Axial polar component (typically capacitor)," "D4G0" "ACY100P" 27500 50000 4500 -2200 0 100 ""]
 (
 	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
 	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
@@ -1770,7 +980,7 @@ Element["" "Axial polar component (typically capacitor)," "D4G0" "ACY100P" 30000
 
 	)
 
-Element["" "Axial polar component (typically capacitor)," "D3G0" "ACY100P" 30000 50000 4500 -2200 0 100 ""]
+Element["" "Axial polar component (typically capacitor)," "D3G0" "ACY100P" 27500 40000 4500 -2200 0 100 ""]
 (
 	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
 	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
@@ -1786,7 +996,7 @@ Element["" "Axial polar component (typically capacitor)," "D3G0" "ACY100P" 30000
 
 	)
 
-Element["" "Axial polar component (typically capacitor)," "D2G0" "ACY100P" 30000 40000 4500 -2200 0 100 ""]
+Element["" "Axial polar component (typically capacitor)," "D2G0" "ACY100P" 27500 30000 4500 -2200 0 100 ""]
 (
 	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
 	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
@@ -1802,7 +1012,7 @@ Element["" "Axial polar component (typically capacitor)," "D2G0" "ACY100P" 30000
 
 	)
 
-Element["" "Axial polar component (typically capacitor)," "D1G0" "ACY100P" 30000 30000 4500 -2200 0 100 ""]
+Element["" "Axial polar component (typically capacitor)," "D1G0" "ACY100P" 27500 20000 4500 -2200 0 100 ""]
 (
 	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
 	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
@@ -1818,7 +1028,7 @@ Element["" "Axial polar component (typically capacitor)," "D1G0" "ACY100P" 30000
 
 	)
 
-Element["" "Axial polar component (typically capacitor)," "D0G0" "ACY100P" 30000 20000 4500 -2200 0 100 ""]
+Element["" "Axial polar component (typically capacitor)," "D0G0" "ACY100P" 27500 10000 4500 -2200 0 100 ""]
 (
 	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
 	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
@@ -1834,7 +1044,7 @@ Element["" "Axial polar component (typically capacitor)," "D0G0" "ACY100P" 30000
 
 	)
 
-Element["" "Axial non-polar component (typically resistor or capacitor)," "R7" "ACY100" 10000 90000 9500 2800 0 100 ""]
+Element["" "Axial non-polar component (typically resistor or capacitor)," "R7" "ACY100" 7500 80000 9500 2800 0 100 ""]
 (
 	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2,thermal(5X)"]
 	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
@@ -1847,7 +1057,7 @@ Element["" "Axial non-polar component (typically resistor or capacitor)," "R7" "
 
 	)
 
-Element["" "Axial non-polar component (typically resistor or capacitor)," "R6" "ACY100" 10000 80000 9500 2800 0 100 ""]
+Element["" "Axial non-polar component (typically resistor or capacitor)," "R6" "ACY100" 7500 70000 9500 2800 0 100 ""]
 (
 	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2,thermal(5X)"]
 	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
@@ -1860,7 +1070,7 @@ Element["" "Axial non-polar component (typically resistor or capacitor)," "R6" "
 
 	)
 
-Element["" "Axial non-polar component (typically resistor or capacitor)," "R5" "ACY100" 10000 70000 9500 2800 0 100 ""]
+Element["" "Axial non-polar component (typically resistor or capacitor)," "R5" "ACY100" 7500 60000 9500 2800 0 100 ""]
 (
 	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2,thermal(5X)"]
 	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
@@ -1873,7 +1083,7 @@ Element["" "Axial non-polar component (typically resistor or capacitor)," "R5" "
 
 	)
 
-Element["" "Axial non-polar component (typically resistor or capacitor)," "R4" "ACY100" 10000 60000 9500 2800 0 100 ""]
+Element["" "Axial non-polar component (typically resistor or capacitor)," "R4" "ACY100" 7500 50000 9500 2800 0 100 ""]
 (
 	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2,thermal(5X)"]
 	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
@@ -1886,7 +1096,7 @@ Element["" "Axial non-polar component (typically resistor or capacitor)," "R4" "
 
 	)
 
-Element["" "Axial non-polar component (typically resistor or capacitor)," "R3" "ACY100" 10000 50000 9500 2800 0 100 ""]
+Element["" "Axial non-polar component (typically resistor or capacitor)," "R3" "ACY100" 7500 40000 9500 2800 0 100 ""]
 (
 	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2,thermal(5X)"]
 	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
@@ -1899,7 +1109,7 @@ Element["" "Axial non-polar component (typically resistor or capacitor)," "R3" "
 
 	)
 
-Element["" "Axial non-polar component (typically resistor or capacitor)," "R2" "ACY100" 10000 40000 9500 2800 0 100 ""]
+Element["" "Axial non-polar component (typically resistor or capacitor)," "R2" "ACY100" 7500 30000 9500 2800 0 100 ""]
 (
 	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2,thermal(5X)"]
 	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
@@ -1912,7 +1122,7 @@ Element["" "Axial non-polar component (typically resistor or capacitor)," "R2" "
 
 	)
 
-Element["" "Axial non-polar component (typically resistor or capacitor)," "R1" "ACY100" 10000 30000 9500 2800 0 100 ""]
+Element["" "Axial non-polar component (typically resistor or capacitor)," "R1" "ACY100" 7500 20000 9500 2800 0 100 ""]
 (
 	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2,thermal(5X)"]
 	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
@@ -1925,7 +1135,7 @@ Element["" "Axial non-polar component (typically resistor or capacitor)," "R1" "
 
 	)
 
-Element["" "Axial non-polar component (typically resistor or capacitor)," "R0" "ACY100" 10000 20000 9500 2800 0 100 ""]
+Element["" "Axial non-polar component (typically resistor or capacitor)," "R0" "ACY100" 7500 10000 9500 2800 0 100 ""]
 (
 	Pin[0 0 5500 3400 6100 3000 "1" "1" "square,edge2,thermal(5X)"]
 	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
@@ -1938,7 +1148,824 @@ Element["" "Axial non-polar component (typically resistor or capacitor)," "R0" "
 
 	)
 
-Element["" "Dual in-line package, narrow (300 mil)" "74HC541" "DIP20" 235000 10000 17000 5000 3 100 ""]
+Element["" "Axial polar component (typically capacitor)," "D7G2" "ACY100P" 67500 80000 4500 -2200 0 100 ""]
+(
+	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
+	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
+	ElementLine [0 0 2500 0 1000]
+	ElementLine [7500 0 10000 0 1000]
+	ElementLine [2500 -800 7500 -800 1000]
+	ElementLine [7500 -800 7500 800 1000]
+	ElementLine [2500 800 7500 800 1000]
+	ElementLine [2500 -800 2500 800 1000]
+	ElementLine [0 -7700 0 -3700 1000]
+	ElementLine [-2000 -5700 2000 -5700 1000]
+	ElementLine [8000 -5700 12000 -5700 1000]
+
+	)
+
+Element["" "Axial polar component (typically capacitor)," "D6G2" "ACY100P" 67500 70000 4500 -2200 0 100 ""]
+(
+	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
+	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
+	ElementLine [0 0 2500 0 1000]
+	ElementLine [7500 0 10000 0 1000]
+	ElementLine [2500 -800 7500 -800 1000]
+	ElementLine [7500 -800 7500 800 1000]
+	ElementLine [2500 800 7500 800 1000]
+	ElementLine [2500 -800 2500 800 1000]
+	ElementLine [0 -7700 0 -3700 1000]
+	ElementLine [-2000 -5700 2000 -5700 1000]
+	ElementLine [8000 -5700 12000 -5700 1000]
+
+	)
+
+Element["" "Axial polar component (typically capacitor)," "D5G2" "ACY100P" 67500 60000 4500 -2200 0 100 ""]
+(
+	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
+	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
+	ElementLine [0 0 2500 0 1000]
+	ElementLine [7500 0 10000 0 1000]
+	ElementLine [2500 -800 7500 -800 1000]
+	ElementLine [7500 -800 7500 800 1000]
+	ElementLine [2500 800 7500 800 1000]
+	ElementLine [2500 -800 2500 800 1000]
+	ElementLine [0 -7700 0 -3700 1000]
+	ElementLine [-2000 -5700 2000 -5700 1000]
+	ElementLine [8000 -5700 12000 -5700 1000]
+
+	)
+
+Element["" "Axial polar component (typically capacitor)," "D4G2" "ACY100P" 67500 50000 4500 -2200 0 100 ""]
+(
+	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
+	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
+	ElementLine [0 0 2500 0 1000]
+	ElementLine [7500 0 10000 0 1000]
+	ElementLine [2500 -800 7500 -800 1000]
+	ElementLine [7500 -800 7500 800 1000]
+	ElementLine [2500 800 7500 800 1000]
+	ElementLine [2500 -800 2500 800 1000]
+	ElementLine [0 -7700 0 -3700 1000]
+	ElementLine [-2000 -5700 2000 -5700 1000]
+	ElementLine [8000 -5700 12000 -5700 1000]
+
+	)
+
+Element["" "Axial polar component (typically capacitor)," "D3G2" "ACY100P" 67500 40000 4500 -2200 0 100 ""]
+(
+	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
+	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
+	ElementLine [0 0 2500 0 1000]
+	ElementLine [7500 0 10000 0 1000]
+	ElementLine [2500 -800 7500 -800 1000]
+	ElementLine [7500 -800 7500 800 1000]
+	ElementLine [2500 800 7500 800 1000]
+	ElementLine [2500 -800 2500 800 1000]
+	ElementLine [0 -7700 0 -3700 1000]
+	ElementLine [-2000 -5700 2000 -5700 1000]
+	ElementLine [8000 -5700 12000 -5700 1000]
+
+	)
+
+Element["" "Axial polar component (typically capacitor)," "D2G2" "ACY100P" 67500 30000 4500 -2200 0 100 ""]
+(
+	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
+	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
+	ElementLine [0 0 2500 0 1000]
+	ElementLine [7500 0 10000 0 1000]
+	ElementLine [2500 -800 7500 -800 1000]
+	ElementLine [7500 -800 7500 800 1000]
+	ElementLine [2500 800 7500 800 1000]
+	ElementLine [2500 -800 2500 800 1000]
+	ElementLine [0 -7700 0 -3700 1000]
+	ElementLine [-2000 -5700 2000 -5700 1000]
+	ElementLine [8000 -5700 12000 -5700 1000]
+
+	)
+
+Element["" "Axial polar component (typically capacitor)," "D1G2" "ACY100P" 67500 20000 4500 -2200 0 100 ""]
+(
+	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
+	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
+	ElementLine [0 0 2500 0 1000]
+	ElementLine [7500 0 10000 0 1000]
+	ElementLine [2500 -800 7500 -800 1000]
+	ElementLine [7500 -800 7500 800 1000]
+	ElementLine [2500 800 7500 800 1000]
+	ElementLine [2500 -800 2500 800 1000]
+	ElementLine [0 -7700 0 -3700 1000]
+	ElementLine [-2000 -5700 2000 -5700 1000]
+	ElementLine [8000 -5700 12000 -5700 1000]
+
+	)
+
+Element["" "Axial polar component (typically capacitor)," "D0G2" "ACY100P" 67500 10000 4500 -2200 0 100 ""]
+(
+	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
+	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
+	ElementLine [0 0 2500 0 1000]
+	ElementLine [7500 0 10000 0 1000]
+	ElementLine [2500 -800 7500 -800 1000]
+	ElementLine [7500 -800 7500 800 1000]
+	ElementLine [2500 800 7500 800 1000]
+	ElementLine [2500 -800 2500 800 1000]
+	ElementLine [0 -7700 0 -3700 1000]
+	ElementLine [-2000 -5700 2000 -5700 1000]
+	ElementLine [8000 -5700 12000 -5700 1000]
+
+	)
+
+Element["" "Axial polar component (typically capacitor)," "D7G3" "ACY100P" 87500 80000 4500 -2200 0 100 ""]
+(
+	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
+	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
+	ElementLine [0 0 2500 0 1000]
+	ElementLine [7500 0 10000 0 1000]
+	ElementLine [2500 -800 7500 -800 1000]
+	ElementLine [7500 -800 7500 800 1000]
+	ElementLine [2500 800 7500 800 1000]
+	ElementLine [2500 -800 2500 800 1000]
+	ElementLine [0 -7700 0 -3700 1000]
+	ElementLine [-2000 -5700 2000 -5700 1000]
+	ElementLine [8000 -5700 12000 -5700 1000]
+
+	)
+
+Element["" "Axial polar component (typically capacitor)," "D6G3" "ACY100P" 87500 70000 4500 -2200 0 100 ""]
+(
+	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
+	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
+	ElementLine [0 0 2500 0 1000]
+	ElementLine [7500 0 10000 0 1000]
+	ElementLine [2500 -800 7500 -800 1000]
+	ElementLine [7500 -800 7500 800 1000]
+	ElementLine [2500 800 7500 800 1000]
+	ElementLine [2500 -800 2500 800 1000]
+	ElementLine [0 -7700 0 -3700 1000]
+	ElementLine [-2000 -5700 2000 -5700 1000]
+	ElementLine [8000 -5700 12000 -5700 1000]
+
+	)
+
+Element["" "Axial polar component (typically capacitor)," "D5G3" "ACY100P" 87500 60000 4500 -2200 0 100 ""]
+(
+	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
+	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
+	ElementLine [0 0 2500 0 1000]
+	ElementLine [7500 0 10000 0 1000]
+	ElementLine [2500 -800 7500 -800 1000]
+	ElementLine [7500 -800 7500 800 1000]
+	ElementLine [2500 800 7500 800 1000]
+	ElementLine [2500 -800 2500 800 1000]
+	ElementLine [0 -7700 0 -3700 1000]
+	ElementLine [-2000 -5700 2000 -5700 1000]
+	ElementLine [8000 -5700 12000 -5700 1000]
+
+	)
+
+Element["" "Axial polar component (typically capacitor)," "D4G3" "ACY100P" 87500 50000 4500 -2200 0 100 ""]
+(
+	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
+	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
+	ElementLine [0 0 2500 0 1000]
+	ElementLine [7500 0 10000 0 1000]
+	ElementLine [2500 -800 7500 -800 1000]
+	ElementLine [7500 -800 7500 800 1000]
+	ElementLine [2500 800 7500 800 1000]
+	ElementLine [2500 -800 2500 800 1000]
+	ElementLine [0 -7700 0 -3700 1000]
+	ElementLine [-2000 -5700 2000 -5700 1000]
+	ElementLine [8000 -5700 12000 -5700 1000]
+
+	)
+
+Element["" "Axial polar component (typically capacitor)," "D3G3" "ACY100P" 87500 40000 4500 -2200 0 100 ""]
+(
+	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
+	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
+	ElementLine [0 0 2500 0 1000]
+	ElementLine [7500 0 10000 0 1000]
+	ElementLine [2500 -800 7500 -800 1000]
+	ElementLine [7500 -800 7500 800 1000]
+	ElementLine [2500 800 7500 800 1000]
+	ElementLine [2500 -800 2500 800 1000]
+	ElementLine [0 -7700 0 -3700 1000]
+	ElementLine [-2000 -5700 2000 -5700 1000]
+	ElementLine [8000 -5700 12000 -5700 1000]
+
+	)
+
+Element["" "Axial polar component (typically capacitor)," "D2G3" "ACY100P" 87500 30000 4500 -2200 0 100 ""]
+(
+	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
+	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
+	ElementLine [0 0 2500 0 1000]
+	ElementLine [7500 0 10000 0 1000]
+	ElementLine [2500 -800 7500 -800 1000]
+	ElementLine [7500 -800 7500 800 1000]
+	ElementLine [2500 800 7500 800 1000]
+	ElementLine [2500 -800 2500 800 1000]
+	ElementLine [0 -7700 0 -3700 1000]
+	ElementLine [-2000 -5700 2000 -5700 1000]
+	ElementLine [8000 -5700 12000 -5700 1000]
+
+	)
+
+Element["" "Axial polar component (typically capacitor)," "D1G3" "ACY100P" 87500 20000 4500 -2200 0 100 ""]
+(
+	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
+	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
+	ElementLine [0 0 2500 0 1000]
+	ElementLine [7500 0 10000 0 1000]
+	ElementLine [2500 -800 7500 -800 1000]
+	ElementLine [7500 -800 7500 800 1000]
+	ElementLine [2500 800 7500 800 1000]
+	ElementLine [2500 -800 2500 800 1000]
+	ElementLine [0 -7700 0 -3700 1000]
+	ElementLine [-2000 -5700 2000 -5700 1000]
+	ElementLine [8000 -5700 12000 -5700 1000]
+
+	)
+
+Element["" "Axial polar component (typically capacitor)," "D0G3" "ACY100P" 87500 10000 4500 -2200 0 100 ""]
+(
+	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
+	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
+	ElementLine [0 0 2500 0 1000]
+	ElementLine [7500 0 10000 0 1000]
+	ElementLine [2500 -800 7500 -800 1000]
+	ElementLine [7500 -800 7500 800 1000]
+	ElementLine [2500 800 7500 800 1000]
+	ElementLine [2500 -800 2500 800 1000]
+	ElementLine [0 -7700 0 -3700 1000]
+	ElementLine [-2000 -5700 2000 -5700 1000]
+	ElementLine [8000 -5700 12000 -5700 1000]
+
+	)
+
+Element["" "Axial polar component (typically capacitor)," "D0G4" "ACY100P" 107500 10000 4500 -2200 0 100 ""]
+(
+	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
+	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
+	ElementLine [0 0 2500 0 1000]
+	ElementLine [7500 0 10000 0 1000]
+	ElementLine [2500 -800 7500 -800 1000]
+	ElementLine [7500 -800 7500 800 1000]
+	ElementLine [2500 800 7500 800 1000]
+	ElementLine [2500 -800 2500 800 1000]
+	ElementLine [0 -7700 0 -3700 1000]
+	ElementLine [-2000 -5700 2000 -5700 1000]
+	ElementLine [8000 -5700 12000 -5700 1000]
+
+	)
+
+Element["" "Axial polar component (typically capacitor)," "D7G4" "ACY100P" 107500 80000 4500 -2200 0 100 ""]
+(
+	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
+	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
+	ElementLine [0 0 2500 0 1000]
+	ElementLine [7500 0 10000 0 1000]
+	ElementLine [2500 -800 7500 -800 1000]
+	ElementLine [7500 -800 7500 800 1000]
+	ElementLine [2500 800 7500 800 1000]
+	ElementLine [2500 -800 2500 800 1000]
+	ElementLine [0 -7700 0 -3700 1000]
+	ElementLine [-2000 -5700 2000 -5700 1000]
+	ElementLine [8000 -5700 12000 -5700 1000]
+
+	)
+
+Element["" "Axial polar component (typically capacitor)," "D6G4" "ACY100P" 107500 70000 4500 -2200 0 100 ""]
+(
+	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
+	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
+	ElementLine [0 0 2500 0 1000]
+	ElementLine [7500 0 10000 0 1000]
+	ElementLine [2500 -800 7500 -800 1000]
+	ElementLine [7500 -800 7500 800 1000]
+	ElementLine [2500 800 7500 800 1000]
+	ElementLine [2500 -800 2500 800 1000]
+	ElementLine [0 -7700 0 -3700 1000]
+	ElementLine [-2000 -5700 2000 -5700 1000]
+	ElementLine [8000 -5700 12000 -5700 1000]
+
+	)
+
+Element["" "Axial polar component (typically capacitor)," "D5G4" "ACY100P" 107500 60000 4500 -2200 0 100 ""]
+(
+	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
+	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
+	ElementLine [0 0 2500 0 1000]
+	ElementLine [7500 0 10000 0 1000]
+	ElementLine [2500 -800 7500 -800 1000]
+	ElementLine [7500 -800 7500 800 1000]
+	ElementLine [2500 800 7500 800 1000]
+	ElementLine [2500 -800 2500 800 1000]
+	ElementLine [0 -7700 0 -3700 1000]
+	ElementLine [-2000 -5700 2000 -5700 1000]
+	ElementLine [8000 -5700 12000 -5700 1000]
+
+	)
+
+Element["" "Axial polar component (typically capacitor)," "D4G4" "ACY100P" 107500 50000 4500 -2200 0 100 ""]
+(
+	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
+	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
+	ElementLine [0 0 2500 0 1000]
+	ElementLine [7500 0 10000 0 1000]
+	ElementLine [2500 -800 7500 -800 1000]
+	ElementLine [7500 -800 7500 800 1000]
+	ElementLine [2500 800 7500 800 1000]
+	ElementLine [2500 -800 2500 800 1000]
+	ElementLine [0 -7700 0 -3700 1000]
+	ElementLine [-2000 -5700 2000 -5700 1000]
+	ElementLine [8000 -5700 12000 -5700 1000]
+
+	)
+
+Element["" "Axial polar component (typically capacitor)," "D3G4" "ACY100P" 107500 40000 4500 -2200 0 100 ""]
+(
+	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
+	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
+	ElementLine [0 0 2500 0 1000]
+	ElementLine [7500 0 10000 0 1000]
+	ElementLine [2500 -800 7500 -800 1000]
+	ElementLine [7500 -800 7500 800 1000]
+	ElementLine [2500 800 7500 800 1000]
+	ElementLine [2500 -800 2500 800 1000]
+	ElementLine [0 -7700 0 -3700 1000]
+	ElementLine [-2000 -5700 2000 -5700 1000]
+	ElementLine [8000 -5700 12000 -5700 1000]
+
+	)
+
+Element["" "Axial polar component (typically capacitor)," "D2G4" "ACY100P" 107500 30000 4500 -2200 0 100 ""]
+(
+	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
+	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
+	ElementLine [0 0 2500 0 1000]
+	ElementLine [7500 0 10000 0 1000]
+	ElementLine [2500 -800 7500 -800 1000]
+	ElementLine [7500 -800 7500 800 1000]
+	ElementLine [2500 800 7500 800 1000]
+	ElementLine [2500 -800 2500 800 1000]
+	ElementLine [0 -7700 0 -3700 1000]
+	ElementLine [-2000 -5700 2000 -5700 1000]
+	ElementLine [8000 -5700 12000 -5700 1000]
+
+	)
+
+Element["" "Axial polar component (typically capacitor)," "D1G4" "ACY100P" 107500 20000 4500 -2200 0 100 ""]
+(
+	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
+	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
+	ElementLine [0 0 2500 0 1000]
+	ElementLine [7500 0 10000 0 1000]
+	ElementLine [2500 -800 7500 -800 1000]
+	ElementLine [7500 -800 7500 800 1000]
+	ElementLine [2500 800 7500 800 1000]
+	ElementLine [2500 -800 2500 800 1000]
+	ElementLine [0 -7700 0 -3700 1000]
+	ElementLine [-2000 -5700 2000 -5700 1000]
+	ElementLine [8000 -5700 12000 -5700 1000]
+
+	)
+
+Element["" "Axial polar component (typically capacitor)," "D7G5" "ACY100P" 127500 80000 4500 -2200 0 100 ""]
+(
+	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
+	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
+	ElementLine [0 0 2500 0 1000]
+	ElementLine [7500 0 10000 0 1000]
+	ElementLine [2500 -800 7500 -800 1000]
+	ElementLine [7500 -800 7500 800 1000]
+	ElementLine [2500 800 7500 800 1000]
+	ElementLine [2500 -800 2500 800 1000]
+	ElementLine [0 -7700 0 -3700 1000]
+	ElementLine [-2000 -5700 2000 -5700 1000]
+	ElementLine [8000 -5700 12000 -5700 1000]
+
+	)
+
+Element["" "Axial polar component (typically capacitor)," "D6G5" "ACY100P" 127500 70000 4500 -2200 0 100 ""]
+(
+	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
+	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
+	ElementLine [0 0 2500 0 1000]
+	ElementLine [7500 0 10000 0 1000]
+	ElementLine [2500 -800 7500 -800 1000]
+	ElementLine [7500 -800 7500 800 1000]
+	ElementLine [2500 800 7500 800 1000]
+	ElementLine [2500 -800 2500 800 1000]
+	ElementLine [0 -7700 0 -3700 1000]
+	ElementLine [-2000 -5700 2000 -5700 1000]
+	ElementLine [8000 -5700 12000 -5700 1000]
+
+	)
+
+Element["" "Axial polar component (typically capacitor)," "D5G5" "ACY100P" 127500 60000 4500 -2200 0 100 ""]
+(
+	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
+	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
+	ElementLine [0 0 2500 0 1000]
+	ElementLine [7500 0 10000 0 1000]
+	ElementLine [2500 -800 7500 -800 1000]
+	ElementLine [7500 -800 7500 800 1000]
+	ElementLine [2500 800 7500 800 1000]
+	ElementLine [2500 -800 2500 800 1000]
+	ElementLine [0 -7700 0 -3700 1000]
+	ElementLine [-2000 -5700 2000 -5700 1000]
+	ElementLine [8000 -5700 12000 -5700 1000]
+
+	)
+
+Element["" "Axial polar component (typically capacitor)," "D4G5" "ACY100P" 127500 50000 4500 -2200 0 100 ""]
+(
+	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
+	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
+	ElementLine [0 0 2500 0 1000]
+	ElementLine [7500 0 10000 0 1000]
+	ElementLine [2500 -800 7500 -800 1000]
+	ElementLine [7500 -800 7500 800 1000]
+	ElementLine [2500 800 7500 800 1000]
+	ElementLine [2500 -800 2500 800 1000]
+	ElementLine [0 -7700 0 -3700 1000]
+	ElementLine [-2000 -5700 2000 -5700 1000]
+	ElementLine [8000 -5700 12000 -5700 1000]
+
+	)
+
+Element["" "Axial polar component (typically capacitor)," "D3G5" "ACY100P" 127500 40000 4500 -2200 0 100 ""]
+(
+	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
+	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
+	ElementLine [0 0 2500 0 1000]
+	ElementLine [7500 0 10000 0 1000]
+	ElementLine [2500 -800 7500 -800 1000]
+	ElementLine [7500 -800 7500 800 1000]
+	ElementLine [2500 800 7500 800 1000]
+	ElementLine [2500 -800 2500 800 1000]
+	ElementLine [0 -7700 0 -3700 1000]
+	ElementLine [-2000 -5700 2000 -5700 1000]
+	ElementLine [8000 -5700 12000 -5700 1000]
+
+	)
+
+Element["" "Axial polar component (typically capacitor)," "D2G5" "ACY100P" 127500 30000 4500 -2200 0 100 ""]
+(
+	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
+	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
+	ElementLine [0 0 2500 0 1000]
+	ElementLine [7500 0 10000 0 1000]
+	ElementLine [2500 -800 7500 -800 1000]
+	ElementLine [7500 -800 7500 800 1000]
+	ElementLine [2500 800 7500 800 1000]
+	ElementLine [2500 -800 2500 800 1000]
+	ElementLine [0 -7700 0 -3700 1000]
+	ElementLine [-2000 -5700 2000 -5700 1000]
+	ElementLine [8000 -5700 12000 -5700 1000]
+
+	)
+
+Element["" "Axial polar component (typically capacitor)," "D1G5" "ACY100P" 127500 20000 4500 -2200 0 100 ""]
+(
+	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
+	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
+	ElementLine [0 0 2500 0 1000]
+	ElementLine [7500 0 10000 0 1000]
+	ElementLine [2500 -800 7500 -800 1000]
+	ElementLine [7500 -800 7500 800 1000]
+	ElementLine [2500 800 7500 800 1000]
+	ElementLine [2500 -800 2500 800 1000]
+	ElementLine [0 -7700 0 -3700 1000]
+	ElementLine [-2000 -5700 2000 -5700 1000]
+	ElementLine [8000 -5700 12000 -5700 1000]
+
+	)
+
+Element["" "Axial polar component (typically capacitor)," "D0G5" "ACY100P" 127500 10000 4500 -2200 0 100 ""]
+(
+	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
+	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
+	ElementLine [0 0 2500 0 1000]
+	ElementLine [7500 0 10000 0 1000]
+	ElementLine [2500 -800 7500 -800 1000]
+	ElementLine [7500 -800 7500 800 1000]
+	ElementLine [2500 800 7500 800 1000]
+	ElementLine [2500 -800 2500 800 1000]
+	ElementLine [0 -7700 0 -3700 1000]
+	ElementLine [-2000 -5700 2000 -5700 1000]
+	ElementLine [8000 -5700 12000 -5700 1000]
+
+	)
+
+Element["" "Axial polar component (typically capacitor)," "D7G6" "ACY100P" 147500 80000 4500 -2200 0 100 ""]
+(
+	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
+	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
+	ElementLine [0 0 2500 0 1000]
+	ElementLine [7500 0 10000 0 1000]
+	ElementLine [2500 -800 7500 -800 1000]
+	ElementLine [7500 -800 7500 800 1000]
+	ElementLine [2500 800 7500 800 1000]
+	ElementLine [2500 -800 2500 800 1000]
+	ElementLine [0 -7700 0 -3700 1000]
+	ElementLine [-2000 -5700 2000 -5700 1000]
+	ElementLine [8000 -5700 12000 -5700 1000]
+
+	)
+
+Element["" "Axial polar component (typically capacitor)," "D6G6" "ACY100P" 147500 70000 4500 -2200 0 100 ""]
+(
+	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
+	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
+	ElementLine [0 0 2500 0 1000]
+	ElementLine [7500 0 10000 0 1000]
+	ElementLine [2500 -800 7500 -800 1000]
+	ElementLine [7500 -800 7500 800 1000]
+	ElementLine [2500 800 7500 800 1000]
+	ElementLine [2500 -800 2500 800 1000]
+	ElementLine [0 -7700 0 -3700 1000]
+	ElementLine [-2000 -5700 2000 -5700 1000]
+	ElementLine [8000 -5700 12000 -5700 1000]
+
+	)
+
+Element["" "Axial polar component (typically capacitor)," "D5G6" "ACY100P" 147500 60000 4500 -2200 0 100 ""]
+(
+	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
+	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
+	ElementLine [0 0 2500 0 1000]
+	ElementLine [7500 0 10000 0 1000]
+	ElementLine [2500 -800 7500 -800 1000]
+	ElementLine [7500 -800 7500 800 1000]
+	ElementLine [2500 800 7500 800 1000]
+	ElementLine [2500 -800 2500 800 1000]
+	ElementLine [0 -7700 0 -3700 1000]
+	ElementLine [-2000 -5700 2000 -5700 1000]
+	ElementLine [8000 -5700 12000 -5700 1000]
+
+	)
+
+Element["" "Axial polar component (typically capacitor)," "D4G6" "ACY100P" 147500 50000 4500 -2200 0 100 ""]
+(
+	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
+	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
+	ElementLine [0 0 2500 0 1000]
+	ElementLine [7500 0 10000 0 1000]
+	ElementLine [2500 -800 7500 -800 1000]
+	ElementLine [7500 -800 7500 800 1000]
+	ElementLine [2500 800 7500 800 1000]
+	ElementLine [2500 -800 2500 800 1000]
+	ElementLine [0 -7700 0 -3700 1000]
+	ElementLine [-2000 -5700 2000 -5700 1000]
+	ElementLine [8000 -5700 12000 -5700 1000]
+
+	)
+
+Element["" "Axial polar component (typically capacitor)," "D3G6" "ACY100P" 147500 40000 4500 -2200 0 100 ""]
+(
+	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
+	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
+	ElementLine [0 0 2500 0 1000]
+	ElementLine [7500 0 10000 0 1000]
+	ElementLine [2500 -800 7500 -800 1000]
+	ElementLine [7500 -800 7500 800 1000]
+	ElementLine [2500 800 7500 800 1000]
+	ElementLine [2500 -800 2500 800 1000]
+	ElementLine [0 -7700 0 -3700 1000]
+	ElementLine [-2000 -5700 2000 -5700 1000]
+	ElementLine [8000 -5700 12000 -5700 1000]
+
+	)
+
+Element["" "Axial polar component (typically capacitor)," "D2G6" "ACY100P" 147500 30000 4500 -2200 0 100 ""]
+(
+	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
+	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
+	ElementLine [0 0 2500 0 1000]
+	ElementLine [7500 0 10000 0 1000]
+	ElementLine [2500 -800 7500 -800 1000]
+	ElementLine [7500 -800 7500 800 1000]
+	ElementLine [2500 800 7500 800 1000]
+	ElementLine [2500 -800 2500 800 1000]
+	ElementLine [0 -7700 0 -3700 1000]
+	ElementLine [-2000 -5700 2000 -5700 1000]
+	ElementLine [8000 -5700 12000 -5700 1000]
+
+	)
+
+Element["" "Axial polar component (typically capacitor)," "D1G6" "ACY100P" 147500 20000 4500 -2200 0 100 ""]
+(
+	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
+	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
+	ElementLine [0 0 2500 0 1000]
+	ElementLine [7500 0 10000 0 1000]
+	ElementLine [2500 -800 7500 -800 1000]
+	ElementLine [7500 -800 7500 800 1000]
+	ElementLine [2500 800 7500 800 1000]
+	ElementLine [2500 -800 2500 800 1000]
+	ElementLine [0 -7700 0 -3700 1000]
+	ElementLine [-2000 -5700 2000 -5700 1000]
+	ElementLine [8000 -5700 12000 -5700 1000]
+
+	)
+
+Element["" "Axial polar component (typically capacitor)," "D0G6" "ACY100P" 147500 10000 4500 -2200 0 100 ""]
+(
+	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
+	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
+	ElementLine [0 0 2500 0 1000]
+	ElementLine [7500 0 10000 0 1000]
+	ElementLine [2500 -800 7500 -800 1000]
+	ElementLine [7500 -800 7500 800 1000]
+	ElementLine [2500 800 7500 800 1000]
+	ElementLine [2500 -800 2500 800 1000]
+	ElementLine [0 -7700 0 -3700 1000]
+	ElementLine [-2000 -5700 2000 -5700 1000]
+	ElementLine [8000 -5700 12000 -5700 1000]
+
+	)
+
+Element["" "Axial polar component (typically capacitor)," "D7G7" "ACY100P" 167500 80000 4500 -2200 0 100 ""]
+(
+	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
+	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
+	ElementLine [0 0 2500 0 1000]
+	ElementLine [7500 0 10000 0 1000]
+	ElementLine [2500 -800 7500 -800 1000]
+	ElementLine [7500 -800 7500 800 1000]
+	ElementLine [2500 800 7500 800 1000]
+	ElementLine [2500 -800 2500 800 1000]
+	ElementLine [0 -7700 0 -3700 1000]
+	ElementLine [-2000 -5700 2000 -5700 1000]
+	ElementLine [8000 -5700 12000 -5700 1000]
+
+	)
+
+Element["" "Axial polar component (typically capacitor)," "D6G7" "ACY100P" 167500 70000 4500 -2200 0 100 ""]
+(
+	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
+	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
+	ElementLine [0 0 2500 0 1000]
+	ElementLine [7500 0 10000 0 1000]
+	ElementLine [2500 -800 7500 -800 1000]
+	ElementLine [7500 -800 7500 800 1000]
+	ElementLine [2500 800 7500 800 1000]
+	ElementLine [2500 -800 2500 800 1000]
+	ElementLine [0 -7700 0 -3700 1000]
+	ElementLine [-2000 -5700 2000 -5700 1000]
+	ElementLine [8000 -5700 12000 -5700 1000]
+
+	)
+
+Element["" "Axial polar component (typically capacitor)," "D5G7" "ACY100P" 167500 60000 4500 -2200 0 100 ""]
+(
+	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
+	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
+	ElementLine [0 0 2500 0 1000]
+	ElementLine [7500 0 10000 0 1000]
+	ElementLine [2500 -800 7500 -800 1000]
+	ElementLine [7500 -800 7500 800 1000]
+	ElementLine [2500 800 7500 800 1000]
+	ElementLine [2500 -800 2500 800 1000]
+	ElementLine [0 -7700 0 -3700 1000]
+	ElementLine [-2000 -5700 2000 -5700 1000]
+	ElementLine [8000 -5700 12000 -5700 1000]
+
+	)
+
+Element["" "Axial polar component (typically capacitor)," "D4G7" "ACY100P" 167500 50000 4500 -2200 0 100 ""]
+(
+	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
+	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
+	ElementLine [0 0 2500 0 1000]
+	ElementLine [7500 0 10000 0 1000]
+	ElementLine [2500 -800 7500 -800 1000]
+	ElementLine [7500 -800 7500 800 1000]
+	ElementLine [2500 800 7500 800 1000]
+	ElementLine [2500 -800 2500 800 1000]
+	ElementLine [0 -7700 0 -3700 1000]
+	ElementLine [-2000 -5700 2000 -5700 1000]
+	ElementLine [8000 -5700 12000 -5700 1000]
+
+	)
+
+Element["" "Axial polar component (typically capacitor)," "D3G7" "ACY100P" 167500 40000 4500 -2200 0 100 ""]
+(
+	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
+	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
+	ElementLine [0 0 2500 0 1000]
+	ElementLine [7500 0 10000 0 1000]
+	ElementLine [2500 -800 7500 -800 1000]
+	ElementLine [7500 -800 7500 800 1000]
+	ElementLine [2500 800 7500 800 1000]
+	ElementLine [2500 -800 2500 800 1000]
+	ElementLine [0 -7700 0 -3700 1000]
+	ElementLine [-2000 -5700 2000 -5700 1000]
+	ElementLine [8000 -5700 12000 -5700 1000]
+
+	)
+
+Element["" "Axial polar component (typically capacitor)," "D2G7" "ACY100P" 167500 30000 4500 -2200 0 100 ""]
+(
+	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
+	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
+	ElementLine [0 0 2500 0 1000]
+	ElementLine [7500 0 10000 0 1000]
+	ElementLine [2500 -800 7500 -800 1000]
+	ElementLine [7500 -800 7500 800 1000]
+	ElementLine [2500 800 7500 800 1000]
+	ElementLine [2500 -800 2500 800 1000]
+	ElementLine [0 -7700 0 -3700 1000]
+	ElementLine [-2000 -5700 2000 -5700 1000]
+	ElementLine [8000 -5700 12000 -5700 1000]
+
+	)
+
+Element["" "Axial polar component (typically capacitor)," "D1G7" "ACY100P" 167500 20000 4500 -2200 0 100 ""]
+(
+	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
+	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
+	ElementLine [0 0 2500 0 1000]
+	ElementLine [7500 0 10000 0 1000]
+	ElementLine [2500 -800 7500 -800 1000]
+	ElementLine [7500 -800 7500 800 1000]
+	ElementLine [2500 800 7500 800 1000]
+	ElementLine [2500 -800 2500 800 1000]
+	ElementLine [0 -7700 0 -3700 1000]
+	ElementLine [-2000 -5700 2000 -5700 1000]
+	ElementLine [8000 -5700 12000 -5700 1000]
+
+	)
+
+Element["" "Axial polar component (typically capacitor)," "D0G7" "ACY100P" 167500 10000 4500 -2200 0 100 ""]
+(
+	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
+	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
+	ElementLine [0 0 2500 0 1000]
+	ElementLine [7500 0 10000 0 1000]
+	ElementLine [2500 -800 7500 -800 1000]
+	ElementLine [7500 -800 7500 800 1000]
+	ElementLine [2500 800 7500 800 1000]
+	ElementLine [2500 -800 2500 800 1000]
+	ElementLine [0 -7700 0 -3700 1000]
+	ElementLine [-2000 -5700 2000 -5700 1000]
+	ElementLine [8000 -5700 12000 -5700 1000]
+
+	)
+
+Element["" "SMD Cap" "C0" "" 52500 107500 -4400 17000 1 150 ""]
+(
+	Pin[0 0 8000 3000 11000 3500 "1" "1" "thermal(0X,5)"]
+	Pin[0 20000 8000 3000 11000 3500 "2" "2" "thermal(4,5X)"]
+	ElementLine [-5000 -5000 5000 -5000 1000]
+	ElementLine [-5000 -5000 -5000 25000 1000]
+	ElementLine [-5000 25000 5000 25000 1000]
+	ElementLine [5000 -5000 5000 25000 1000]
+
+	)
+
+Element["" "Dual in-line package, narrow (300 mil)" "74HC138" "DIP16" 62500 132500 5000 -17000 0 100 ""]
+(
+	Pin[0 0 6000 3000 6600 2800 "1" "A0" "square,edge2"]
+	Pin[10000 0 6000 3000 6600 2800 "2" "A1" "edge2"]
+	Pin[20000 0 6000 3000 6600 2800 "3" "A2" "edge2"]
+	Pin[30000 0 6000 3000 6600 2800 "4" "E0" "edge2,thermal(5X)"]
+	Pin[40000 0 6000 3000 6600 2800 "5" "E1" "edge2,thermal(5X)"]
+	Pin[50000 0 6000 3000 6600 2800 "6" "E2" "edge2"]
+	Pin[60000 0 6000 3000 6600 2800 "7" "Y7" "edge2"]
+	Pin[70000 0 6000 3000 6600 2800 "8" "GND" "edge2"]
+	Pin[70000 -30000 6000 3000 6600 2800 "9" "Y6" "edge2"]
+	Pin[60000 -30000 6000 3000 6600 2800 "10" "Y5" "edge2"]
+	Pin[50000 -30000 6000 3000 6600 2800 "11" "Y4" "edge2"]
+	Pin[40000 -30000 6000 3000 6600 2800 "12" "Y3" "edge2"]
+	Pin[30000 -30000 6000 3000 6600 2800 "13" "Y2" "edge2"]
+	Pin[20000 -30000 6000 3000 6600 2800 "14" "Y1" "edge2"]
+	Pin[10000 -30000 6000 3000 6600 2800 "15" "Y0" "edge2"]
+	Pin[0 -30000 6000 3000 6600 2800 "16" "VCC" "edge2,thermal(0X,5X)"]
+	ElementLine [-5000 5000 75000 5000 1000]
+	ElementLine [75000 -35000 75000 5000 1000]
+	ElementLine [-5000 -35000 75000 -35000 1000]
+	ElementLine [-5000 -10000 -5000 5000 1000]
+	ElementLine [-5000 -35000 -5000 -20000 1000]
+	ElementArc [-5000 -15000 5000 5000 90 180 1000]
+
+	)
+
+Element["" "SMD Cap" "C1" "" 220000 117500 -12000 -4400 0 150 ""]
+(
+	Pin[0 0 8000 3000 11000 3500 "1" "1" "edge2,thermal(0X,5)"]
+	Pin[-20000 0 8000 3000 11000 3500 "2" "2" "edge2,thermal(4,5X)"]
+	ElementLine [5000 -5000 5000 5000 1000]
+	ElementLine [-25000 -5000 5000 -5000 1000]
+	ElementLine [-25000 -5000 -25000 5000 1000]
+	ElementLine [-25000 5000 5000 5000 1000]
+
+	)
+
+Element["" "Dual in-line package, narrow (300 mil)" "74HC541" "DIP20" 195000 12500 17000 5000 3 100 ""]
 (
 	Pin[0 0 6000 3000 6600 2800 "1" "OE1" "square,thermal(5X)"]
 	Pin[0 10000 6000 3000 6600 2800 "2" "A0" ""]
@@ -1969,34 +1996,7 @@ Element["" "Dual in-line package, narrow (300 mil)" "74HC541" "DIP20" 235000 100
 
 	)
 
-Element["" "Dual in-line package, narrow (300 mil)" "74HC138" "DIP16" 65000 155000 5000 -17000 0 100 ""]
-(
-	Pin[0 0 6000 3000 6600 2800 "1" "A0" "square,edge2"]
-	Pin[10000 0 6000 3000 6600 2800 "2" "A1" "edge2"]
-	Pin[20000 0 6000 3000 6600 2800 "3" "A2" "edge2"]
-	Pin[30000 0 6000 3000 6600 2800 "4" "E0" "edge2,thermal(5X)"]
-	Pin[40000 0 6000 3000 6600 2800 "5" "E1" "edge2,thermal(5X)"]
-	Pin[50000 0 6000 3000 6600 2800 "6" "E2" "edge2"]
-	Pin[60000 0 6000 3000 6600 2800 "7" "Y7" "edge2"]
-	Pin[70000 0 6000 3000 6600 2800 "8" "GND" "edge2"]
-	Pin[70000 -30000 6000 3000 6600 2800 "9" "Y6" "edge2"]
-	Pin[60000 -30000 6000 3000 6600 2800 "10" "Y5" "edge2"]
-	Pin[50000 -30000 6000 3000 6600 2800 "11" "Y4" "edge2"]
-	Pin[40000 -30000 6000 3000 6600 2800 "12" "Y3" "edge2"]
-	Pin[30000 -30000 6000 3000 6600 2800 "13" "Y2" "edge2"]
-	Pin[20000 -30000 6000 3000 6600 2800 "14" "Y1" "edge2"]
-	Pin[10000 -30000 6000 3000 6600 2800 "15" "Y0" "edge2"]
-	Pin[0 -30000 6000 3000 6600 2800 "16" "VCC" "edge2,thermal(0X,5X)"]
-	ElementLine [-5000 5000 75000 5000 1000]
-	ElementLine [75000 -35000 75000 5000 1000]
-	ElementLine [-5000 -35000 75000 -35000 1000]
-	ElementLine [-5000 -10000 -5000 5000 1000]
-	ElementLine [-5000 -35000 -5000 -20000 1000]
-	ElementArc [-5000 -15000 5000 5000 90 180 1000]
-
-	)
-
-Element["" "Header connector, ribbon cable numbering" "DBUS" "HEADER14_2" 315000 25000 21000 -5000 3 100 ""]
+Element["" "Header connector, ribbon cable numbering" "DBUS" "HEADER14_2" 252500 12500 21000 -5000 3 100 ""]
 (
 	Pin[0 0 6000 3000 6600 3800 "1" "VCC" "square,thermal(0X,5X)"]
 	Pin[10000 0 6000 3000 6600 3800 "2" "VCC" "thermal(0X,5X)"]
@@ -2021,7 +2021,7 @@ Element["" "Header connector, ribbon cable numbering" "DBUS" "HEADER14_2" 315000
 
 	)
 
-Element["" "Header connector, DIP pin numbering" "CBUS" "HEADER40_1" 325000 185000 5000 21000 2 100 ""]
+Element["" "Header connector, DIP pin numbering" "CBUS" "HEADER40_1" 262500 160000 5000 21000 2 100 ""]
 (
 	Pin[0 0 6000 3000 6600 3800 "1" "A2" "square,edge2"]
 	Pin[-10000 0 6000 3000 6600 3800 "2" "A1" "edge2"]
@@ -2073,149 +2073,94 @@ Element["" "Header connector, DIP pin numbering" "CBUS" "HEADER40_1" 325000 1850
 	)
 Layer(1 "top")
 (
-	Line[65000 120000 65000 135000 3937 20 ""]
-	Line[70000 140000 65000 135000 3937 20 ""]
-	Line[70000 140000 110000 140000 3937 20 ""]
-	Line[115000 145000 110000 140000 3937 20 ""]
-	Line[115000 145000 115000 160000 3937 20 ""]
-	Line[125000 145000 130000 140000 3937 20 "clearline"]
-	Line[125000 145000 125000 160000 3937 20 "clearline"]
-	Line[185000 120000 190000 115000 3937 20 "clearline"]
-	Line[140000 120000 185000 120000 4437 20 "clearline"]
-	Line[135000 125000 140000 120000 3937 20 "clearline"]
-	Line[210000 140000 215000 135000 3937 20 "clearline"]
-	Line[130000 140000 210000 140000 3937 20 "clearline"]
-	Line[160000 110000 165000 105000 3937 20 "clearline"]
-	Line[130000 110000 160000 110000 3937 20 "clearline,rubberend"]
-	Line[125000 115000 130000 110000 3937 20 "clearline"]
-	Line[125000 115000 125000 130000 3937 20 "clearline"]
-	Line[115000 95000 105000 105000 3937 20 "clearline"]
-	Line[135000 100000 140000 95000 3937 20 "clearline"]
-	Line[125000 100000 135000 100000 3937 20 "clearline"]
-	Line[115000 110000 125000 100000 3937 20 "clearline"]
-	Line[115000 110000 115000 130000 3937 20 "clearline"]
-	Line[105000 105000 105000 130000 3937 20 "clearline"]
-	Line[95000 100000 90000 95000 3937 20 "clearline"]
-	Line[95000 100000 95000 130000 3937 20 "clearline"]
-	Line[70000 100000 65000 95000 3937 20 "clearline"]
-	Line[70000 100000 80000 100000 3937 20 "clearline"]
-	Line[85000 105000 80000 100000 3937 20 "clearline"]
-	Line[85000 105000 85000 130000 3937 20 "clearline"]
-	Line[45000 110000 40000 105000 3937 20 "clearline"]
-	Line[45000 110000 70000 110000 3937 20 "clearline"]
-	Line[75000 115000 70000 110000 3937 20 "clearline"]
-	Line[75000 115000 75000 130000 3937 20 "clearline"]
-	Line[215000 20000 215000 135000 3937 20 "clearline"]
-	Line[190000 20000 190000 115000 3937 20 "clearline"]
-	Line[165000 20000 165000 105000 3937 20 "clearline"]
-	Line[140000 20000 140000 95000 3937 20 "clearline"]
-	Line[115000 20000 115000 95000 3937 20 "clearline"]
-	Line[90000 20000 90000 95000 3937 20 "clearline"]
-	Line[65000 20000 65000 95000 3937 20 "clearline"]
-	Line[40000 20000 40000 105000 3937 20 "clearline"]
-	Line[270000 20000 260000 20000 3937 20 "clearline"]
-	Line[260000 20000 255000 20000 1969 20 "clearline"]
-	Line[255000 20000 250000 25000 1969 20 "clearline"]
-	Line[250000 25000 250000 105000 1969 20 "clearline"]
-	Line[250000 105000 245000 110000 1969 20 "clearline"]
-	Line[245000 110000 245000 130000 1969 20 "clearline"]
-	Line[230000 10000 240000 10000 3937 20 "clearline"]
-	Line[230000 10000 225000 15000 1969 20 "clearline"]
-	Line[225000 15000 225000 135000 1969 20 "clearline"]
-	Line[295000 175000 295000 140000 1969 20 "clearline"]
-	Line[295000 140000 290000 135000 1969 20 "clearline"]
-	Line[290000 135000 250000 135000 1969 20 "clearline"]
-	Line[250000 135000 245000 130000 1969 20 "clearline"]
-	Line[285000 175000 285000 145000 1969 20 "clearline"]
-	Line[285000 145000 280000 140000 1969 20 "clearline"]
-	Line[280000 140000 230000 140000 1969 20 "clearline"]
-	Line[230000 140000 225000 135000 1969 20 "clearline"]
-	Line[285000 185000 285000 175000 3937 20 "clearline"]
-	Line[295000 175000 295000 185000 3937 20 "clearline"]
-	Polygon("clearpoly")
-	(
-		[0 0] [220000 0] [220000 15000] [0 15000] 
-	)
-	Polygon("clearpoly")
-	(
-		[220000 0] [335000 0] [335000 5000] [220000 5000] 
-	)
-	Polygon("clearpoly")
-	(
-		[245000 5000] [335000 5000] [335000 15000] [245000 15000] 
-	)
-	Polygon("clearpoly")
-	(
-		[0 100000] [35000 100000] [35000 205000] [0 205000] 
-	)
-	Polygon("clearpoly")
-	(
-		[0 15000] [5000 15000] [5000 100000] [0 100000] 
-	)
-	Polygon("clearpoly")
-	(
-		[70000 135000] [35000 135000] [35000 115000] [70000 115000] 
-	)
-	Polygon("clearpoly")
-	(
-		[35000 110000] [40000 115000] [35000 115000] 
-	)
-	Polygon("clearpoly")
-	(
-		[35000 135000] [45000 135000] [45000 205000] [35000 205000] 
-	)
-	Polygon("clearpoly")
-	(
-		[120000 160000] [45000 160000] [45000 205000] [120000 205000] 
-	)
-	Polygon("clearpoly")
-	(
-		[120000 150000] [60000 150000] [60000 135000] [120000 135000] 
-	)
-	Polygon("clearpoly")
-	(
-		[120000 205000] [130000 205000] [130000 165000] [120000 165000] 
-	)
-	Polygon("clearpoly")
-	(
-		[280000 165000] [140000 165000] [140000 145000] [280000 145000] 
-	)
-	Polygon("clearpoly")
-	(
-		[250000 110000] [335000 110000] [335000 130000] [250000 130000] 
-	)
-	Polygon("clearpoly")
-	(
-		[330000 130000] [335000 130000] [335000 205000] [330000 205000] 
-	)
-	Polygon("clearpoly")
-	(
-		[130000 200000] [330000 200000] [330000 205000] [130000 205000] 
-	)
-	Polygon("clearpoly")
-	(
-		[330000 30000] [335000 30000] [335000 110000] [330000 110000] 
-	)
-	Polygon("clearpoly")
-	(
-		[330000 110000] [310000 110000] [310000 90000] [330000 90000] 
-	)
-	Polygon("clearpoly")
-	(
-		[275000 15000] [310000 15000] [310000 110000] [275000 110000] 
-	)
-	Polygon("clearpoly")
-	(
-		[310000 15000] [335000 15000] [335000 30000] [310000 30000] 
-	)
-	Polygon("clearpoly")
-	(
-		[130000 165000] [280000 165000] [280000 180000] [130000 180000] 
-	)
-	Polygon("clearpoly")
-	(
-		[330000 180000] [300000 180000] [300000 130000] [330000 130000] 
-	)
+	Line[37500 10000 37500 90000 1969 20 "clearline"]
+	Line[57500 10000 57500 87500 1969 20 "clearline"]
+	Line[77500 10000 77500 85000 1969 20 "clearline"]
+	Line[117500 10000 117500 85000 1969 20 "clearline"]
+	Line[137500 10000 137500 85000 1969 20 "clearline"]
+	Line[157500 90000 157500 10000 1969 20 "clearline"]
+	Line[177500 10000 177500 95000 1969 20 "clearline"]
+	Line[62500 102500 62500 112500 3937 20 ""]
+	Line[67500 117500 62500 112500 3937 20 ""]
+	Line[67500 117500 107500 117500 3937 20 ""]
+	Line[112500 122500 112500 137500 3937 20 ""]
+	Line[112500 122500 107500 117500 3937 20 ""]
+	Line[72500 102500 72500 100000 1969 20 "clearline"]
+	Line[72500 100000 67500 95000 1969 20 "clearline"]
+	Line[67500 95000 42500 95000 1969 20 "clearline"]
+	Line[42500 95000 37500 90000 1969 20 "clearline"]
+	Line[75000 90000 60000 90000 1969 20 "clearline"]
+	Line[60000 90000 57500 87500 1969 20 "clearline"]
+	Line[97500 10000 97500 85000 1969 20 "clearline"]
+	Line[112500 90000 117500 85000 1969 20 "clearline"]
+	Line[122500 102500 122500 92500 1969 20 "clearline"]
+	Line[122500 92500 127500 87500 1969 20 "clearline"]
+	Line[127500 87500 135000 87500 1969 20 "clearline"]
+	Line[135000 87500 137500 85000 1969 20 "clearline"]
+	Line[112500 90000 112500 102500 1969 20 "clearline"]
+	Line[97500 85000 102500 90000 1969 20 "clearline"]
+	Line[102500 90000 102500 102500 1969 20 "clearline"]
+	Line[92500 102500 92500 90000 1969 20 "clearline"]
+	Line[92500 90000 90000 87500 1969 20 "clearline"]
+	Line[90000 87500 80000 87500 1969 20 "clearline"]
+	Line[80000 87500 77500 85000 1969 20 "clearline"]
+	Line[82500 102500 82500 97500 1969 20 "clearline"]
+	Line[82500 97500 75000 90000 1969 20 "clearline"]
+	Line[157500 90000 155000 92500 1969 20 "clearline"]
+	Line[155000 92500 135000 92500 1969 20 "clearline"]
+	Line[135000 92500 132500 95000 1969 20 "clearline"]
+	Line[132500 95000 132500 102500 1969 20 "clearline"]
+	Line[177500 95000 175000 97500 1969 20 "clearline"]
+	Line[175000 97500 142500 97500 1969 20 "clearline"]
+	Line[142500 97500 140000 100000 1969 20 "clearline"]
+	Line[140000 100000 140000 115000 1969 20 "clearline"]
+	Line[140000 115000 137500 117500 1969 20 "clearline"]
+	Line[137500 117500 125000 117500 1969 20 "clearline"]
+	Line[125000 117500 122500 120000 1969 20 "clearline"]
+	Line[122500 120000 122500 132500 1969 20 "clearline"]
+	Line[262500 22500 257500 27500 1969 20 "clearline"]
+	Line[257500 27500 235000 27500 1969 20 "clearline"]
+	Line[235000 27500 232500 30000 1969 20 "clearline"]
+	Line[232500 30000 232500 40000 1969 20 "clearline"]
+	Line[232500 40000 230000 42500 1969 20 "clearline"]
+	Line[230000 42500 225000 42500 1969 20 "clearline"]
+	Line[262500 32500 257500 37500 1969 20 "clearline"]
+	Line[257500 37500 240000 37500 1969 20 "clearline"]
+	Line[240000 37500 237500 40000 1969 20 "clearline"]
+	Line[237500 40000 237500 60000 1969 20 "clearline"]
+	Line[237500 60000 235000 62500 1969 20 "clearline"]
+	Line[235000 62500 225000 62500 1969 20 "clearline"]
+	Line[262500 42500 257500 47500 1969 20 "clearline"]
+	Line[257500 47500 245000 47500 1969 20 "clearline"]
+	Line[245000 47500 242500 50000 1969 20 "clearline"]
+	Line[242500 50000 242500 80000 1969 20 "clearline"]
+	Line[242500 80000 240000 82500 1969 20 "clearline"]
+	Line[240000 82500 225000 82500 1969 20 "clearline"]
+	Line[262500 52500 257500 57500 1969 20 "clearline"]
+	Line[257500 57500 257500 100000 1969 20 "clearline"]
+	Line[257500 100000 255000 102500 1969 20 "clearline"]
+	Line[255000 102500 225000 102500 1969 20 "clearline"]
+	Line[232500 135000 232500 160000 1969 20 "clearline"]
+	Line[112500 137500 112500 140000 3937 20 "clearline"]
+	Line[112500 140000 115000 142500 3937 20 "clearline"]
+	Line[115000 142500 215000 142500 3937 20 "clearline"]
+	Line[215000 142500 220000 137500 3937 20 "clearline"]
+	Line[220000 137500 220000 117500 3937 20 "clearline"]
+	Line[225000 22500 232500 22500 1969 20 "clearline"]
+	Line[232500 22500 237500 17500 1969 20 "clearline"]
+	Line[237500 17500 265000 17500 1969 20 "clearline"]
+	Line[265000 17500 270000 22500 1969 20 "clearline"]
+	Line[270000 22500 270000 125000 1969 20 "clearline"]
+	Line[270000 125000 265000 130000 1969 20 "clearline"]
+	Line[265000 130000 237500 130000 1969 20 "clearline"]
+	Line[237500 130000 232500 135000 1969 20 "clearline"]
+	Line[222500 160000 222500 147500 1969 20 "clearline"]
+	Line[222500 147500 227500 142500 1969 20 "clearline"]
+	Line[227500 142500 227500 112500 1969 20 "clearline"]
+	Line[227500 112500 212500 97500 1969 20 "clearline"]
+	Line[212500 97500 212500 17500 1969 20 "clearline"]
+	Line[212500 17500 207500 12500 1969 20 "clearline"]
+	Line[195000 12500 207500 12500 1969 20 "clearline"]
 )
 Layer(2 "ground")
 (
@@ -2231,389 +2176,270 @@ Layer(5 "power")
 )
 Layer(6 "bottom")
 (
-	Line[270000 100000 275000 100000 1969 20 "clearline"]
-	Line[275000 90000 270000 90000 1969 20 "clearline"]
-	Line[275000 80000 270000 80000 1969 20 "clearline"]
-	Line[275000 70000 270000 70000 1969 20 "clearline"]
-	Line[270000 60000 275000 60000 1969 20 "clearline"]
-	Line[270000 50000 275000 50000 1969 20 "clearline"]
-	Line[270000 30000 275000 30000 1969 20 "clearline"]
-	Line[65000 155000 65000 160000 3937 20 "clearline"]
-	Line[75000 155000 75000 160000 3937 20 "clearline"]
-	Line[85000 155000 85000 160000 3937 20 "clearline"]
-	Line[95000 155000 105000 155000 3937 20 ""]
-	Line[95000 145000 95000 160000 3937 20 ""]
-	Line[105000 145000 105000 160000 3937 20 ""]
-	Line[135000 145000 135000 160000 3937 20 ""]
-	Line[65000 120000 65000 130000 3937 20 ""]
-	Line[260000 20000 270000 20000 3937 20 "clearline"]
-	Line[260000 100000 270000 100000 3937 20 "clearline"]
-	Line[260000 90000 270000 90000 3937 20 "clearline"]
-	Line[260000 80000 270000 80000 3937 20 "clearline,rubberend"]
-	Line[260000 70000 270000 70000 3937 20 "clearline"]
-	Line[260000 60000 270000 60000 3937 20 "clearline"]
-	Line[260000 50000 270000 50000 3937 20 "clearline"]
-	Line[260000 40000 270000 40000 3937 20 "clearline"]
-	Line[260000 30000 270000 30000 3937 20 "clearline"]
-	Line[230000 100000 240000 100000 3937 20 ""]
-	Line[230000 20000 240000 20000 3937 20 "clearline"]
-	Line[230000 30000 240000 30000 3937 20 "clearline"]
-	Line[230000 40000 240000 40000 3937 20 "clearline"]
-	Line[230000 50000 240000 50000 3937 20 "clearline"]
-	Line[230000 60000 240000 60000 3937 20 "clearline"]
-	Line[230000 70000 240000 70000 3937 20 "clearline"]
-	Line[230000 80000 240000 80000 3937 20 "clearline"]
-	Line[230000 90000 240000 90000 3937 20 "clearline"]
-	Line[225000 95000 230000 90000 1969 20 "clearline"]
-	Line[210000 95000 225000 95000 1969 20 "clearline"]
-	Line[205000 90000 210000 95000 1969 20 "clearline"]
-	Line[225000 85000 230000 80000 1969 20 "clearline"]
-	Line[210000 85000 225000 85000 1969 20 "clearline"]
-	Line[205000 80000 210000 85000 1969 20 "clearline"]
-	Line[225000 75000 230000 70000 1969 20 "clearline"]
-	Line[210000 75000 225000 75000 1969 20 "clearline"]
-	Line[205000 70000 210000 75000 1969 20 "clearline"]
-	Line[225000 65000 230000 60000 1969 20 "clearline"]
-	Line[210000 65000 225000 65000 1969 20 "clearline"]
-	Line[205000 60000 210000 65000 1969 20 "clearline"]
-	Line[225000 55000 230000 50000 1969 20 "clearline"]
-	Line[210000 55000 225000 55000 1969 20 "clearline"]
-	Line[205000 50000 210000 55000 1969 20 "clearline"]
-	Line[225000 45000 230000 40000 1969 20 "clearline"]
-	Line[210000 45000 225000 45000 1969 20 "clearline"]
-	Line[205000 40000 210000 45000 1969 20 "clearline"]
-	Line[225000 35000 230000 30000 1969 20 "clearline"]
-	Line[210000 35000 225000 35000 1969 20 "clearline"]
-	Line[205000 30000 210000 35000 1969 20 "clearline"]
-	Line[225000 25000 230000 20000 1969 20 "clearline"]
-	Line[210000 25000 225000 25000 1969 20 "clearline"]
-	Line[205000 20000 210000 25000 1969 20 "clearline"]
-	Line[10000 130000 65000 130000 3937 20 ""]
-	Line[200000 25000 205000 20000 1969 20 "clearline"]
-	Line[200000 35000 205000 30000 1969 20 "clearline"]
-	Line[200000 45000 205000 40000 1969 20 "clearline"]
-	Line[200000 55000 205000 50000 1969 20 "clearline"]
-	Line[200000 65000 205000 60000 1969 20 "clearline"]
-	Line[200000 75000 205000 70000 1969 20 "clearline"]
-	Line[200000 85000 205000 80000 1969 20 "clearline"]
-	Line[200000 95000 205000 90000 1969 20 "clearline"]
-	Line[185000 95000 180000 90000 1969 20 "clearline"]
-	Line[185000 95000 200000 95000 1969 20 "clearline"]
-	Line[185000 85000 180000 80000 1969 20 "clearline"]
-	Line[185000 85000 200000 85000 1969 20 "clearline"]
-	Line[185000 75000 180000 70000 1969 20 "clearline"]
-	Line[185000 75000 200000 75000 1969 20 "clearline"]
-	Line[185000 65000 180000 60000 1969 20 "clearline"]
-	Line[185000 65000 200000 65000 1969 20 "clearline"]
-	Line[185000 55000 180000 50000 1969 20 "clearline"]
-	Line[185000 55000 200000 55000 1969 20 "clearline"]
-	Line[185000 45000 180000 40000 1969 20 "clearline"]
-	Line[185000 45000 200000 45000 1969 20 "clearline"]
-	Line[185000 35000 180000 30000 1969 20 "clearline"]
-	Line[185000 25000 180000 20000 1969 20 "clearline"]
-	Line[185000 35000 200000 35000 1969 20 "clearline"]
-	Line[185000 25000 200000 25000 1969 20 "clearline"]
-	Line[175000 25000 180000 20000 1969 20 "clearline"]
-	Line[175000 35000 180000 30000 1969 20 "clearline"]
-	Line[175000 45000 180000 40000 1969 20 "clearline"]
-	Line[175000 55000 180000 50000 1969 20 "clearline"]
-	Line[175000 65000 180000 60000 1969 20 "clearline"]
-	Line[175000 75000 180000 70000 1969 20 "clearline"]
-	Line[175000 85000 180000 80000 1969 20 "clearline"]
-	Line[175000 95000 180000 90000 1969 20 "clearline"]
-	Line[160000 95000 155000 90000 1969 20 "clearline"]
-	Line[160000 95000 175000 95000 1969 20 "clearline"]
-	Line[160000 85000 155000 80000 1969 20 "clearline"]
-	Line[160000 85000 175000 85000 1969 20 "clearline"]
-	Line[160000 75000 155000 70000 1969 20 "clearline"]
-	Line[160000 75000 175000 75000 1969 20 "clearline"]
-	Line[160000 65000 155000 60000 1969 20 "clearline"]
-	Line[160000 65000 175000 65000 1969 20 "clearline"]
-	Line[160000 55000 155000 50000 1969 20 "clearline"]
-	Line[160000 55000 175000 55000 1969 20 "clearline"]
-	Line[160000 45000 155000 40000 1969 20 "clearline"]
-	Line[160000 45000 175000 45000 1969 20 "clearline"]
-	Line[160000 35000 155000 30000 1969 20 "clearline"]
-	Line[160000 25000 155000 20000 1969 20 "clearline"]
-	Line[160000 35000 175000 35000 1969 20 "clearline"]
-	Line[160000 25000 175000 25000 1969 20 "clearline"]
-	Line[150000 25000 155000 20000 1969 20 "clearline"]
-	Line[150000 35000 155000 30000 1969 20 "clearline"]
-	Line[150000 45000 155000 40000 1969 20 "clearline"]
-	Line[150000 55000 155000 50000 1969 20 "clearline"]
-	Line[150000 65000 155000 60000 1969 20 "clearline"]
-	Line[150000 75000 155000 70000 1969 20 "clearline"]
-	Line[150000 85000 155000 80000 1969 20 "clearline"]
-	Line[150000 95000 155000 90000 1969 20 "clearline"]
-	Line[135000 95000 130000 90000 1969 20 "clearline"]
-	Line[135000 95000 150000 95000 1969 20 "clearline"]
-	Line[135000 85000 130000 80000 1969 20 "clearline"]
-	Line[135000 85000 150000 85000 1969 20 "clearline"]
-	Line[135000 75000 130000 70000 1969 20 "clearline"]
-	Line[135000 75000 150000 75000 1969 20 "clearline"]
-	Line[135000 65000 130000 60000 1969 20 "clearline"]
-	Line[135000 65000 150000 65000 1969 20 "clearline"]
-	Line[135000 55000 130000 50000 1969 20 "clearline"]
-	Line[135000 55000 150000 55000 1969 20 "clearline"]
-	Line[135000 45000 130000 40000 1969 20 "clearline"]
-	Line[135000 45000 150000 45000 1969 20 "clearline"]
-	Line[135000 35000 130000 30000 1969 20 "clearline"]
-	Line[135000 25000 130000 20000 1969 20 "clearline"]
-	Line[135000 35000 150000 35000 1969 20 "clearline"]
-	Line[135000 25000 150000 25000 1969 20 "clearline"]
-	Line[125000 25000 130000 20000 1969 20 "clearline"]
-	Line[125000 35000 130000 30000 1969 20 "clearline"]
-	Line[125000 45000 130000 40000 1969 20 "clearline"]
-	Line[125000 55000 130000 50000 1969 20 "clearline"]
-	Line[125000 65000 130000 60000 1969 20 "clearline"]
-	Line[125000 75000 130000 70000 1969 20 "clearline"]
-	Line[125000 85000 130000 80000 1969 20 "clearline"]
-	Line[125000 95000 130000 90000 1969 20 "clearline"]
-	Line[110000 95000 105000 90000 1969 20 "clearline"]
-	Line[110000 95000 125000 95000 1969 20 "clearline"]
-	Line[110000 85000 105000 80000 1969 20 "clearline"]
-	Line[110000 85000 125000 85000 1969 20 "clearline"]
-	Line[110000 75000 105000 70000 1969 20 "clearline"]
-	Line[110000 75000 125000 75000 1969 20 "clearline"]
-	Line[110000 65000 105000 60000 1969 20 "clearline"]
-	Line[110000 65000 125000 65000 1969 20 "clearline"]
-	Line[110000 55000 105000 50000 1969 20 "clearline"]
-	Line[110000 55000 125000 55000 1969 20 "clearline"]
-	Line[110000 45000 105000 40000 1969 20 "clearline"]
-	Line[110000 45000 125000 45000 1969 20 "clearline"]
-	Line[110000 35000 105000 30000 1969 20 "clearline"]
-	Line[110000 25000 105000 20000 1969 20 "clearline"]
-	Line[110000 35000 125000 35000 1969 20 "clearline"]
-	Line[110000 25000 125000 25000 1969 20 "clearline"]
-	Line[100000 25000 105000 20000 1969 20 "clearline"]
-	Line[100000 35000 105000 30000 1969 20 "clearline"]
-	Line[100000 45000 105000 40000 1969 20 "clearline"]
-	Line[100000 55000 105000 50000 1969 20 "clearline"]
-	Line[100000 65000 105000 60000 1969 20 "clearline"]
-	Line[100000 75000 105000 70000 1969 20 "clearline"]
-	Line[100000 85000 105000 80000 1969 20 "clearline"]
-	Line[100000 95000 105000 90000 1969 20 "clearline"]
-	Line[85000 95000 80000 90000 1969 20 "clearline"]
-	Line[85000 95000 100000 95000 1969 20 "clearline"]
-	Line[85000 85000 80000 80000 1969 20 "clearline"]
-	Line[85000 85000 100000 85000 1969 20 "clearline"]
-	Line[85000 75000 80000 70000 1969 20 "clearline"]
-	Line[85000 75000 100000 75000 1969 20 "clearline"]
-	Line[85000 65000 80000 60000 1969 20 "clearline"]
-	Line[85000 65000 100000 65000 1969 20 "clearline"]
-	Line[85000 55000 80000 50000 1969 20 "clearline"]
-	Line[85000 55000 100000 55000 1969 20 "clearline"]
-	Line[85000 45000 80000 40000 1969 20 "clearline"]
-	Line[85000 45000 100000 45000 1969 20 "clearline"]
-	Line[85000 35000 80000 30000 1969 20 "clearline"]
-	Line[85000 25000 80000 20000 1969 20 "clearline"]
-	Line[85000 35000 100000 35000 1969 20 "clearline"]
-	Line[85000 25000 100000 25000 1969 20 "clearline"]
-	Line[75000 25000 80000 20000 1969 20 "clearline"]
-	Line[75000 35000 80000 30000 1969 20 "clearline"]
-	Line[75000 45000 80000 40000 1969 20 "clearline"]
-	Line[75000 55000 80000 50000 1969 20 "clearline"]
-	Line[75000 65000 80000 60000 1969 20 "clearline"]
-	Line[75000 75000 80000 70000 1969 20 "clearline"]
-	Line[75000 85000 80000 80000 1969 20 "clearline"]
-	Line[75000 95000 80000 90000 1969 20 "clearline"]
-	Line[60000 95000 55000 90000 1969 20 "clearline"]
-	Line[60000 95000 75000 95000 1969 20 "clearline"]
-	Line[60000 85000 55000 80000 1969 20 "clearline"]
-	Line[60000 85000 75000 85000 1969 20 "clearline"]
-	Line[60000 75000 55000 70000 1969 20 "clearline"]
-	Line[60000 75000 75000 75000 1969 20 "clearline"]
-	Line[60000 65000 55000 60000 1969 20 "clearline"]
-	Line[60000 65000 75000 65000 1969 20 "clearline"]
-	Line[60000 55000 55000 50000 1969 20 "clearline"]
-	Line[60000 55000 75000 55000 1969 20 "clearline"]
-	Line[60000 45000 55000 40000 1969 20 "clearline"]
-	Line[60000 45000 75000 45000 1969 20 "clearline"]
-	Line[60000 35000 55000 30000 1969 20 "clearline"]
-	Line[60000 25000 55000 20000 1969 20 "clearline"]
-	Line[60000 35000 75000 35000 1969 20 "clearline"]
-	Line[60000 25000 75000 25000 1969 20 "clearline"]
-	Line[50000 25000 55000 20000 1969 20 "clearline"]
-	Line[50000 35000 55000 30000 1969 20 "clearline"]
-	Line[50000 45000 55000 40000 1969 20 "clearline"]
-	Line[50000 55000 55000 50000 1969 20 "clearline"]
-	Line[50000 65000 55000 60000 1969 20 "clearline"]
-	Line[50000 75000 55000 70000 1969 20 "clearline"]
-	Line[50000 85000 55000 80000 1969 20 "clearline"]
-	Line[50000 95000 55000 90000 1969 20 "clearline"]
-	Line[10000 10000 10000 130000 3937 20 ""]
-	Line[20000 20000 30000 20000 3937 20 "clearline"]
-	Line[20000 30000 30000 30000 3937 20 "clearline"]
-	Line[20000 40000 30000 40000 3937 20 "clearline"]
-	Line[20000 50000 30000 50000 3937 20 "clearline"]
-	Line[20000 60000 30000 60000 3937 20 "clearline"]
-	Line[20000 70000 30000 70000 3937 20 "clearline"]
-	Line[20000 80000 30000 80000 3937 20 "clearline"]
-	Line[20000 90000 30000 90000 3937 20 "clearline"]
-	Line[35000 95000 30000 90000 1969 20 "clearline"]
-	Line[35000 95000 50000 95000 1969 20 "clearline"]
-	Line[35000 85000 30000 80000 1969 20 "clearline"]
-	Line[35000 85000 50000 85000 1969 20 "clearline"]
-	Line[35000 75000 30000 70000 1969 20 "clearline"]
-	Line[35000 75000 50000 75000 1969 20 "clearline"]
-	Line[35000 65000 30000 60000 1969 20 "clearline"]
-	Line[35000 65000 50000 65000 1969 20 "clearline"]
-	Line[35000 55000 30000 50000 1969 20 "clearline"]
-	Line[35000 55000 50000 55000 1969 20 "clearline"]
-	Line[35000 45000 30000 40000 1969 20 "clearline"]
-	Line[35000 45000 50000 45000 1969 20 "clearline"]
-	Line[35000 35000 30000 30000 1969 20 "clearline"]
-	Line[35000 25000 30000 20000 1969 20 "clearline"]
-	Line[35000 35000 50000 35000 1969 20 "clearline"]
-	Line[35000 25000 50000 25000 1969 20 "clearline"]
-	Line[250000 10000 250000 115000 3937 20 ""]
-	Line[250000 115000 260000 115000 3937 20 "clearline,rubberend"]
-	Line[250000 10000 270000 10000 3937 20 "rubberend"]
-	Line[235000 100000 235000 145000 3937 20 ""]
-	Line[50000 145000 235000 145000 3937 20 ""]
-	Line[85000 160000 85000 160000 1969 20 "clearline"]
-	Line[85000 160000 90000 165000 1969 20 "clearline,rubberend"]
-	Line[305000 165000 320000 180000 1969 20 "clearline"]
-	Line[300000 170000 80000 170000 1969 20 "clearline"]
-	Line[80000 170000 75000 165000 1969 20 "clearline"]
-	Line[75000 165000 75000 160000 1969 20 "clearline"]
-	Line[295000 175000 70000 175000 1969 20 "clearline"]
-	Line[70000 175000 65000 170000 1969 20 "clearline"]
-	Line[65000 170000 65000 160000 1969 20 "clearline"]
-	Line[90000 165000 305000 165000 1969 20 "clearline"]
-	Line[300000 180000 295000 175000 1969 20 "clearline"]
-	Line[320000 70000 325000 65000 3937 20 "clearline"]
-	Line[310000 65000 315000 65000 3937 20 "clearline"]
-	Line[320000 60000 325000 55000 3937 20 "clearline"]
-	Line[315000 55000 310000 55000 3937 20 "clearline"]
-	Line[320000 50000 325000 45000 3937 20 "clearline"]
-	Line[315000 45000 310000 45000 3937 20 "clearline"]
-	Line[320000 40000 325000 35000 3937 20 "clearline"]
-	Line[315000 35000 310000 35000 3937 20 "clearline"]
-	Line[305000 70000 320000 70000 1969 20 "clearline"]
-	Line[310000 65000 300000 65000 1969 20 "clearline"]
-	Line[320000 60000 295000 60000 1969 20 "clearline"]
-	Line[310000 55000 290000 55000 1969 20 "clearline"]
-	Line[280000 45000 310000 45000 1969 20 "clearline"]
-	Line[270000 40000 320000 40000 1969 20 "clearline"]
-	Line[315000 75000 325000 75000 3937 20 ""]
-	Line[325000 75000 325000 85000 3937 20 ""]
-	Line[315000 85000 315000 75000 3937 20 ""]
-	Line[275000 30000 280000 35000 1969 20 "clearline"]
-	Line[280000 35000 310000 35000 1969 20 "clearline"]
-	Line[280000 45000 275000 50000 1969 20 "clearline"]
-	Line[285000 50000 275000 60000 1969 20 "clearline"]
-	Line[290000 55000 275000 70000 1969 20 "clearline"]
-	Line[295000 60000 275000 80000 1969 20 "clearline"]
-	Line[300000 65000 275000 90000 1969 20 "clearline"]
-	Line[305000 70000 275000 100000 1969 20 "clearline"]
-	Line[285000 50000 320000 50000 1969 20 "clearline"]
-	Line[325000 25000 285000 25000 3937 20 ""]
-	Line[285000 25000 270000 10000 3937 20 ""]
-	Line[235000 125000 280000 125000 3937 20 ""]
-	Line[280000 125000 280000 105000 3937 20 ""]
-	Line[280000 105000 300000 85000 3937 20 ""]
-	Line[325000 85000 300000 85000 3937 20 ""]
-	Line[50000 145000 50000 155000 3937 20 "clearline"]
-	Line[305000 185000 300000 180000 3937 20 "clearline"]
-	Line[315000 185000 310000 180000 3937 20 "clearline"]
-	Line[325000 185000 320000 180000 3937 20 "clearline"]
-	Line[310000 180000 300000 170000 1969 20 "clearline"]
-	Polygon("clearpoly")
-	(
-		[10000 100000] [0 100000] [0 0] [10000 0] 
-	)
-	Polygon("clearpoly")
-	(
-		[10000 0] [225000 0] [225000 15000] [10000 15000] 
-	)
-	Polygon("clearpoly")
-	(
-		[335000 30000] [290000 30000] [290000 0] [335000 0] 
-	)
-	Polygon("clearpoly")
-	(
-		[225000 0] [290000 0] [290000 5000] [225000 5000] 
-	)
-	Polygon("clearpoly")
-	(
-		[290000 30000] [285000 30000] [270000 15000] [290000 15000] 
-	)
-	Polygon("clearpoly")
-	(
-		[245000 5000] [290000 5000] [290000 15000] [245000 15000] 
-	)
-	Polygon("clearpoly")
-	(
-		[0 100000] [70000 100000] [70000 135000] [0 135000] 
-	)
-	Polygon("clearpoly")
-	(
-		[140000 100000] [75000 100000] [75000 120000] [140000 120000] 
-	)
-	Polygon("clearpoly")
-	(
-		[60000 140000] [140000 140000] [140000 150000] [60000 150000] 
-	)
-	Polygon("clearpoly")
-	(
-		[90000 150000] [110000 150000] [110000 160000] [90000 160000] 
-	)
-	Polygon("clearpoly")
-	(
-		[45000 205000] [0 205000] [0 135000] [45000 135000] 
-	)
-	Polygon("clearpoly")
-	(
-		[140000 100000] [245000 100000] [245000 160000] [140000 160000] 
-	)
-	Polygon("clearpoly")
-	(
-		[245000 160000] [335000 160000] [335000 125000] [245000 125000] 
-	)
-	Polygon("clearpoly")
-	(
-		[265000 105000] [335000 105000] [335000 125000] [265000 125000] 
-	)
-	Polygon("clearpoly")
-	(
-		[335000 105000] [310000 105000] [310000 75000] [335000 75000] 
-	)
-	Polygon("clearpoly")
-	(
-		[280000 105000] [300000 85000] [310000 85000] [310000 105000] 
-	)
-	Polygon("clearpoly")
-	(
-		[330000 180000] [335000 180000] [335000 205000] [330000 205000] 
-	)
-	Polygon("clearpoly")
-	(
-		[330000 205000] [140000 205000] [140000 200000] [330000 200000] 
-	)
-	Polygon("clearpoly")
-	(
-		[130000 180000] [45000 180000] [45000 205000] [130000 205000] 
-	)
-	Polygon("clearpoly")
-	(
-		[45000 160000] [60000 160000] [60000 180000] [45000 180000] 
-	)
-	Polygon("clearpoly")
-	(
-		[335000 160000] [330000 160000] [330000 180000] [335000 180000] 
-	)
-	Polygon("clearpoly")
-	(
-		[330000 180000] [310000 160000] [330000 160000] 
-	)
+	Line[52500 85000 47500 80000 1969 20 "clearline"]
+	Line[52500 85000 62500 85000 1969 20 "clearline"]
+	Line[52500 75000 47500 70000 1969 20 "clearline"]
+	Line[52500 75000 62500 75000 1969 20 "clearline"]
+	Line[52500 65000 47500 60000 1969 20 "clearline"]
+	Line[52500 65000 62500 65000 1969 20 "clearline"]
+	Line[52500 55000 47500 50000 1969 20 "clearline"]
+	Line[52500 55000 62500 55000 1969 20 "clearline"]
+	Line[52500 45000 47500 40000 1969 20 "clearline"]
+	Line[52500 45000 62500 45000 1969 20 "clearline"]
+	Line[52500 35000 47500 30000 1969 20 "clearline"]
+	Line[52500 35000 62500 35000 1969 20 "clearline"]
+	Line[52500 25000 47500 20000 1969 20 "clearline"]
+	Line[52500 15000 47500 10000 1969 20 "clearline"]
+	Line[52500 25000 62500 25000 1969 20 "clearline"]
+	Line[52500 15000 62500 15000 1969 20 "clearline"]
+	Line[42500 15000 47500 10000 1969 20 "clearline"]
+	Line[42500 25000 47500 20000 1969 20 "clearline"]
+	Line[42500 35000 47500 30000 1969 20 "clearline"]
+	Line[42500 45000 47500 40000 1969 20 "clearline"]
+	Line[42500 55000 47500 50000 1969 20 "clearline"]
+	Line[42500 65000 47500 60000 1969 20 "clearline"]
+	Line[42500 75000 47500 70000 1969 20 "clearline"]
+	Line[42500 85000 47500 80000 1969 20 "clearline"]
+	Line[32500 85000 27500 80000 1969 20 "clearline"]
+	Line[32500 85000 42500 85000 1969 20 "clearline"]
+	Line[32500 75000 27500 70000 1969 20 "clearline"]
+	Line[32500 75000 42500 75000 1969 20 "clearline"]
+	Line[32500 65000 27500 60000 1969 20 "clearline"]
+	Line[32500 65000 42500 65000 1969 20 "clearline"]
+	Line[32500 55000 27500 50000 1969 20 "clearline"]
+	Line[32500 55000 42500 55000 1969 20 "clearline"]
+	Line[32500 45000 27500 40000 1969 20 "clearline"]
+	Line[32500 45000 42500 45000 1969 20 "clearline"]
+	Line[32500 35000 27500 30000 1969 20 "clearline"]
+	Line[32500 35000 42500 35000 1969 20 "clearline"]
+	Line[32500 25000 27500 20000 1969 20 "clearline"]
+	Line[32500 15000 27500 10000 1969 20 "clearline"]
+	Line[32500 25000 42500 25000 1969 20 "clearline"]
+	Line[32500 15000 42500 15000 1969 20 "clearline"]
+	Line[7500 10000 7500 107500 3937 20 ""]
+	Line[62500 15000 67500 10000 1969 20 "clearline"]
+	Line[62500 25000 67500 20000 1969 20 "clearline"]
+	Line[62500 35000 67500 30000 1969 20 "clearline"]
+	Line[62500 45000 67500 40000 1969 20 "clearline"]
+	Line[62500 55000 67500 50000 1969 20 "clearline"]
+	Line[62500 65000 67500 60000 1969 20 "clearline"]
+	Line[62500 75000 67500 70000 1969 20 "clearline"]
+	Line[62500 85000 67500 80000 1969 20 "clearline"]
+	Line[72500 85000 67500 80000 1969 20 "clearline"]
+	Line[72500 85000 82500 85000 1969 20 "clearline"]
+	Line[72500 75000 67500 70000 1969 20 "clearline"]
+	Line[72500 75000 82500 75000 1969 20 "clearline"]
+	Line[72500 65000 67500 60000 1969 20 "clearline"]
+	Line[72500 65000 82500 65000 1969 20 "clearline"]
+	Line[72500 55000 67500 50000 1969 20 "clearline"]
+	Line[72500 55000 82500 55000 1969 20 "clearline"]
+	Line[72500 45000 67500 40000 1969 20 "clearline"]
+	Line[72500 45000 82500 45000 1969 20 "clearline"]
+	Line[72500 35000 67500 30000 1969 20 "clearline"]
+	Line[72500 35000 82500 35000 1969 20 "clearline"]
+	Line[72500 25000 67500 20000 1969 20 "clearline"]
+	Line[72500 15000 67500 10000 1969 20 "clearline"]
+	Line[72500 25000 82500 25000 1969 20 "clearline"]
+	Line[72500 15000 82500 15000 1969 20 "clearline"]
+	Line[92500 85000 87500 80000 1969 20 "clearline"]
+	Line[92500 75000 87500 70000 1969 20 "clearline"]
+	Line[92500 65000 87500 60000 1969 20 "clearline"]
+	Line[92500 55000 87500 50000 1969 20 "clearline"]
+	Line[92500 45000 87500 40000 1969 20 "clearline"]
+	Line[92500 35000 87500 30000 1969 20 "clearline"]
+	Line[92500 25000 87500 20000 1969 20 "clearline"]
+	Line[92500 15000 87500 10000 1969 20 "clearline,rubberend"]
+	Line[82500 15000 87500 10000 1969 20 "clearline"]
+	Line[82500 25000 87500 20000 1969 20 "clearline"]
+	Line[82500 35000 87500 30000 1969 20 "clearline"]
+	Line[82500 45000 87500 40000 1969 20 "clearline"]
+	Line[82500 55000 87500 50000 1969 20 "clearline"]
+	Line[82500 65000 87500 60000 1969 20 "clearline"]
+	Line[82500 75000 87500 70000 1969 20 "clearline"]
+	Line[82500 85000 87500 80000 1969 20 "clearline"]
+	Line[92500 15000 102500 15000 1969 20 "clearline"]
+	Line[102500 25000 92500 25000 1969 20 "clearline"]
+	Line[102500 35000 92500 35000 1969 20 "clearline"]
+	Line[102500 45000 92500 45000 1969 20 "clearline"]
+	Line[102500 55000 92500 55000 1969 20 "clearline"]
+	Line[102500 65000 92500 65000 1969 20 "clearline"]
+	Line[92500 75000 102500 75000 1969 20 "clearline"]
+	Line[92500 85000 102500 85000 1969 20 "clearline"]
+	Line[112500 85000 107500 80000 1969 20 "clearline"]
+	Line[112500 75000 107500 70000 1969 20 "clearline"]
+	Line[112500 65000 107500 60000 1969 20 "clearline"]
+	Line[112500 55000 107500 50000 1969 20 "clearline"]
+	Line[112500 45000 107500 40000 1969 20 "clearline"]
+	Line[112500 35000 107500 30000 1969 20 "clearline"]
+	Line[112500 25000 107500 20000 1969 20 "clearline"]
+	Line[112500 15000 107500 10000 1969 20 "clearline"]
+	Line[102500 15000 107500 10000 1969 20 "clearline,rubberend"]
+	Line[102500 25000 107500 20000 1969 20 "clearline"]
+	Line[102500 35000 107500 30000 1969 20 "clearline"]
+	Line[102500 45000 107500 40000 1969 20 "clearline"]
+	Line[102500 55000 107500 50000 1969 20 "clearline"]
+	Line[102500 65000 107500 60000 1969 20 "clearline"]
+	Line[102500 75000 107500 70000 1969 20 "clearline"]
+	Line[102500 85000 107500 80000 1969 20 "clearline"]
+	Line[112500 85000 122500 85000 1969 20 "clearline"]
+	Line[112500 75000 122500 75000 1969 20 "clearline"]
+	Line[112500 65000 122500 65000 1969 20 "clearline"]
+	Line[112500 55000 122500 55000 1969 20 "clearline"]
+	Line[112500 45000 122500 45000 1969 20 "clearline"]
+	Line[112500 35000 122500 35000 1969 20 "clearline"]
+	Line[112500 25000 122500 25000 1969 20 "clearline"]
+	Line[112500 15000 122500 15000 1969 20 "clearline"]
+	Line[132500 85000 127500 80000 1969 20 "clearline"]
+	Line[132500 75000 127500 70000 1969 20 "clearline"]
+	Line[132500 65000 127500 60000 1969 20 "clearline"]
+	Line[132500 55000 127500 50000 1969 20 "clearline"]
+	Line[132500 45000 127500 40000 1969 20 "clearline"]
+	Line[132500 35000 127500 30000 1969 20 "clearline"]
+	Line[132500 25000 127500 20000 1969 20 "clearline"]
+	Line[132500 15000 127500 10000 1969 20 "clearline"]
+	Line[122500 15000 127500 10000 1969 20 "clearline"]
+	Line[122500 25000 127500 20000 1969 20 "clearline"]
+	Line[122500 35000 127500 30000 1969 20 "clearline"]
+	Line[122500 45000 127500 40000 1969 20 "clearline"]
+	Line[122500 55000 127500 50000 1969 20 "clearline"]
+	Line[122500 65000 127500 60000 1969 20 "clearline"]
+	Line[122500 75000 127500 70000 1969 20 "clearline"]
+	Line[122500 85000 127500 80000 1969 20 "clearline"]
+	Line[132500 85000 142500 85000 1969 20 "clearline"]
+	Line[132500 75000 142500 75000 1969 20 "clearline"]
+	Line[132500 65000 142500 65000 1969 20 "clearline"]
+	Line[132500 55000 142500 55000 1969 20 "clearline"]
+	Line[132500 45000 142500 45000 1969 20 "clearline"]
+	Line[132500 35000 142500 35000 1969 20 "clearline"]
+	Line[132500 25000 142500 25000 1969 20 "clearline"]
+	Line[132500 15000 142500 15000 1969 20 "clearline"]
+	Line[152500 85000 147500 80000 1969 20 "clearline"]
+	Line[152500 75000 147500 70000 1969 20 "clearline"]
+	Line[152500 65000 147500 60000 1969 20 "clearline"]
+	Line[152500 55000 147500 50000 1969 20 "clearline"]
+	Line[152500 45000 147500 40000 1969 20 "clearline"]
+	Line[152500 35000 147500 30000 1969 20 "clearline"]
+	Line[152500 25000 147500 20000 1969 20 "clearline"]
+	Line[152500 15000 147500 10000 1969 20 "clearline"]
+	Line[142500 15000 147500 10000 1969 20 "clearline,rubberend"]
+	Line[142500 25000 147500 20000 1969 20 "clearline"]
+	Line[142500 35000 147500 30000 1969 20 "clearline"]
+	Line[142500 45000 147500 40000 1969 20 "clearline"]
+	Line[142500 55000 147500 50000 1969 20 "clearline"]
+	Line[142500 65000 147500 60000 1969 20 "clearline"]
+	Line[142500 75000 147500 70000 1969 20 "clearline"]
+	Line[142500 85000 147500 80000 1969 20 "clearline"]
+	Line[152500 85000 162500 85000 1969 20 "clearline"]
+	Line[152500 75000 162500 75000 1969 20 "clearline"]
+	Line[152500 65000 162500 65000 1969 20 "clearline"]
+	Line[152500 55000 162500 55000 1969 20 "clearline"]
+	Line[152500 45000 162500 45000 1969 20 "clearline"]
+	Line[152500 35000 162500 35000 1969 20 "clearline"]
+	Line[152500 25000 162500 25000 1969 20 "clearline"]
+	Line[152500 15000 162500 15000 1969 20 "clearline"]
+	Line[167500 80000 172500 85000 1969 20 "clearline"]
+	Line[167500 70000 172500 75000 1969 20 "clearline"]
+	Line[167500 60000 172500 65000 1969 20 "clearline"]
+	Line[167500 50000 172500 55000 1969 20 "clearline"]
+	Line[167500 40000 172500 45000 1969 20 "clearline"]
+	Line[167500 30000 172500 35000 1969 20 "clearline"]
+	Line[167500 20000 172500 25000 1969 20 "clearline"]
+	Line[167500 10000 172500 15000 1969 20 "clearline"]
+	Line[162500 15000 167500 10000 1969 20 "clearline"]
+	Line[162500 25000 167500 20000 1969 20 "clearline"]
+	Line[162500 35000 167500 30000 1969 20 "clearline"]
+	Line[162500 45000 167500 40000 1969 20 "clearline"]
+	Line[162500 55000 167500 50000 1969 20 "clearline"]
+	Line[162500 65000 167500 60000 1969 20 "clearline"]
+	Line[162500 75000 167500 70000 1969 20 "clearline"]
+	Line[162500 85000 167500 80000 1969 20 "clearline"]
+	Line[27500 10000 17500 10000 1969 20 "clearline"]
+	Line[17500 20000 27500 20000 1969 20 "clearline"]
+	Line[17500 30000 27500 30000 1969 20 "clearline"]
+	Line[17500 40000 27500 40000 1969 20 "clearline"]
+	Line[17500 50000 27500 50000 1969 20 "clearline"]
+	Line[27500 60000 17500 60000 1969 20 "clearline"]
+	Line[17500 70000 27500 70000 1969 20 "clearline"]
+	Line[17500 80000 27500 80000 1969 20 "clearline"]
+	Line[102500 122500 102500 132500 3937 20 ""]
+	Line[132500 122500 132500 132500 3937 20 ""]
+	Line[62500 102500 62500 107500 3937 20 ""]
+	Line[52500 122500 52500 127500 3937 20 "clearline"]
+	Line[92500 122500 92500 132500 3937 20 ""]
+	Line[92500 132500 102500 132500 3937 20 ""]
+	Line[7500 107500 62500 107500 3937 20 "clearline"]
+	Line[212500 12500 212500 117500 3937 20 ""]
+	Line[195000 22500 190000 22500 1969 20 "clearline"]
+	Line[190000 22500 182500 15000 1969 20 "clearline"]
+	Line[182500 15000 172500 15000 1969 20 "clearline"]
+	Line[195000 32500 190000 32500 1969 20 "clearline"]
+	Line[190000 32500 182500 25000 1969 20 "clearline"]
+	Line[182500 25000 172500 25000 1969 20 "clearline"]
+	Line[195000 42500 190000 42500 1969 20 "clearline"]
+	Line[190000 42500 182500 35000 1969 20 "clearline"]
+	Line[195000 52500 190000 52500 1969 20 "clearline"]
+	Line[190000 52500 182500 45000 1969 20 "clearline"]
+	Line[195000 62500 190000 62500 1969 20 "clearline"]
+	Line[195000 72500 190000 72500 1969 20 "clearline"]
+	Line[190000 72500 182500 65000 1969 20 "clearline"]
+	Line[195000 82500 190000 82500 1969 20 "clearline"]
+	Line[195000 92500 187500 92500 1969 20 "clearline"]
+	Line[187500 92500 180000 85000 1969 20 "clearline"]
+	Line[182500 35000 172500 35000 1969 20 "clearline"]
+	Line[172500 45000 182500 45000 1969 20 "clearline"]
+	Line[182500 55000 172500 55000 1969 20 "clearline"]
+	Line[172500 65000 182500 65000 1969 20 "clearline"]
+	Line[182500 75000 172500 75000 1969 20 "clearline"]
+	Line[180000 85000 172500 85000 1969 20 "clearline"]
+	Line[190000 82500 182500 75000 1969 20 "clearline"]
+	Line[190000 62500 182500 55000 1969 20 "clearline"]
+	Line[200000 102500 200000 122500 3937 20 ""]
+	Line[195000 102500 200000 102500 3937 20 "clearline"]
+	Line[212500 12500 262500 12500 3937 20 ""]
+	Line[252500 22500 235000 22500 1969 20 "clearline"]
+	Line[235000 22500 227500 30000 1969 20 "clearline"]
+	Line[252500 32500 237500 32500 1969 20 "clearline"]
+	Line[237500 32500 232500 37500 1969 20 "clearline"]
+	Line[232500 37500 232500 50000 1969 20 "clearline"]
+	Line[232500 50000 230000 52500 1969 20 "clearline"]
+	Line[230000 52500 225000 52500 1969 20 "clearline"]
+	Line[252500 42500 240000 42500 1969 20 "clearline"]
+	Line[240000 42500 237500 45000 1969 20 "clearline"]
+	Line[237500 45000 237500 70000 1969 20 "clearline"]
+	Line[237500 70000 235000 72500 1969 20 "clearline"]
+	Line[235000 72500 225000 72500 1969 20 "clearline"]
+	Line[225000 92500 240000 92500 1969 20 "clearline"]
+	Line[240000 92500 242500 90000 1969 20 "clearline"]
+	Line[242500 90000 242500 55000 1969 20 "clearline"]
+	Line[242500 55000 245000 52500 1969 20 "clearline"]
+	Line[245000 52500 252500 52500 1969 20 "clearline"]
+	Line[52500 122500 200000 122500 3937 20 "clearline"]
+	Line[62500 132500 62500 150000 1969 20 "clearline"]
+	Line[62500 150000 65000 152500 1969 20 "clearline"]
+	Line[65000 152500 235000 152500 1969 20 "clearline"]
+	Line[72500 132500 72500 145000 1969 20 "clearline"]
+	Line[72500 145000 75000 147500 1969 20 "clearline"]
+	Line[75000 147500 240000 147500 1969 20 "clearline"]
+	Line[82500 132500 82500 140000 1969 20 "clearline"]
+	Line[82500 140000 85000 142500 1969 20 "clearline"]
+	Line[85000 142500 245000 142500 1969 20 "clearline"]
+	Line[242500 160000 235000 152500 1969 20 "clearline"]
+	Line[252500 160000 240000 147500 1969 20 "clearline"]
+	Line[262500 160000 245000 142500 1969 20 "clearline"]
+	Line[212500 117500 220000 117500 3937 20 "clearline"]
+	Line[200000 122500 200000 127500 3937 20 "clearline"]
+	Line[200000 127500 252500 127500 3937 20 "clearline"]
+	Line[252500 62500 262500 62500 3937 20 "clearline"]
+	Line[262500 62500 262500 72500 3937 20 "clearline"]
+	Line[262500 72500 252500 72500 3937 20 "clearline"]
+	Line[252500 127500 252500 62500 3937 20 "clearline"]
 )
 Layer(7 "outline")
 (
-	Line[335000 0 335000 205000 3937 20 "clearline"]
-	Line[0 205000 0 0 3937 20 "clearline"]
-	Line[335000 0 0 0 3937 20 "clearline"]
-	Line[335000 205000 0 205000 3937 20 "clearline"]
+	Line[275000 0 275000 180000 3937 20 "clearline"]
+	Line[0 180000 0 0 3937 20 "clearline"]
+	Line[275000 0 0 0 3937 20 "clearline"]
+	Line[275000 180000 0 180000 3937 20 "clearline"]
 )
 Layer(8 "spare")
 (
