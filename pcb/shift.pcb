@@ -790,8 +790,8 @@ Attribute("PCB::grid::unit" "mil")
 
 Element["" "SMD Cap" "C2" "" 47500 15000 -12000 -4400 0 150 ""]
 (
-	Pin[0 0 8000 3000 11000 3500 "1" "1" "edge2,thermal(5X)"]
-	Pin[-20000 0 8000 3000 11000 3500 "2" "2" "edge2,thermal(0X,4)"]
+	Pin[0 0 8000 3000 11000 3800 "1" "1" "edge2,thermal(5X)"]
+	Pin[-20000 0 8000 3000 11000 3800 "2" "2" "edge2,thermal(0X,4)"]
 	ElementLine [5000 5000 5000 -5000 1000]
 	ElementLine [5000 -5000 -25000 -5000 1000]
 	ElementLine [-25000 -5000 -25000 5000 1000]
@@ -832,8 +832,8 @@ Element["" "Dual in-line package, narrow (300 mil)" "74HC574" "DIP20" 72500 2500
 
 Element["" "SMD Cap" "C0" "" 97500 15000 -12000 -4400 0 150 ""]
 (
-	Pin[0 0 8000 3000 11000 3500 "1" "1" "edge2,thermal(5)"]
-	Pin[-20000 0 8000 3000 11000 3500 "2" "2" "edge2,thermal(0X,4)"]
+	Pin[0 0 8000 3000 11000 3800 "1" "1" "edge2,thermal(5)"]
+	Pin[-20000 0 8000 3000 11000 3800 "2" "2" "edge2,thermal(0X,4)"]
 	ElementLine [5000 5000 5000 -5000 1000]
 	ElementLine [5000 -5000 -25000 -5000 1000]
 	ElementLine [-25000 -5000 -25000 5000 1000]
@@ -874,8 +874,8 @@ Element["" "Dual in-line package, narrow (300 mil)" "74HC245" "DIP20" 122500 250
 
 Element["" "SMD Cap" "C1" "" 147500 15000 -12000 -4400 0 150 ""]
 (
-	Pin[0 0 8000 3000 11000 3500 "1" "1" "edge2,thermal(5)"]
-	Pin[-20000 0 8000 3000 11000 3500 "2" "2" "edge2,thermal(0X,4)"]
+	Pin[0 0 8000 3000 11000 3800 "1" "1" "edge2,thermal(5)"]
+	Pin[-20000 0 8000 3000 11000 3800 "2" "2" "edge2,thermal(0X,4)"]
 	ElementLine [5000 5000 5000 -5000 1000]
 	ElementLine [5000 -5000 -25000 -5000 1000]
 	ElementLine [-25000 -5000 -25000 5000 1000]

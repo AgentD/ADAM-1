@@ -787,7 +787,6 @@ Symbol['~' 1200]
 	SymbolLine[2000 3500 2500 3000 800]
 )
 Attribute("PCB::grid::unit" "mil")
-Via[170000 97500 800 20 0 400 "" ""]
 
 Element["" "Header connector, DIP pin numbering" "CBUS" "HEADER40_1" 200000 97500 5000 21000 2 100 ""]
 (
@@ -842,8 +841,8 @@ Element["" "Header connector, DIP pin numbering" "CBUS" "HEADER40_1" 200000 9750
 
 Element["" "SMD Cap" "C2" "" 45000 10000 -12000 -4400 0 150 ""]
 (
-	Pin[0 0 8000 3000 11000 3500 "1" "1" "edge2,thermal(0X,5)"]
-	Pin[-20000 0 8000 3000 11000 3500 "2" "2" "edge2,thermal(0X,4,5X)"]
+	Pin[0 0 8000 3000 11000 3800 "1" "1" "edge2,thermal(0X,5)"]
+	Pin[-20000 0 8000 3000 11000 3800 "2" "2" "edge2,thermal(0X,4,5X)"]
 	ElementLine [5000 -5000 5000 5000 1000]
 	ElementLine [-25000 -5000 5000 -5000 1000]
 	ElementLine [-25000 -5000 -25000 5000 1000]
@@ -905,8 +904,8 @@ Element["" "Dual in-line package, narrow (300 mil)" "74HC138" "DIP16" 152500 325
 
 Element["" "SMD Cap" "C0" "" 165000 57500 4400 -12000 3 150 ""]
 (
-	Pin[0 0 9000 3000 12000 3500 "1" "1" "thermal(0X,5)"]
-	Pin[0 -20000 8000 3000 11000 3500 "2" "2" "thermal(0X,4)"]
+	Pin[0 0 9000 3000 12000 3800 "1" "1" "thermal(0X,5)"]
+	Pin[0 -20000 8000 3000 11000 3800 "2" "2" "thermal(0X,4)"]
 	ElementLine [-5000 5000 5000 5000 1000]
 	ElementLine [5000 -25000 5000 5000 1000]
 	ElementLine [-5000 -25000 5000 -25000 1000]
