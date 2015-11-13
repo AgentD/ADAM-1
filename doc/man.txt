@@ -160,55 +160,57 @@
     The table below lists the mnemonics of instructions, the coresponding
     opcodes and immediate flags, and the effect of an instruction. If an
     instruction or block of instructions requires further explanation, a
-    comment is written below. C-style operators are used to indicate what
-    an instruction does.
+    comment is written below. Pseudo code with partially C-style operators
+    is used to indicate what an instruction does.
 
-    The assembler uses square bracktes [...] to denote memory addresses and
-    braces {...} to denote I/O bus addresses. C-style '++' and '--' are used
-    to indicate pre/post increment/decrement addressing modes.
+    The assembler uses the prefix '@' to denote memory addresses and '>' to
+    denote I/O bus addresses. A prefixed '+' or '-' indicates that a register
+    value is to be increment/decrement before using it's value to address
+    memory, an appended '+' or '-' means that it should be
+    incremented/decremented afterwards.
 
 
 
     MOV dst, src            op=0x00 I=0     $dst := $src
     MOV dst, imm            op=0x00 I=1     $dst := imm
-    MOV dst, [src]          op=0x01 I=0     $dst := *($src)
-    MOV dst, [imm]          op=0x01 I=1     $dst := *(imm)
-    MOV [dst], src          op=0x02 I=0     *($dst) := $src
-    MOV [dst], imm          op=0x02 I=1     *($dst) := imm
-    MOV [dst], [src]        op=0x03 I=0     *($dst) := *($src)
-    MOV [dst], [imm]        op=0x03 I=1     *($dst) := *(imm)
+    MOV dst, @src           op=0x01 I=0     $dst := *($src)
+    MOV dst, @imm           op=0x01 I=1     $dst := *(imm)
+    MOV @dst, src           op=0x02 I=0     *($dst) := $src
+    MOV @dst, imm           op=0x02 I=1     *($dst) := imm
+    MOV @dst, @src          op=0x03 I=0     *($dst) := *($src)
+    MOV @dst, @imm          op=0x03 I=1     *($dst) := *(imm)
 
-    MOV [imm], src          op=0x04 I=1     *(imm) := $src
-    MOV [imm], [src]        op=0x05 I=1     *(imm) := *($src)
+    MOV @imm, src           op=0x04 I=1     *(imm) := $src
+    MOV @imm, @src          op=0x05 I=1     *(imm) := *($src)
 
-    MOV dst, [src++]        op=0x04 I=0     $dst := *($src++)
-    MOV [dst++], src        op=0x05 I=0     *($dst++) := $src
+    MOV dst, @src+          op=0x04 I=0     $dst := *($src++)
+    MOV @dst+, src          op=0x05 I=0     *($dst++) := $src
 
-    MOV dst, [src+imm]      op=0x06 I=1     $dst := *($src + imm)
-    MOV [dst], [src+imm]    op=0x07 I=1     *($dst) := *($src + imm)
+    MOV dst, @src+imm       op=0x06 I=1     $dst := $src[imm]
+    MOV @dst, @src+imm      op=0x07 I=1     *($dst) := $src[imm]
 
     MVL dst, src            op=0x06 I=0     $dst := $src & 0x00FF
     MVH dst, src            op=0x07 I=0     $dst := ($src >> 8) & 0x00FF
 
-    MOV [dst+imm], src      op=0x08 I=1     *($dst + imm) := $src
-    MOV [dst+imm], [src]    op=0x09 I=1     *($dst + imm) := *($src)
+    MOV @dst+imm, src       op=0x08 I=1     $dst[imm] := $src
+    MOV @dst+imm, @src      op=0x09 I=1     $dst[imm] := *($src)
 
     NUL dst                 op=0x08 I=0     $dst := 0x0000
     MKW dst, src            op=0x09 I=0     $dst := $dst | ($src & 0x00FF)<<8
 
     MOV dst, $SW            op=0x0A I=0     $dst := $SW
-    MOV [imm], $SW          op=0x0A I=1     *(imm) := $SW
+    MOV @imm, $SW           op=0x0A I=1     *(imm) := $SW
 
     MOV $SW, dst            op=0x0B I=0     $SW := $dst
     MOV $SW, imm            op=0x0B I=1     $SW := imm
 
-    MOV [dst--], src        op=0x0C I=0     *($dst--) := $src
-    MOV [dst--], imm        op=0x0C I=1     *($dst--) := imm
+    MOV @dst-, src          op=0x0C I=0     *($dst--) := $src
+    MOV @dst-, imm          op=0x0C I=1     *($dst--) := imm
 
-    MOV [dst--], $SW        op=0x0D I=0     *($dst--) := $SW
+    MOV @dst-, $SW          op=0x0D I=0     *($dst--) := $SW
 
-    MOV dst, [++src]        op=0x0E I=0     $dst := *(++$src)
-    MOV $SW, [++src]        op=0x0F I=0     $SW := *(++$src)
+    MOV dst, @+src          op=0x0E I=0     $dst := *(++$src)
+    MOV $SW, @+src          op=0x0F I=0     $SW := *(++$src)
 
     ADD dst, src            op=0x10 I=0     $dst += $src
     ADD dst, imm            op=0x10 I=1     $dst += imm
@@ -274,7 +276,7 @@
     SEX dst, src            op=0x21 I=0     subroutine execute
     SEX dst, imm            op=0x21 I=1     subroutine execute
       atomically execute the following:
-        1. MOV [$dst--], $R7
+        1. MOV @$dst-, $R7
         2. MOV $R7, $src|imm
 
     TMC                     op=0x22 I=0     transfer machine control
@@ -304,11 +306,11 @@
               cleared if they do have overlapping bits
         sign: set to MSB of destination ANDed to MSB of source
 
-    MOV {imm}, src          op=0x0D I=1     write to immediate I/O address
-    MOV {dst}, src          op=0x25 I=0     write register to I/O bus
-    MOV {dst}, imm          op=0x25 I=1     write immediate to I/O bus
-    MOV dst, {src}          op=0x26 I=0     read from I/O bus
-    MOV dst, {imm}          op=0x26 I=1     read from immediate I/O address
+    MOV >imm, src           op=0x0D I=1     write to immediate I/O address
+    MOV >dst, src           op=0x25 I=0     write register to I/O bus
+    MOV >dst, imm           op=0x25 I=1     write immediate to I/O bus
+    MOV dst, >src           op=0x26 I=0     read from I/O bus
+    MOV dst, >imm           op=0x26 I=1     read from immediate I/O address
         If used in user mode, a trap number 1 is generated.
 
 
@@ -366,14 +368,14 @@
     SEX reg                                     SEX $SP, reg
     SEX imm                                     SEX $SP, imm
 
-    RET reg             return from subroutine  MOV $R7, [++$reg]
-    RET                                         MOV $R7, [++$SP]
+    RET reg             return from subroutine  MOV $R7, @+$reg
+    RET                                         MOV $R7, @+$SP
 
     JMP reg                                     MOV $R7, reg
-    JMP [reg]                                   MOV $R7, [reg]
+    JMP @reg                                    MOV $R7, @reg
     JMP imm                                     MOV $R7, imm
-    JMP [imm]                                   MOV $R7, [imm]
-    JMP [reg+imm]                               MOV $R7, [reg+imm]
+    JMP @imm                                    MOV $R7, @imm
+    JMP @reg+imm                                MOV $R7, @reg+imm
 
     HOP reg             relative jump           ASS $R7, reg
     HOP imm             relative jump           ASS $R7, imm
@@ -395,19 +397,19 @@
     CLR reg, imm        clear bit in register   ANL reg, ~(1<<imm)
     BIT reg, imm        test if bit is set      TST reg, (1<<imm)
 
-    PSH dst, src        push GP register        MOV [$dst--], src
-    PSH dst, imm        push immediate value    MOV [$dst--], imm
-    PSH dst, $SW        push status word        MOV [$dst--], $SW
+    PSH dst, src        push GP register        MOV @$dst-, src
+    PSH dst, imm        push immediate value    MOV @$dst-, imm
+    PSH dst, $SW        push status word        MOV @$dst-, $SW
 
-    PSH src                                     MOV [$SP--], src
-    PSH imm                                     MOV [$SP--], imm
-    PSH $SW                                     MOV [$SP--], $SW
+    PSH src                                     MOV @$SP-, src
+    PSH imm                                     MOV @$SP-, imm
+    PSH $SW                                     MOV @$SP-, $SW
 
-    POP dst, src        pop register            MOV dst, [++src]
-    POP $SW, src        pop status word         MOV $SW, [++src]
+    POP dst, src        pop register            MOV dst, @+src
+    POP $SW, src        pop status word         MOV $SW, @+src
 
-    POP dst                                     MOV dst, [++$SP]
-    POP $SW                                     MOV $SW, [++$SP]
+    POP dst                                     MOV dst, @+$SP
+    POP $SW                                     MOV $SW, @+$SP
 
     NAY C               clear flag              SFL 0
     NAY Z                                       SFL 1
@@ -438,10 +440,10 @@
 
         ADDEXPR ::= MULEXPR ['+'|'-' ADDEXPR]
         MULEXPR ::= BITEXPR ['*'|'/' MULEXPR]
-        BITEXPR ::= SHEXPR ['|'|'&'|'^' OREXPR]
+        BITEXPR ::= SHEXPR ['|'|'&'|'^' BITEXPR]
         SHEXPR ::= UNARY ['<<'|'>>' SHEXPR]
 
-        UNARY ::= ['-'|'~'] PRIMEXPR
+        UNARY ::= ['+'|'-'|'~'] PRIMEXPR
         PRIMEXPR ::= RECEXPR | NUMBER | NAMESTRING | '$$' | '$'
         RECEXPR ::= '(' ADDEXPR ')'
 
