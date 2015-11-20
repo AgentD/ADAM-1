@@ -119,6 +119,12 @@
                          | |    .    | |           A
                         _| |_   .   _| |_          |
                       __\___/_______\___/__        |
+                     |                     |       |
+                     |    BRIDGE MODULE    |       |
+                     |_____________________|       |
+                                A                  |
+                                |                  |
+                      __________V__________        |
                      |                     |<------+
                      |    CONTROL LOGIC    |
                      |_____________________|
@@ -126,10 +132,11 @@
 
     Most of the CPU utilizes a bit-slice design and consits of individual
     8 bit modules that can be cascaded. The 8 bit modules are wired to a
-    common control bus using 2*20 pin connectors and each half has its own
-    8 bit tri-state data bus.
+    control bus using 2*20 pin connectors and each half has its own 8 bit
+    tri-state data bus. The control busses are merged by a "bridge module"
+    that simply wires the control bus lines together.
 
-    Every modules has two temporary operand registers, A and B. All A
+    Every module has two temporary operand registers, A and B. All A
     registers are triggered at the same time and all B registers are triggered
     at the same time, but each module output can be selected individually.
 
@@ -344,4 +351,25 @@
     The decode module does not have to be built symetrically. Only one has to
     be installed, as the control lines can be simply connected to the second
     half of the bus.
+
+  8) Bridge module
+
+    The bridge module connects two control busses together. Most control lines
+    are simply wired together. Except for the carry and shift ripple lines.
+
+    The carry out of the lower half is connected to the carry in of the higher
+    half. The shift out of the higher half is connected to the shift in of the
+    lower half.
+
+    The status word carry flag is connected to the shift in of the higher half
+    and to the carry in of the lower half. If the shift module is selected,
+    the shift out of the lower half is connected to the new carry value,
+    otherwise the carry out of the higher half is connected.
+
+    The 16 bit bus word from the two data bus connectors is compared with 0
+    using 2 cascaded 74HC688. The total output (entire word is zero) is
+    connected to the control bus.
+
+    The MSB of the higher half data bus is connected to the MSB line of the
+    control busses.
 
