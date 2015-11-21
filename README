@@ -18,11 +18,12 @@
   Directory Layout
   ****************
 
-    README      - This file
-    pcb/        - Contains geda PCB files for the CPU modules
-    doc/        - Contains all the documentation
-    doc/pcb/    - Contains circuit descriptions for the files in "pcb/"
-    doc/man.txt - Programmers Manual
+    README       - This file
+    pcb/         - Contains geda PCB files for the CPU modules
+    doc/         - Contains all the documentation
+    doc/pcb/     - Contains circuit descriptions for the files in "pcb/"
+    doc/man.txt  - Programmers Manual
+    doc/cbus.txt - Information on the CPU control bus
 
   CPU Design
   **********
