@@ -11,7 +11,7 @@
     3.......CPU Instruction Set
       3.1...Pseudo instruction and assembler directives
       3.2...Assember expressions
-      3.3...Labels, scopes and symbols
+      3.3...Labels and symbols
     4.......Interrupts and Traps
 
 
@@ -346,11 +346,13 @@
         with the VALUE of the given expression, i.e. the expression is
         evaluated BEFORE being inserted.
 
-    .imp <name>         import label            see next section
-    .exp <name>         export label            see next section
+    .imp <name>         import label            see section on labels
+    .exp <name>         export label            see section on labels
 
     .txt                                        enter text section
     .dat                                        enter data section
+    .str                                        enter string section
+    .sec <name>                                 enter arbitrary custom section
         If the target format supports different sections in the output,
         these directives can be used to switch sections.
 
@@ -358,8 +360,8 @@
                                                 the size of a word directly
                                                 to the output
 
-    .psh                push label scope        see next section
-    .pop                pop label scope         see next section
+    .clr                clear labels            Forget about all non-exported
+                                                or imported labels.
 
     <name> ':'                                  label definition
 
@@ -468,7 +470,7 @@
     instruction and '$' resolves to the absolute address of the current
     instruction.
 
-  3.3) Labels, scopes and symbols
+  3.3) Labels and symbols
 
     The assembler requires all labels that are not defined within an assembly
     file to be appear in an import (.imp) pseudo instruction. If the target
@@ -478,24 +480,6 @@
     If labels are exported (.exp pseudo instruction) and the target format has
     a symbol tables, the labels and their addresses are written to that symbol
     table.
-
-    The assembler supports nested label scopes in a fashtion similar to C
-    brace blocks.
-      - A scope can be entered using the .psh pseudo instruction
-      - A scope can be left with the .pop pseudo instruction
-      - Labels defined in a scope are only valid within that scope
-      - Labels defined in an inner scope are unknown/undefined in outer scope
-      - Labels defined in an outer scope can be used in an inner scope
-      - Redefining a label from a parent scope in a nested scope overrides
-        the previous definition
-      - Redefining a label in the same scope generates an error
-      - Leaving the outmost (default) scope is not possible
-      - Only labels defined at the outmost (default) scope can be exported
-
-    The rationale behind the concept of label scopes is to allow simple,
-    straight forward translation of high level language parse trees to
-    human readable assembly code on the one hand and high level language
-    like label scopes in assembly code on the other hand.
 
 
   4) Interrupts and Traps
