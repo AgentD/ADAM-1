@@ -94,20 +94,24 @@
 
   1.2) Assembly names
 
-    The assembler prefixes registers with '$', so register XY becomes $XY.
+    The following register names can be used in assembly:
 
        Name | Description
-      ------+--------------------------------------------------------
-        $R0 | General purpose register 0
-        $R1 | General purpose register 1
-        $R2 | General purpose register 2
-        $R3 | General purpose register 3
-        $R4 | General purpose register 4
-        $R5 | General purpose register 5
-        $R6 | General purpose register 6 (kernel stack pointer)
-        $R7 | General purpose register 7 (program counter)
+      ------+----------------------------------------------------------------
+        R0  | General purpose register 0
+        R1  | General purpose register 1
+        R2  | General purpose register 2
+        R3  | General purpose register 3
+        R4  | General purpose register 4
+        R5  | General purpose register 5
+        R6  | General purpose register 6 (kernel stack pointer)
+        R7  | General purpose register 7 (program counter)
             |
-        $SW | Processor status word
+        SW  | Processor status word
+            |
+        PC  | Synonymous for R7
+        SP  | For kernel mode code, synonymous for R6 and R5 for user mode.
+            | See .usr and .sys instructions in section 3.1.
 
   2) Instruction Format
 
@@ -171,98 +175,98 @@
 
 
 
-    MOV dst, src            op=0x00 I=0     $dst := $src
-    MOV dst, imm            op=0x00 I=1     $dst := imm
-    MOV dst, @src           op=0x01 I=0     $dst := *($src)
-    MOV dst, @imm           op=0x01 I=1     $dst := *(imm)
-    MOV @dst, src           op=0x02 I=0     *($dst) := $src
-    MOV @dst, imm           op=0x02 I=1     *($dst) := imm
-    MOV @dst, @src          op=0x03 I=0     *($dst) := *($src)
-    MOV @dst, @imm          op=0x03 I=1     *($dst) := *(imm)
+    MOV dst, src            op=0x00 I=0     dst := src
+    MOV dst, imm            op=0x00 I=1     dst := imm
+    MOV dst, @src           op=0x01 I=0     dst := *(src)
+    MOV dst, @imm           op=0x01 I=1     dst := *(imm)
+    MOV @dst, src           op=0x02 I=0     *(dst) := src
+    MOV @dst, imm           op=0x02 I=1     *(dst) := imm
+    MOV @dst, @src          op=0x03 I=0     *(dst) := *(src)
+    MOV @dst, @imm          op=0x03 I=1     *(dst) := *(imm)
 
-    MOV @imm, src           op=0x04 I=1     *(imm) := $src
-    MOV @imm, @src          op=0x05 I=1     *(imm) := *($src)
+    MOV @imm, src           op=0x04 I=1     *(imm) := src
+    MOV @imm, @src          op=0x05 I=1     *(imm) := *(src)
 
-    MOV dst, @src+          op=0x04 I=0     $dst := *($src++)
-    MOV @dst+, src          op=0x05 I=0     *($dst++) := $src
+    MOV dst, @src+          op=0x04 I=0     dst := *(src++)
+    MOV @dst+, src          op=0x05 I=0     *(dst++) := src
 
-    MOV dst, @src+imm       op=0x06 I=1     $dst := $src[imm]
-    MOV @dst, @src+imm      op=0x07 I=1     *($dst) := $src[imm]
+    MOV dst, @src+imm       op=0x06 I=1     dst := src[imm]
+    MOV @dst, @src+imm      op=0x07 I=1     *(dst) := src[imm]
 
-    MVL dst, src            op=0x06 I=0     $dst := $src & 0x00FF
-    MVH dst, src            op=0x07 I=0     $dst := ($src >> 8) & 0x00FF
+    MVL dst, src            op=0x06 I=0     dst := src & 0x00FF
+    MVH dst, src            op=0x07 I=0     dst := (src >> 8) & 0x00FF
 
-    MOV @dst+imm, src       op=0x08 I=1     $dst[imm] := $src
-    MOV @dst+imm, @src      op=0x09 I=1     $dst[imm] := *($src)
+    MOV @dst+imm, src       op=0x08 I=1     dst[imm] := src
+    MOV @dst+imm, @src      op=0x09 I=1     dst[imm] := *(src)
 
-    NUL dst                 op=0x08 I=0     $dst := 0x0000
-    MKW dst, src            op=0x09 I=0     $dst := $dst | ($src & 0x00FF)<<8
+    NUL dst                 op=0x08 I=0     dst := 0x0000
+    MKW dst, src            op=0x09 I=0     dst := dst | (src & 0x00FF)<<8
 
-    MOV dst, $SW            op=0x0A I=0     $dst := $SW
-    MOV @imm, $SW           op=0x0A I=1     *(imm) := $SW
+    MOV dst, SW             op=0x0A I=0     dst := SW
+    MOV @imm, SW            op=0x0A I=1     *(imm) := SW
 
-    MOV $SW, dst            op=0x0B I=0     $SW := $dst
-    MOV $SW, imm            op=0x0B I=1     $SW := imm
+    MOV SW, dst             op=0x0B I=0     SW := dst
+    MOV SW, imm             op=0x0B I=1     SW := imm
 
-    MOV @dst-, src          op=0x0C I=0     *($dst--) := $src
-    MOV @dst-, imm          op=0x0C I=1     *($dst--) := imm
+    MOV @dst-, src          op=0x0C I=0     *(dst--) := src
+    MOV @dst-, imm          op=0x0C I=1     *(dst--) := imm
 
-    MOV @dst-, $SW          op=0x0D I=0     *($dst--) := $SW
+    MOV @dst-, SW           op=0x0D I=0     *(dst--) := SW
 
-    MOV dst, @+src          op=0x0E I=0     $dst := *(++$src)
-    MOV $SW, @+src          op=0x0F I=0     $SW := *(++$src)
+    MOV dst, @+src          op=0x0E I=0     dst := *(++src)
+    MOV SW, @+src           op=0x0F I=0     SW := *(++src)
 
-    ADD dst, src            op=0x10 I=0     $dst += $src
-    ADD dst, imm            op=0x10 I=1     $dst += imm
-    ADC dst, src            op=0x11 I=0     $dst += $src + carry
-    ADC dst, imm            op=0x11 I=1     $dst += imm + carry
+    ADD dst, src            op=0x10 I=0     dst += src
+    ADD dst, imm            op=0x10 I=1     dst += imm
+    ADC dst, src            op=0x11 I=0     dst += src + carry
+    ADC dst, imm            op=0x11 I=1     dst += imm + carry
         carry: carry output of adder
         zero:  set if result is 0
         sign:  set to MSB of result
 
-    ASS dst, src            op=0x12 I=0     $dst += $src
-    ASS dst, imm            op=0x12 I=1     $dst += imm
+    ASS dst, src            op=0x12 I=0     dst += src
+    ASS dst, imm            op=0x12 I=1     dst += imm
         Add without carry, status bits are left unchanged
 
-    SUB dst, src            op=0x13 I=0     $dst += twos_comp($src)
-    SBC dst, src            op=0x14 I=0     $dst += not($src) + carry
+    SUB dst, src            op=0x13 I=0     dst += twos_comp(src)
+    SBC dst, src            op=0x14 I=0     dst += not(src) + carry
         carry: carry output of adder
         zero:  set if result is 0
         sign:  set to MSB of result
 
-    INC dst, src            op=0x15 I=0     $dst := $src + 1
-    DEC dst, src            op=0x16 I=0     $dst := $src - 1
+    INC dst, src            op=0x15 I=0     dst := src + 1
+    DEC dst, src            op=0x16 I=0     dst := src - 1
         carry: carry output of adder
         zero:  set if result is 0
         sign:  set to MSB of result
 
-    SHL dst, src            op=0x17 I=0     $dst := $src << 1
-    ROL dst, src            op=0x18 I=0     $dst := ($src << 1) | carry
+    SHL dst, src            op=0x17 I=0     dst := src << 1
+    ROL dst, src            op=0x18 I=0     dst := (src << 1) | carry
         carry: set to MSB of source
         zero:  set if result is 0
         sign:  set to MSB of result
 
-    SHR dst, src            op=0x19 I=0     $dst := $src >> 1
-    ROR dst, src            op=0x1A I=0     $dst := ($src >> 1) | (carry<<15)
+    SHR dst, src            op=0x19 I=0     dst := src >> 1
+    ROR dst, src            op=0x1A I=0     dst := (src >> 1) | (carry<<15)
         carry: set to LSB of source
         zero:  set if result is 0
         sign:  set to MSB of result
 
-    NOT dst, src            op=0x1B I=0     $dst := not($src)
+    NOT dst, src            op=0x1B I=0     dst := not(src)
         zero:  set if result is 0
         sign:  set to MSB of result
 
-    NEG dst, src            op=0x1C I=0     $dst := twos_comp($src)
+    NEG dst, src            op=0x1C I=0     dst := twos_comp(src)
         carry: carry ouput from two's complement +1 addition
         zero:  set if result is 0
         sign:  set to MSB of result
 
-    ANL dst, src            op=0x1D I=0     $dst &= $src
-    ANL dst, imm            op=0x1D I=1     $dst &= imm
-    ORL dst, src            op=0x1E I=0     $dst |= $src
-    ORL dst, imm            op=0x1E I=1     $dst |= imm
-    XOR dst, src            op=0x1F I=0     $dst ^= $src
-    XOR dst, imm            op=0x1F I=1     $dst ^= imm
+    ANL dst, src            op=0x1D I=0     dst &= src
+    ANL dst, imm            op=0x1D I=1     dst &= imm
+    ORL dst, src            op=0x1E I=0     dst |= src
+    ORL dst, imm            op=0x1E I=1     dst |= imm
+    XOR dst, src            op=0x1F I=0     dst ^= src
+    XOR dst, imm            op=0x1F I=1     dst ^= imm
         zero: set if result is 0
         sign: set to MSB of result
 
@@ -276,28 +280,28 @@
     SEX dst, src            op=0x21 I=0     subroutine execute
     SEX dst, imm            op=0x21 I=1     subroutine execute
       atomically execute the following:
-        1. MOV @$dst-, $R7
-        2. MOV $R7, $src|imm
+        1. MOV @dst-, R7
+        2. MOV R7, src|imm
 
     TMC                     op=0x22 I=0     transfer machine control
     TMC src                 op=0x22 I=0
     TMC imm                 op=0x22 I=1
       if user mode flag is set, atomically execute the following:
-        1. *($R6--) := $R7
-        2. *($R6--) := $SW
-        3. *($R6--) := <$src|imm>
-        4. $R7 = 0x0004
+        1. *(R6--) := R7
+        2. *(R6--) := SW
+        3. *(R6--) := <src|imm>
+        4. R7 = 0x0004
         5. clear user mode flag
 
       if user mode flag is cleared, atomically execute the following:
-        1. $SW := *(++$R6)
-        2. $R7 := *(++$R6)
+        1. SW := *(++R6)
+        2. R7 := *(++R6)
 
     CMP dst, src            op=0x23 I=0     compare register values
     CMP dst, imm            op=0x23 I=1     compare register with immediate
       subtract source or immediate from destination, ignore result.
         carry: set to carry output of adder
-        zero: set if result is zero ($dst==$src or $dst==imm)
+        zero: set if result is zero (dst==src or dst==imm)
         sign: set to MSB of result
 
     TST dst, src            op=0x24 I=0     test if bits are set
@@ -327,13 +331,8 @@
 
   3.1) Pseudo instruction and assembler directives
 
-    In addition to the pseudo instructions below, the assembler supports
-    using the pseudo register $SP that it translates to $R6 for code
-    that is set to run in kernel mode, or to $R5 for user mode.
-
-
-    .usr                user mode               assume stack pointer is $R5
-    .sys                kernel mode             assume stack pointer is $R6
+    .usr                user mode               assume stack pointer is R5
+    .sys                kernel mode             assume stack pointer is R6
     .org <exp>          set base address        assume program base address
 
     .def <name> <exp>
@@ -365,23 +364,23 @@
 
     <name> ':'                                  label definition
 
-    NOP                 no operation            MOV $R0, $R0
+    NOP                 no operation            MOV R0, R0
 
-    SEX reg                                     SEX $SP, reg
-    SEX imm                                     SEX $SP, imm
+    SEX reg                                     SEX SP, reg
+    SEX imm                                     SEX SP, imm
 
-    RET reg             return from subroutine  MOV $R7, @+$reg
-    RET                                         MOV $R7, @+$SP
+    RET reg             return from subroutine  MOV R7, @+reg
+    RET                                         MOV R7, @+SP
 
-    JMP reg                                     MOV $R7, reg
-    JMP @reg                                    MOV $R7, @reg
-    JMP imm                                     MOV $R7, imm
-    JMP @imm                                    MOV $R7, @imm
-    JMP @reg+imm                                MOV $R7, @reg+imm
+    JMP reg                                     MOV R7, reg
+    JMP @reg                                    MOV R7, @reg
+    JMP imm                                     MOV R7, imm
+    JMP @imm                                    MOV R7, @imm
+    JMP @reg+imm                                MOV R7, @reg+imm
 
-    HOP reg             relative jump           ASS $R7, reg
-    HOP imm             relative jump           ASS $R7, imm
-    HOP label           relative jump to label  ASS $R7, label-$$
+    HOP reg             relative jump           ASS R7, reg
+    HOP imm             relative jump           ASS R7, imm
+    HOP label           relative jump to label  ASS R7, label-$$
 
     SUB dst, imm                                ADD dst, -imm
     SBC dst, imm                                ADC dst, ~imm
@@ -399,19 +398,19 @@
     CLR reg, imm        clear bit in register   ANL reg, ~(1<<imm)
     BIT reg, imm        test if bit is set      TST reg, (1<<imm)
 
-    PSH dst, src        push GP register        MOV @$dst-, src
-    PSH dst, imm        push immediate value    MOV @$dst-, imm
-    PSH dst, $SW        push status word        MOV @$dst-, $SW
+    PSH dst, src        push GP register        MOV @dst-, src
+    PSH dst, imm        push immediate value    MOV @dst-, imm
+    PSH dst, $SW        push status word        MOV @dst-, SW
 
-    PSH src                                     MOV @$SP-, src
-    PSH imm                                     MOV @$SP-, imm
-    PSH $SW                                     MOV @$SP-, $SW
+    PSH src                                     MOV @SP-, src
+    PSH imm                                     MOV @SP-, imm
+    PSH SW                                      MOV @SP-, SW
 
     POP dst, src        pop register            MOV dst, @+src
-    POP $SW, src        pop status word         MOV $SW, @+src
+    POP SW, src         pop status word         MOV SW, @+src
 
-    POP dst                                     MOV dst, @+$SP
-    POP $SW                                     MOV $SW, @+$SP
+    POP dst                                     MOV dst, @+SP
+    POP SW                                      MOV SW, @+SP
 
     NAY C               clear flag              SFL 0
     NAY Z                                       SFL 1
