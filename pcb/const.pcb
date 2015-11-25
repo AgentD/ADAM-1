@@ -788,7 +788,7 @@ Symbol['~' 1200]
 )
 Attribute("PCB::grid::unit" "mil")
 
-Element["" "Axial polar component (typically capacitor)," "D7G1" "ACY100P" 47500 80000 4500 -2200 0 100 ""]
+Element["" "Axial polar component (typically capacitor)," "D7G1" "ACY100P" 47500 80000 4500 -2200 0 0 ""]
 (
 	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
 	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
@@ -804,7 +804,7 @@ Element["" "Axial polar component (typically capacitor)," "D7G1" "ACY100P" 47500
 
 	)
 
-Element["" "Axial polar component (typically capacitor)," "D6G1" "ACY100P" 47500 70000 4500 -2200 0 100 ""]
+Element["" "Axial polar component (typically capacitor)," "D6G1" "ACY100P" 47500 70000 4500 -2200 0 0 ""]
 (
 	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
 	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
@@ -820,7 +820,7 @@ Element["" "Axial polar component (typically capacitor)," "D6G1" "ACY100P" 47500
 
 	)
 
-Element["" "Axial polar component (typically capacitor)," "D5G1" "ACY100P" 47500 60000 4500 -2200 0 100 ""]
+Element["" "Axial polar component (typically capacitor)," "D5G1" "ACY100P" 47500 60000 4500 -2200 0 0 ""]
 (
 	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
 	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
@@ -836,7 +836,7 @@ Element["" "Axial polar component (typically capacitor)," "D5G1" "ACY100P" 47500
 
 	)
 
-Element["" "Axial polar component (typically capacitor)," "D4G1" "ACY100P" 47500 50000 4500 -2200 0 100 ""]
+Element["" "Axial polar component (typically capacitor)," "D4G1" "ACY100P" 47500 50000 4500 -2200 0 0 ""]
 (
 	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
 	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
@@ -852,7 +852,7 @@ Element["" "Axial polar component (typically capacitor)," "D4G1" "ACY100P" 47500
 
 	)
 
-Element["" "Axial polar component (typically capacitor)," "D3G1" "ACY100P" 47500 40000 4500 -2200 0 100 ""]
+Element["" "Axial polar component (typically capacitor)," "D3G1" "ACY100P" 47500 40000 4500 -2200 0 0 ""]
 (
 	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
 	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
@@ -868,7 +868,7 @@ Element["" "Axial polar component (typically capacitor)," "D3G1" "ACY100P" 47500
 
 	)
 
-Element["" "Axial polar component (typically capacitor)," "D2G1" "ACY100P" 47500 30000 4500 -2200 0 100 ""]
+Element["" "Axial polar component (typically capacitor)," "D2G1" "ACY100P" 47500 30000 4500 -2200 0 0 ""]
 (
 	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
 	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
@@ -884,7 +884,7 @@ Element["" "Axial polar component (typically capacitor)," "D2G1" "ACY100P" 47500
 
 	)
 
-Element["" "Axial polar component (typically capacitor)," "D1G1" "ACY100P" 47500 20000 4500 -2200 0 100 ""]
+Element["" "Axial polar component (typically capacitor)," "D1G1" "ACY100P" 47500 20000 4500 -2200 0 0 ""]
 (
 	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
 	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
@@ -900,7 +900,7 @@ Element["" "Axial polar component (typically capacitor)," "D1G1" "ACY100P" 47500
 
 	)
 
-Element["" "Axial polar component (typically capacitor)," "D0G1" "ACY100P" 47500 10000 4500 -2200 0 100 ""]
+Element["" "Axial polar component (typically capacitor)," "D0G1" "ACY100P" 47500 10000 4500 -2200 0 0 ""]
 (
 	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
 	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
@@ -916,7 +916,7 @@ Element["" "Axial polar component (typically capacitor)," "D0G1" "ACY100P" 47500
 
 	)
 
-Element["" "Axial polar component (typically capacitor)," "D7G0" "ACY100P" 27500 80000 4500 -2200 0 100 ""]
+Element["" "Axial polar component (typically capacitor)," "D7G0" "ACY100P" 27500 80000 4500 -2200 0 0 ""]
 (
 	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
 	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
@@ -932,7 +932,7 @@ Element["" "Axial polar component (typically capacitor)," "D7G0" "ACY100P" 27500
 
 	)
 
-Element["" "Axial polar component (typically capacitor)," "D6G0" "ACY100P" 27500 70000 4500 -2200 0 100 ""]
+Element["" "Axial polar component (typically capacitor)," "D6G0" "ACY100P" 27500 70000 4500 -2200 0 0 ""]
 (
 	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
 	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
@@ -948,7 +948,7 @@ Element["" "Axial polar component (typically capacitor)," "D6G0" "ACY100P" 27500
 
 	)
 
-Element["" "Axial polar component (typically capacitor)," "D5G0" "ACY100P" 27500 60000 4500 -2200 0 100 ""]
+Element["" "Axial polar component (typically capacitor)," "D5G0" "ACY100P" 27500 60000 4500 -2200 0 0 ""]
 (
 	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
 	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
@@ -964,7 +964,7 @@ Element["" "Axial polar component (typically capacitor)," "D5G0" "ACY100P" 27500
 
 	)
 
-Element["" "Axial polar component (typically capacitor)," "D4G0" "ACY100P" 27500 50000 4500 -2200 0 100 ""]
+Element["" "Axial polar component (typically capacitor)," "D4G0" "ACY100P" 27500 50000 4500 -2200 0 0 ""]
 (
 	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
 	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
@@ -980,7 +980,7 @@ Element["" "Axial polar component (typically capacitor)," "D4G0" "ACY100P" 27500
 
 	)
 
-Element["" "Axial polar component (typically capacitor)," "D3G0" "ACY100P" 27500 40000 4500 -2200 0 100 ""]
+Element["" "Axial polar component (typically capacitor)," "D3G0" "ACY100P" 27500 40000 4500 -2200 0 0 ""]
 (
 	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
 	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
@@ -996,7 +996,7 @@ Element["" "Axial polar component (typically capacitor)," "D3G0" "ACY100P" 27500
 
 	)
 
-Element["" "Axial polar component (typically capacitor)," "D2G0" "ACY100P" 27500 30000 4500 -2200 0 100 ""]
+Element["" "Axial polar component (typically capacitor)," "D2G0" "ACY100P" 27500 30000 4500 -2200 0 0 ""]
 (
 	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
 	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
@@ -1012,7 +1012,7 @@ Element["" "Axial polar component (typically capacitor)," "D2G0" "ACY100P" 27500
 
 	)
 
-Element["" "Axial polar component (typically capacitor)," "D1G0" "ACY100P" 27500 20000 4500 -2200 0 100 ""]
+Element["" "Axial polar component (typically capacitor)," "D1G0" "ACY100P" 27500 20000 4500 -2200 0 0 ""]
 (
 	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
 	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
@@ -1028,7 +1028,7 @@ Element["" "Axial polar component (typically capacitor)," "D1G0" "ACY100P" 27500
 
 	)
 
-Element["" "Axial polar component (typically capacitor)," "D0G0" "ACY100P" 27500 10000 4500 -2200 0 100 ""]
+Element["" "Axial polar component (typically capacitor)," "D0G0" "ACY100P" 27500 10000 4500 -2200 0 0 ""]
 (
 	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
 	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
@@ -1148,7 +1148,7 @@ Element["" "Axial non-polar component (typically resistor or capacitor)," "R0" "
 
 	)
 
-Element["" "Axial polar component (typically capacitor)," "D7G2" "ACY100P" 67500 80000 4500 -2200 0 100 ""]
+Element["" "Axial polar component (typically capacitor)," "D7G2" "ACY100P" 67500 80000 4500 -2200 0 0 ""]
 (
 	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
 	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
@@ -1164,7 +1164,7 @@ Element["" "Axial polar component (typically capacitor)," "D7G2" "ACY100P" 67500
 
 	)
 
-Element["" "Axial polar component (typically capacitor)," "D6G2" "ACY100P" 67500 70000 4500 -2200 0 100 ""]
+Element["" "Axial polar component (typically capacitor)," "D6G2" "ACY100P" 67500 70000 4500 -2200 0 0 ""]
 (
 	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
 	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
@@ -1180,7 +1180,7 @@ Element["" "Axial polar component (typically capacitor)," "D6G2" "ACY100P" 67500
 
 	)
 
-Element["" "Axial polar component (typically capacitor)," "D5G2" "ACY100P" 67500 60000 4500 -2200 0 100 ""]
+Element["" "Axial polar component (typically capacitor)," "D5G2" "ACY100P" 67500 60000 4500 -2200 0 0 ""]
 (
 	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
 	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
@@ -1196,7 +1196,7 @@ Element["" "Axial polar component (typically capacitor)," "D5G2" "ACY100P" 67500
 
 	)
 
-Element["" "Axial polar component (typically capacitor)," "D4G2" "ACY100P" 67500 50000 4500 -2200 0 100 ""]
+Element["" "Axial polar component (typically capacitor)," "D4G2" "ACY100P" 67500 50000 4500 -2200 0 0 ""]
 (
 	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
 	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
@@ -1212,7 +1212,7 @@ Element["" "Axial polar component (typically capacitor)," "D4G2" "ACY100P" 67500
 
 	)
 
-Element["" "Axial polar component (typically capacitor)," "D3G2" "ACY100P" 67500 40000 4500 -2200 0 100 ""]
+Element["" "Axial polar component (typically capacitor)," "D3G2" "ACY100P" 67500 40000 4500 -2200 0 0 ""]
 (
 	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
 	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
@@ -1228,7 +1228,7 @@ Element["" "Axial polar component (typically capacitor)," "D3G2" "ACY100P" 67500
 
 	)
 
-Element["" "Axial polar component (typically capacitor)," "D2G2" "ACY100P" 67500 30000 4500 -2200 0 100 ""]
+Element["" "Axial polar component (typically capacitor)," "D2G2" "ACY100P" 67500 30000 4500 -2200 0 0 ""]
 (
 	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
 	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
@@ -1244,7 +1244,7 @@ Element["" "Axial polar component (typically capacitor)," "D2G2" "ACY100P" 67500
 
 	)
 
-Element["" "Axial polar component (typically capacitor)," "D1G2" "ACY100P" 67500 20000 4500 -2200 0 100 ""]
+Element["" "Axial polar component (typically capacitor)," "D1G2" "ACY100P" 67500 20000 4500 -2200 0 0 ""]
 (
 	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
 	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
@@ -1260,7 +1260,7 @@ Element["" "Axial polar component (typically capacitor)," "D1G2" "ACY100P" 67500
 
 	)
 
-Element["" "Axial polar component (typically capacitor)," "D0G2" "ACY100P" 67500 10000 4500 -2200 0 100 ""]
+Element["" "Axial polar component (typically capacitor)," "D0G2" "ACY100P" 67500 10000 4500 -2200 0 0 ""]
 (
 	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
 	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
@@ -1276,7 +1276,7 @@ Element["" "Axial polar component (typically capacitor)," "D0G2" "ACY100P" 67500
 
 	)
 
-Element["" "Axial polar component (typically capacitor)," "D7G3" "ACY100P" 87500 80000 4500 -2200 0 100 ""]
+Element["" "Axial polar component (typically capacitor)," "D7G3" "ACY100P" 87500 80000 4500 -2200 0 0 ""]
 (
 	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
 	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
@@ -1292,7 +1292,7 @@ Element["" "Axial polar component (typically capacitor)," "D7G3" "ACY100P" 87500
 
 	)
 
-Element["" "Axial polar component (typically capacitor)," "D6G3" "ACY100P" 87500 70000 4500 -2200 0 100 ""]
+Element["" "Axial polar component (typically capacitor)," "D6G3" "ACY100P" 87500 70000 4500 -2200 0 0 ""]
 (
 	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
 	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
@@ -1308,7 +1308,7 @@ Element["" "Axial polar component (typically capacitor)," "D6G3" "ACY100P" 87500
 
 	)
 
-Element["" "Axial polar component (typically capacitor)," "D5G3" "ACY100P" 87500 60000 4500 -2200 0 100 ""]
+Element["" "Axial polar component (typically capacitor)," "D5G3" "ACY100P" 87500 60000 4500 -2200 0 0 ""]
 (
 	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
 	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
@@ -1324,7 +1324,7 @@ Element["" "Axial polar component (typically capacitor)," "D5G3" "ACY100P" 87500
 
 	)
 
-Element["" "Axial polar component (typically capacitor)," "D4G3" "ACY100P" 87500 50000 4500 -2200 0 100 ""]
+Element["" "Axial polar component (typically capacitor)," "D4G3" "ACY100P" 87500 50000 4500 -2200 0 0 ""]
 (
 	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
 	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
@@ -1340,7 +1340,7 @@ Element["" "Axial polar component (typically capacitor)," "D4G3" "ACY100P" 87500
 
 	)
 
-Element["" "Axial polar component (typically capacitor)," "D3G3" "ACY100P" 87500 40000 4500 -2200 0 100 ""]
+Element["" "Axial polar component (typically capacitor)," "D3G3" "ACY100P" 87500 40000 4500 -2200 0 0 ""]
 (
 	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
 	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
@@ -1356,7 +1356,7 @@ Element["" "Axial polar component (typically capacitor)," "D3G3" "ACY100P" 87500
 
 	)
 
-Element["" "Axial polar component (typically capacitor)," "D2G3" "ACY100P" 87500 30000 4500 -2200 0 100 ""]
+Element["" "Axial polar component (typically capacitor)," "D2G3" "ACY100P" 87500 30000 4500 -2200 0 0 ""]
 (
 	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
 	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
@@ -1372,7 +1372,7 @@ Element["" "Axial polar component (typically capacitor)," "D2G3" "ACY100P" 87500
 
 	)
 
-Element["" "Axial polar component (typically capacitor)," "D1G3" "ACY100P" 87500 20000 4500 -2200 0 100 ""]
+Element["" "Axial polar component (typically capacitor)," "D1G3" "ACY100P" 87500 20000 4500 -2200 0 0 ""]
 (
 	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
 	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
@@ -1388,7 +1388,7 @@ Element["" "Axial polar component (typically capacitor)," "D1G3" "ACY100P" 87500
 
 	)
 
-Element["" "Axial polar component (typically capacitor)," "D0G3" "ACY100P" 87500 10000 4500 -2200 0 100 ""]
+Element["" "Axial polar component (typically capacitor)," "D0G3" "ACY100P" 87500 10000 4500 -2200 0 0 ""]
 (
 	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
 	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
@@ -1404,7 +1404,7 @@ Element["" "Axial polar component (typically capacitor)," "D0G3" "ACY100P" 87500
 
 	)
 
-Element["" "Axial polar component (typically capacitor)," "D0G4" "ACY100P" 107500 10000 4500 -2200 0 100 ""]
+Element["" "Axial polar component (typically capacitor)," "D0G4" "ACY100P" 107500 10000 4500 -2200 0 0 ""]
 (
 	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
 	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
@@ -1420,7 +1420,7 @@ Element["" "Axial polar component (typically capacitor)," "D0G4" "ACY100P" 10750
 
 	)
 
-Element["" "Axial polar component (typically capacitor)," "D7G4" "ACY100P" 107500 80000 4500 -2200 0 100 ""]
+Element["" "Axial polar component (typically capacitor)," "D7G4" "ACY100P" 107500 80000 4500 -2200 0 0 ""]
 (
 	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
 	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
@@ -1436,7 +1436,7 @@ Element["" "Axial polar component (typically capacitor)," "D7G4" "ACY100P" 10750
 
 	)
 
-Element["" "Axial polar component (typically capacitor)," "D6G4" "ACY100P" 107500 70000 4500 -2200 0 100 ""]
+Element["" "Axial polar component (typically capacitor)," "D6G4" "ACY100P" 107500 70000 4500 -2200 0 0 ""]
 (
 	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
 	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
@@ -1452,7 +1452,7 @@ Element["" "Axial polar component (typically capacitor)," "D6G4" "ACY100P" 10750
 
 	)
 
-Element["" "Axial polar component (typically capacitor)," "D5G4" "ACY100P" 107500 60000 4500 -2200 0 100 ""]
+Element["" "Axial polar component (typically capacitor)," "D5G4" "ACY100P" 107500 60000 4500 -2200 0 0 ""]
 (
 	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
 	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
@@ -1468,7 +1468,7 @@ Element["" "Axial polar component (typically capacitor)," "D5G4" "ACY100P" 10750
 
 	)
 
-Element["" "Axial polar component (typically capacitor)," "D4G4" "ACY100P" 107500 50000 4500 -2200 0 100 ""]
+Element["" "Axial polar component (typically capacitor)," "D4G4" "ACY100P" 107500 50000 4500 -2200 0 0 ""]
 (
 	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
 	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
@@ -1484,7 +1484,7 @@ Element["" "Axial polar component (typically capacitor)," "D4G4" "ACY100P" 10750
 
 	)
 
-Element["" "Axial polar component (typically capacitor)," "D3G4" "ACY100P" 107500 40000 4500 -2200 0 100 ""]
+Element["" "Axial polar component (typically capacitor)," "D3G4" "ACY100P" 107500 40000 4500 -2200 0 0 ""]
 (
 	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
 	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
@@ -1500,7 +1500,7 @@ Element["" "Axial polar component (typically capacitor)," "D3G4" "ACY100P" 10750
 
 	)
 
-Element["" "Axial polar component (typically capacitor)," "D2G4" "ACY100P" 107500 30000 4500 -2200 0 100 ""]
+Element["" "Axial polar component (typically capacitor)," "D2G4" "ACY100P" 107500 30000 4500 -2200 0 0 ""]
 (
 	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
 	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
@@ -1516,7 +1516,7 @@ Element["" "Axial polar component (typically capacitor)," "D2G4" "ACY100P" 10750
 
 	)
 
-Element["" "Axial polar component (typically capacitor)," "D1G4" "ACY100P" 107500 20000 4500 -2200 0 100 ""]
+Element["" "Axial polar component (typically capacitor)," "D1G4" "ACY100P" 107500 20000 4500 -2200 0 0 ""]
 (
 	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
 	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
@@ -1532,7 +1532,7 @@ Element["" "Axial polar component (typically capacitor)," "D1G4" "ACY100P" 10750
 
 	)
 
-Element["" "Axial polar component (typically capacitor)," "D7G5" "ACY100P" 127500 80000 4500 -2200 0 100 ""]
+Element["" "Axial polar component (typically capacitor)," "D7G5" "ACY100P" 127500 80000 4500 -2200 0 0 ""]
 (
 	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
 	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
@@ -1548,7 +1548,7 @@ Element["" "Axial polar component (typically capacitor)," "D7G5" "ACY100P" 12750
 
 	)
 
-Element["" "Axial polar component (typically capacitor)," "D6G5" "ACY100P" 127500 70000 4500 -2200 0 100 ""]
+Element["" "Axial polar component (typically capacitor)," "D6G5" "ACY100P" 127500 70000 4500 -2200 0 0 ""]
 (
 	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
 	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
@@ -1564,7 +1564,7 @@ Element["" "Axial polar component (typically capacitor)," "D6G5" "ACY100P" 12750
 
 	)
 
-Element["" "Axial polar component (typically capacitor)," "D5G5" "ACY100P" 127500 60000 4500 -2200 0 100 ""]
+Element["" "Axial polar component (typically capacitor)," "D5G5" "ACY100P" 127500 60000 4500 -2200 0 0 ""]
 (
 	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
 	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
@@ -1580,7 +1580,7 @@ Element["" "Axial polar component (typically capacitor)," "D5G5" "ACY100P" 12750
 
 	)
 
-Element["" "Axial polar component (typically capacitor)," "D4G5" "ACY100P" 127500 50000 4500 -2200 0 100 ""]
+Element["" "Axial polar component (typically capacitor)," "D4G5" "ACY100P" 127500 50000 4500 -2200 0 0 ""]
 (
 	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
 	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
@@ -1596,7 +1596,7 @@ Element["" "Axial polar component (typically capacitor)," "D4G5" "ACY100P" 12750
 
 	)
 
-Element["" "Axial polar component (typically capacitor)," "D3G5" "ACY100P" 127500 40000 4500 -2200 0 100 ""]
+Element["" "Axial polar component (typically capacitor)," "D3G5" "ACY100P" 127500 40000 4500 -2200 0 0 ""]
 (
 	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
 	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
@@ -1612,7 +1612,7 @@ Element["" "Axial polar component (typically capacitor)," "D3G5" "ACY100P" 12750
 
 	)
 
-Element["" "Axial polar component (typically capacitor)," "D2G5" "ACY100P" 127500 30000 4500 -2200 0 100 ""]
+Element["" "Axial polar component (typically capacitor)," "D2G5" "ACY100P" 127500 30000 4500 -2200 0 0 ""]
 (
 	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
 	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
@@ -1628,7 +1628,7 @@ Element["" "Axial polar component (typically capacitor)," "D2G5" "ACY100P" 12750
 
 	)
 
-Element["" "Axial polar component (typically capacitor)," "D1G5" "ACY100P" 127500 20000 4500 -2200 0 100 ""]
+Element["" "Axial polar component (typically capacitor)," "D1G5" "ACY100P" 127500 20000 4500 -2200 0 0 ""]
 (
 	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
 	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
@@ -1644,7 +1644,7 @@ Element["" "Axial polar component (typically capacitor)," "D1G5" "ACY100P" 12750
 
 	)
 
-Element["" "Axial polar component (typically capacitor)," "D0G5" "ACY100P" 127500 10000 4500 -2200 0 100 ""]
+Element["" "Axial polar component (typically capacitor)," "D0G5" "ACY100P" 127500 10000 4500 -2200 0 0 ""]
 (
 	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
 	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
@@ -1660,7 +1660,7 @@ Element["" "Axial polar component (typically capacitor)," "D0G5" "ACY100P" 12750
 
 	)
 
-Element["" "Axial polar component (typically capacitor)," "D7G6" "ACY100P" 147500 80000 4500 -2200 0 100 ""]
+Element["" "Axial polar component (typically capacitor)," "D7G6" "ACY100P" 147500 80000 4500 -2200 0 0 ""]
 (
 	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
 	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
@@ -1676,7 +1676,7 @@ Element["" "Axial polar component (typically capacitor)," "D7G6" "ACY100P" 14750
 
 	)
 
-Element["" "Axial polar component (typically capacitor)," "D6G6" "ACY100P" 147500 70000 4500 -2200 0 100 ""]
+Element["" "Axial polar component (typically capacitor)," "D6G6" "ACY100P" 147500 70000 4500 -2200 0 0 ""]
 (
 	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
 	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
@@ -1692,7 +1692,7 @@ Element["" "Axial polar component (typically capacitor)," "D6G6" "ACY100P" 14750
 
 	)
 
-Element["" "Axial polar component (typically capacitor)," "D5G6" "ACY100P" 147500 60000 4500 -2200 0 100 ""]
+Element["" "Axial polar component (typically capacitor)," "D5G6" "ACY100P" 147500 60000 4500 -2200 0 0 ""]
 (
 	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
 	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
@@ -1708,7 +1708,7 @@ Element["" "Axial polar component (typically capacitor)," "D5G6" "ACY100P" 14750
 
 	)
 
-Element["" "Axial polar component (typically capacitor)," "D4G6" "ACY100P" 147500 50000 4500 -2200 0 100 ""]
+Element["" "Axial polar component (typically capacitor)," "D4G6" "ACY100P" 147500 50000 4500 -2200 0 0 ""]
 (
 	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
 	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
@@ -1724,7 +1724,7 @@ Element["" "Axial polar component (typically capacitor)," "D4G6" "ACY100P" 14750
 
 	)
 
-Element["" "Axial polar component (typically capacitor)," "D3G6" "ACY100P" 147500 40000 4500 -2200 0 100 ""]
+Element["" "Axial polar component (typically capacitor)," "D3G6" "ACY100P" 147500 40000 4500 -2200 0 0 ""]
 (
 	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
 	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
@@ -1740,7 +1740,7 @@ Element["" "Axial polar component (typically capacitor)," "D3G6" "ACY100P" 14750
 
 	)
 
-Element["" "Axial polar component (typically capacitor)," "D2G6" "ACY100P" 147500 30000 4500 -2200 0 100 ""]
+Element["" "Axial polar component (typically capacitor)," "D2G6" "ACY100P" 147500 30000 4500 -2200 0 0 ""]
 (
 	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
 	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
@@ -1756,7 +1756,7 @@ Element["" "Axial polar component (typically capacitor)," "D2G6" "ACY100P" 14750
 
 	)
 
-Element["" "Axial polar component (typically capacitor)," "D1G6" "ACY100P" 147500 20000 4500 -2200 0 100 ""]
+Element["" "Axial polar component (typically capacitor)," "D1G6" "ACY100P" 147500 20000 4500 -2200 0 0""]
 (
 	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
 	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
@@ -1772,7 +1772,7 @@ Element["" "Axial polar component (typically capacitor)," "D1G6" "ACY100P" 14750
 
 	)
 
-Element["" "Axial polar component (typically capacitor)," "D0G6" "ACY100P" 147500 10000 4500 -2200 0 100 ""]
+Element["" "Axial polar component (typically capacitor)," "D0G6" "ACY100P" 147500 10000 4500 -2200 0 0 ""]
 (
 	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
 	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
@@ -1788,7 +1788,7 @@ Element["" "Axial polar component (typically capacitor)," "D0G6" "ACY100P" 14750
 
 	)
 
-Element["" "Axial polar component (typically capacitor)," "D7G7" "ACY100P" 167500 80000 4500 -2200 0 100 ""]
+Element["" "Axial polar component (typically capacitor)," "D7G7" "ACY100P" 167500 80000 4500 -2200 0 0 ""]
 (
 	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
 	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
@@ -1804,7 +1804,7 @@ Element["" "Axial polar component (typically capacitor)," "D7G7" "ACY100P" 16750
 
 	)
 
-Element["" "Axial polar component (typically capacitor)," "D6G7" "ACY100P" 167500 70000 4500 -2200 0 100 ""]
+Element["" "Axial polar component (typically capacitor)," "D6G7" "ACY100P" 167500 70000 4500 -2200 0 0 ""]
 (
 	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
 	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
@@ -1820,7 +1820,7 @@ Element["" "Axial polar component (typically capacitor)," "D6G7" "ACY100P" 16750
 
 	)
 
-Element["" "Axial polar component (typically capacitor)," "D5G7" "ACY100P" 167500 60000 4500 -2200 0 100 ""]
+Element["" "Axial polar component (typically capacitor)," "D5G7" "ACY100P" 167500 60000 4500 -2200 0 0 ""]
 (
 	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
 	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
@@ -1836,7 +1836,7 @@ Element["" "Axial polar component (typically capacitor)," "D5G7" "ACY100P" 16750
 
 	)
 
-Element["" "Axial polar component (typically capacitor)," "D4G7" "ACY100P" 167500 50000 4500 -2200 0 100 ""]
+Element["" "Axial polar component (typically capacitor)," "D4G7" "ACY100P" 167500 50000 4500 -2200 0 0 ""]
 (
 	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
 	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
@@ -1852,7 +1852,7 @@ Element["" "Axial polar component (typically capacitor)," "D4G7" "ACY100P" 16750
 
 	)
 
-Element["" "Axial polar component (typically capacitor)," "D3G7" "ACY100P" 167500 40000 4500 -2200 0 100 ""]
+Element["" "Axial polar component (typically capacitor)," "D3G7" "ACY100P" 167500 40000 4500 -2200 0 0 ""]
 (
 	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
 	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
@@ -1868,7 +1868,7 @@ Element["" "Axial polar component (typically capacitor)," "D3G7" "ACY100P" 16750
 
 	)
 
-Element["" "Axial polar component (typically capacitor)," "D2G7" "ACY100P" 167500 30000 4500 -2200 0 100 ""]
+Element["" "Axial polar component (typically capacitor)," "D2G7" "ACY100P" 167500 30000 4500 -2200 0 0 ""]
 (
 	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
 	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
@@ -1884,7 +1884,7 @@ Element["" "Axial polar component (typically capacitor)," "D2G7" "ACY100P" 16750
 
 	)
 
-Element["" "Axial polar component (typically capacitor)," "D1G7" "ACY100P" 167500 20000 4500 -2200 0 100 ""]
+Element["" "Axial polar component (typically capacitor)," "D1G7" "ACY100P" 167500 20000 4500 -2200 0 0 ""]
 (
 	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
 	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
@@ -1900,7 +1900,7 @@ Element["" "Axial polar component (typically capacitor)," "D1G7" "ACY100P" 16750
 
 	)
 
-Element["" "Axial polar component (typically capacitor)," "D0G7" "ACY100P" 167500 10000 4500 -2200 0 100 ""]
+Element["" "Axial polar component (typically capacitor)," "D0G7" "ACY100P" 167500 10000 4500 -2200 0 0 ""]
 (
 	Pin[0 0 5500 3000 6100 3000 "1" "1" "square,edge2"]
 	Pin[10000 0 5500 3000 6100 3000 "2" "2" "edge2"]
