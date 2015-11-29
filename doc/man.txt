@@ -59,23 +59,21 @@
     with the following contents:
 
         15 14 13 12 11 10  9  8  7  6  5  4  3  2  1  0
-        I7 I6 I5 I4 I3 I2 I1 I0  *  *  M  U  I  S  Z  C
-        |_____________________||_____| |  |  |  |  |  |
-                   |              |    |  |  |  |  |  +-- carry
-                   |              |    |  |  |  |  +----- zero
-                   |              |    |  |  |  +-------- sign
-                   |              |    |  |  +----------- interrupt enable
-                   |              |    |  +-------------- user mode
-                   |              |    +----------------- MMU enable
-                   |              +---------------------- reserved
-                   +------------------------------------- interrupt mask
+         *  *  *  *  *  *  *  *  *  *  M  U  I  S  Z  C
+        |_____________ _____________|  |  |  |  |  |  |
+                      |                |  |  |  |  |  +-- carry
+                      |                |  |  |  |  +----- zero
+                      |                |  |  |  +-------- sign
+                      |                |  |  +----------- interrupt enable
+                      |                |  +-------------- user mode
+                      |                +----------------- MMU enable
+                      +---------------------------------- reserved
 
     The carry, zero and sign flags are altered by arithmetic or logic
     instructions.
 
     The interrupt enable flag dictates whether the CPU handles hardware
-    interrupts at all. In addition, for each hardware interrupt, a flag
-    bit (I0 to I7) can enable or disable individual interrupts.
+    interrupts at all.
 
     When the U flag (user mode) is set, certain instructions cannot be
     executed (e.g. I/O), the R6 register is not accessible and only the
@@ -110,7 +108,7 @@
         SW  | Processor status word
             |
         PC  | Synonymous for R7
-        SP  | For kernel mode code, synonymous for R6 and R5 for user mode.
+        SP  | For kernel mode code, synonymous for R6; R5 for user mode.
             | See .usr and .sys instructions in section 3.1.
 
   2) Instruction Format
@@ -483,17 +481,13 @@
 
   4) Interrupts and Traps
 
-    The CPU has a priority decoder that translates one of 8 interrupt
-    signals into a number.
-
     When an interrupt is triggered, the register R7 is pushed to the kernel
-    stack (R6 used as stack pointer), followed by the status word and finnaly
-    the interrupt number. The processor then writes the value 0x0002 to the
-    register R7 (the interrupt vector adress) and finally clears both the
-    user mode and interrupt enable flags. Thus an interrupt behaves similar
-    to the TMC instruction, except that it jumps to a different adress and
-    changes more flags. The TMC instruction can be used to return from an
-    interrupt after the interrupt number has been removed from the stack.
+    stack (R6 used as stack pointer), followed by the status word. The
+    processor then writes the value 0x0002 to the register R7 (the interrupt
+    vector adress) and finally clears both the user mode and interrupt enable
+    flags. Thus an interrupt behaves similar to the TMC instruction, except
+    that it jumps to a different adress and changes more flags. The TMC
+    instruction can be used to return from an interrupt.
 
     A trap occours when the TMC instruction is issued in user mode, user mode
     code attempts to execute a privileged instruction or an invalid opcode is
