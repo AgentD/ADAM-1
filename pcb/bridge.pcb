@@ -6,7 +6,7 @@ FileVersion[20070407]
 PCB["" 230000 190000]
 
 Grid[2500.0 0 0 1]
-Cursor[230000 145000 0.000000]
+Cursor[15000 90000 0.000000]
 PolyArea[3100.006200]
 Thermal[0.500000]
 DRC[1000 1000 1000 1000 1500 1000]
@@ -1159,6 +1159,18 @@ Layer(1 "top")
 	Line[220000 182500 225000 177500 1200 20 "clearline"]
 	Line[225000 177500 225000 65000 1200 20 "clearline"]
 	Line[225000 65000 217500 57500 1200 20 "clearline"]
+	Line[57500 167500 52500 162500 1200 20 "clearline"]
+	Line[52500 162500 52500 142500 1200 20 "clearline"]
+	Line[52500 142500 57500 137500 1200 20 "clearline"]
+	Line[47500 167500 42500 162500 1200 20 "clearline"]
+	Line[42500 162500 42500 142500 1200 20 "clearline"]
+	Line[42500 142500 47500 137500 1200 20 "clearline"]
+	Line[37500 167500 32500 162500 1200 20 "clearline"]
+	Line[32500 162500 32500 142500 1200 20 "clearline"]
+	Line[32500 142500 37500 137500 1200 20 "clearline"]
+	Line[27500 167500 22500 162500 1200 20 "clearline"]
+	Line[22500 162500 22500 142500 1200 20 "clearline"]
+	Line[22500 142500 27500 137500 1200 20 "clearline"]
 )
 Layer(2 "ground")
 (
@@ -1392,6 +1404,18 @@ Layer(6 "bottom")
 	Line[76250 146250 72500 142500 1200 20 "clearline"]
 	Line[72500 142500 10000 142500 1200 20 "clearline"]
 	Line[10000 142500 5000 137500 1200 20 "clearline"]
+	Line[57500 177500 52500 172500 1200 20 "clearline"]
+	Line[52500 172500 52500 152500 1200 20 "clearline"]
+	Line[52500 152500 57500 147500 1200 20 "clearline"]
+	Line[47500 177500 42500 172500 1200 20 "clearline"]
+	Line[42500 172500 42500 152500 1200 20 "clearline"]
+	Line[42500 152500 47500 147500 1200 20 "clearline"]
+	Line[37500 177500 32500 172500 1200 20 "clearline"]
+	Line[32500 172500 32500 152500 1200 20 "clearline"]
+	Line[32500 152500 37500 147500 1200 20 "clearline"]
+	Line[27500 177500 22500 172500 1200 20 "clearline"]
+	Line[22500 172500 22500 152500 1200 20 "clearline"]
+	Line[22500 152500 27500 147500 1200 20 "clearline"]
 )
 Layer(7 "outline")
 (
@@ -1635,6 +1659,46 @@ NetList()
 	(
 		Connect("CBUS_H-MRD")
 		Connect("CBUS_L-MRD")
+	)
+	Net("N17" "(unknown)")
+	(
+		Connect("CBUS_H-17")
+		Connect("CBUS_L-17")
+	)
+	Net("N18" "(unknown)")
+	(
+		Connect("CBUS_H-18")
+		Connect("CBUS_L-18")
+	)
+	Net("N19" "(unknown)")
+	(
+		Connect("CBUS_H-19")
+		Connect("CBUS_L-19")
+	)
+	Net("N20" "(unknown)")
+	(
+		Connect("CBUS_H-20")
+		Connect("CBUS_L-20")
+	)
+	Net("N21" "(unknown)")
+	(
+		Connect("CBUS_H-21")
+		Connect("CBUS_L-21")
+	)
+	Net("N22" "(unknown)")
+	(
+		Connect("CBUS_H-22")
+		Connect("CBUS_L-22")
+	)
+	Net("N23" "(unknown)")
+	(
+		Connect("CBUS_H-23")
+		Connect("CBUS_L-23")
+	)
+	Net("N24" "(unknown)")
+	(
+		Connect("CBUS_H-24")
+		Connect("CBUS_L-24")
 	)
 	Net("NSHIFT" "(unknown)")
 	(
