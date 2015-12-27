@@ -218,12 +218,15 @@
     ADD dst, imm            op=0x10 I=1     dst += imm
     ADC dst, src            op=0x11 I=0     dst += src + carry
     ADC dst, imm            op=0x11 I=1     dst += imm + carry
+    ADD dst, src, imm       op=0x0E I=1     dst = src + imm
+    ADC dst, src, imm       op=0x0F I=1     dst = src + imm + carry
         carry: carry output of adder
         zero:  set if result is 0
         sign:  set to MSB of result
 
     ASS dst, src            op=0x12 I=0     dst += src
     ASS dst, imm            op=0x12 I=1     dst += imm
+    ASS dst, src, imm       op=0x13 I=1     dst = src + imm
         Add without carry, status bits are left unchanged
 
     SUB dst, src            op=0x13 I=0     dst += twos_comp(src)
@@ -261,10 +264,13 @@
 
     ANL dst, src            op=0x1D I=0     dst &= src
     ANL dst, imm            op=0x1D I=1     dst &= imm
+    ANL dst, src, imm       op=0x14 I=1     dst = src & imm
     ORL dst, src            op=0x1E I=0     dst |= src
     ORL dst, imm            op=0x1E I=1     dst |= imm
+    ORL dst, src, imm       op=0x15 I=1     dst = src | imm
     XOR dst, src            op=0x1F I=0     dst ^= src
     XOR dst, imm            op=0x1F I=1     dst ^= imm
+    XOR dst, src, imm       op=0x16 I=1     dst = src ^ imm
         zero: set if result is 0
         sign: set to MSB of result
 
@@ -317,9 +323,7 @@
 
 
     unused opcodes with immediate:
-        0x0E, 0x0F,
-        0x13, 0x14, 0x15, 0x16, 0x17, 0x18, 0x19, 0x1A, 0x1B, 0x1C,
-        0x20
+        0x17, 0x18, 0x19, 0x1A, 0x1B, 0x1C, 0x20
 
     entirely unused opcodes:
         0x27, 0x28, 0x29, 0x2A, 0x2B, 0x2C, 0x2D, 0x2E, 0x2F,
@@ -382,6 +386,9 @@
 
     SUB dst, imm                                ADD dst, -imm
     SBC dst, imm                                ADC dst, ~imm
+
+    SUB dst, src, imm                           ADD dst, src, -imm
+    SBC dst, src, imm                           ADC dst, src, ~imm
 
     INC reg                                     INC reg, reg
     DEC reg                                     DEC reg, reg
