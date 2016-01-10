@@ -74,12 +74,58 @@
     used for general purpose computations, except for R7, which is used by the
     control logic as program counter and R6 (kernel mode stack pointer).
 
+    Using GP registers as program counter and stack pointer saves a lot of
+    hardware and simplifies the instruction set design. The registers can be
+    simply fed through the ALU for incrementing and decrementing. No special
+    treatment or special counter registers are needed. The CPU does not need
+    special jump instructions. A jump can be performed by loading a value
+    into R7 (or a relative jump by adding a value). Generic register relative
+    load/store instruction with pre or post increment/decrement can be
+    provided instead of special PUSH/POP instructions. This has the advantage
+    that high level language constructs like x = *(p++) can be implemented in
+    a single instruction which at the same time serves as a stack POP
+    instruction.
 
 
 
-    Below is a drawing illustrating the actual hardware design that
-    implements the CPU architecture.
 
+    The execution unit of the CPU is actually implemented by a number
+    of PCB modules, where each module has its own copy of the A and B
+    operand registers (74HC574) and the output value is "held back" by
+    a tri-state buffer (typically 74HC245).
+
+
+         DATA
+         BUS
+         | |
+         | |/|____________________________________________
+         | |  __________________________________________  |
+         | |\|   ___      _________      ___________    | |
+         | |__|\|   |__|\|         |    |           |___| |
+         | |__  | A |__  |         |__|\| Tri-state |_____|
+         | |  |/|___|  |/|  Logic  |__  |   Buffer  |
+         | |__|\|   |__|\|         |  |/|___________|
+         | |__  | B |__  |         |
+         | |  |/|___|  |/|_________|
+         | |
+
+
+    All A operand register on all modules are triggered at the same time
+    and all B operand registers are triggered at the same time, i.e. there
+    is one line on the control bus to latch all A operands, and one to latch
+    all B operands.
+
+    The output enable lines of the tri-state buffers on the modules are
+    triggered individually.
+
+
+
+    For simplicity, the modules are further split up into two halves,
+    i.e two PCBs where each implements an operation for 8 bit instead
+    of 16 bit. Wiring the modules up symetrically and cross connecting
+    lines like carry output from the lower half to carry input of the
+    upper half yields a 16 bit CPU that could theoretically be further
+    extended to 24 or 32 bit.
 
                                 .
             HIGHER-HALF         .     LOWER-HALF
@@ -131,20 +177,11 @@
                      |_____________________|
 
 
-    Most of the CPU utilizes a bit-slice design and consits of individual
-    8 bit modules that can be cascaded. The 8 bit modules are wired to a
-    control bus using 2*20 pin connectors and each half has its own 8 bit
-    tri-state data bus. The control busses are merged by a "bridge module"
-    that simply wires the control bus lines together.
+    The "bridge module" implements the cross wiring of lines like carry input
+    and output. To further simplify the control logic, a "decode module"
+    decodes a 5 bit source select address into individual output enable lines
+    for the modules.
 
-    Every module has two temporary operand registers, A and B. All A
-    registers are triggered at the same time and all B registers are triggered
-    at the same time, but each module output can be selected individually.
-
-    The control bus has a 5 bit source select address for selecting modules
-    to write results to the data bus, a 3 bit destination register index and
-    write control lines for writing the current bus word to one or more of the
-    following: GP register, A operand, B operand, memory bus, I/O bus.
 
   1) Shift register module
 
@@ -180,7 +217,8 @@
     bus TEMP line.
 
     The module only implements right shift/rotate as a left shift/rotate can
-    be implemented by adding a number to itself.
+    be implemented via the adder module by loading a number into both
+    A and B operand simultaneously (x<<1 = x*2 = x+x).
 
   2) Logic module
 
