@@ -9,12 +9,12 @@
       1.2...Assembly names
     2.......Instruction Format
     3.......CPU Instruction Set
-      3.1...Pseudo instruction and assembler directives
-      3.2...Assember expressions
-      3.3...Labels and symbols
-      3.4...Octet strings
-      3.5...UTF-16 strings
-    4.......Interrupts and Traps
+    4...Pseudo instruction and assembler directives
+      4.1...Assember expressions
+      4.2...Labels and symbols
+      4.3...Octet strings
+      4.4...UTF-16 strings
+    5.......Interrupts and Traps
 
 
 
@@ -89,8 +89,8 @@
     registers or memory. A special instruction exists for setting or clearing
     the C, Z, S and I flags.
 
-    The remaining bits marked as reserved will always read zero and cannot
-    be changed.
+    The remaining bits are reserved for future use. They cannot be written and
+    reading them results in undefined values.
 
   1.2) Assembly names
 
@@ -333,7 +333,7 @@
         0x3A, 0x3B, 0x3C, 0x3D, 0x3E, 0x3F
 
 
-  3.1) Pseudo instruction and assembler directives
+  4) Pseudo instruction and assembler directives
 
     .usr                user mode               assume stack pointer is R5
     .sys                kernel mode             assume stack pointer is R6
@@ -447,7 +447,7 @@
     S.<instructon>      skip mode 7             execute if sign is set
 
 
-  3.2) Assember expressions
+  4.1) Assember expressions
 
     In place of immediate values, the assembler supports simple arithmetic
     expressions that can be evaluated at translation time.
@@ -484,7 +484,7 @@
     instruction and '$' resolves to the absolute address of the current
     instruction.
 
-  3.3) Labels and symbols
+  4.2) Labels and symbols
 
     The assembler requires all labels that are not defined within an assembly
     file to be appear in an import (.imp) pseudo instruction. If the target
@@ -495,7 +495,7 @@
     a symbol tables, the labels and their addresses are written to that symbol
     table.
 
-  3.4) Octet strings
+  4.3) Octet strings
 
     The ASCII (American Standards Code for Information Interchange) specifies
     a portable way of encoding a wide range of characters in 7 bit numbers.
@@ -560,7 +560,7 @@
     with a 0 value (character code 0) at the end.
 
 
-  3.5) UTF-16 strings
+  4.4) UTF-16 strings
 
     UTF-16 is standard means for encoding unicode characters in 16 bit
     words (1 word for the base plane, max. 2 words for everything else)
@@ -577,7 +577,7 @@
     arbitrary unicode code point.
 
 
-  4) Interrupts and Traps
+  5) Interrupts and Traps
 
     When an interrupt is triggered, the register R7 is pushed to the kernel
     stack (R6 used as stack pointer), followed by the status word. The
