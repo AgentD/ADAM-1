@@ -6,7 +6,8 @@
     0.......Data quantities
     1.......CPU Registers
       1.1...Status Word
-      1.2...Assembly names
+      1.2...Constants and Control Registers
+      1.3...Assembly names
     2.......Instruction Format
     3.......CPU Instruction Set
     4...Pseudo instruction and assembler directives
@@ -38,22 +39,21 @@
   1) CPU Registers
 
     The CPU has a total of 8 general purpose registers (R0...R7). The
-    registers are treated equally and can be used by all instructions,
-    however the control logic uses some of the register for internal
-    purposes. Specifically, R7 is used as program counter. This removes
-    the need for special jump instructions and special program counter
-    hardware, as a value can be simply written into R7 or added to R7.
+    registers are treated equally and can be used by all instructions.
 
-    The register R6 is intended as kernel stack pointer. When a trap or
-    interrupt occoures, the programm counter, status word and trap/interrupt
-    number are pushed to the assumed kernel stack that R6 points to. If the
-    user mode flag is set, all instructions accessing R6 cause a trap numer 1.
+    The control logic uses R7 as program counter. This removes the need
+    for special jump instructions and special program counter hardware,
+    as a value can be simply written into R7 or added to R7.
 
-    Other than that, the machine has no dedicated PUSH/POP instructions but
-    instead provides indirect post-increment or pre-decrement addressing modes
-    that can be used for building a stack. The assembler provides pseudo
-    instructions that assume that R6 as stack pointer in kernel mode and R5
-    in user mode.
+    The machine also doesn't have a dedicated stack pointer and PUSH/POP
+    instructions but instead provides indirect post-increment or pre-decrement
+    addressing modes that can be used for building a stack with any register
+    as stack pointer.
+
+    However, the control logic uses the register R6 as kernel stack pointer
+    when a trap or interrupt occoures or user mode wishes to transfer machine
+    control to the kernel, so it might be desireable to use R6 as stack
+    pointer in kernel mode code.
 
   1.1) Status Word
 
@@ -78,8 +78,8 @@
     interrupts at all.
 
     When the U flag (user mode) is set, certain instructions cannot be
-    executed (e.g. I/O), the R6 register is not accessible and only the
-    S, Z and C flags in the status register can be changed.
+    executed (e.g. I/O) and only the S, Z and C flags in the status register
+    can be changed.
 
     The M flag can be used to enable or disable a memory management unit (if
     one is attached to the CPU).
@@ -92,7 +92,18 @@
     The remaining bits are reserved for future use. They cannot be written and
     reading them results in undefined values.
 
-  1.2) Assembly names
+  1.2) Constants and Control Registers
+
+    The CPU has a number of "constants" that are used by the control logic.
+    Some of them are hard wired (e.g. 0 for clearing registers or +1 for
+    incrementing/decrementing) and some are actually registers (e.g.
+    interrupt/trap handler address). Those registers are referred to as
+    "control registers".
+
+    There are 5 hard wired constants and 3 control registers. The control
+    registers can be written only if the user mode flag is cleared.
+
+  1.3) Assembly names
 
     The following register names can be used in assembly:
 
@@ -107,11 +118,19 @@
         R6  | General purpose register 6 (kernel stack pointer)
         R7  | General purpose register 7 (program counter)
             |
+        C0  | Constant value 0x0000
+        C1  | Constant value 0x0001
+        C2  | Constant value 0x0002
+        C3  | Constant value 0x0003
+        CL  | Constant value 0x00FF (low byte mask)
+        CR0 | Control register 0 (syscall handler address)
+        CR1 | Control register 1 (interrupt/trap handler address)
+        CR2 | Control register 2 (kernel stack pointer backup)
+            |
         SW  | Processor status word
             |
         PC  | Synonymous for R7
-        SP  | For kernel mode code, synonymous for R6; R5 for user mode.
-            | See .usr and .sys instructions in section 3.1.
+        SP  | Synonymous for R6
 
   2) Instruction Format
 
@@ -145,6 +164,11 @@
       1 1 0  Skip instruction if zero flag is NOT set
       1 1 1  Skip instruction if sign flag is NOT set
 
+
+    In most cases, register indices 0 to 7 refere to GP resiters R0 to R7.
+    When accessing the constant/control register module, the values 0 to 4
+    refere to the 5 constant values (0, 1, 2, 3, 0x00FF) and values 5 to 7
+    refere to the control registers CR0 to CR2.
 
     If the destination index is used for addressing flag bits, the
     destionation values are interpreted as follows:
@@ -199,7 +223,6 @@
     MOV @dst+imm, src       op=0x08 I=1     dst[imm] := src
     MOV @dst+imm, @src      op=0x09 I=1     dst[imm] := *(src)
 
-    NUL dst                 op=0x08 I=0     dst := 0x0000
     MKW dst, src            op=0x09 I=0     dst := dst | (src & 0x00FF)<<8
 
     MOV dst, SW             op=0x0A I=0     dst := SW
@@ -293,15 +316,19 @@
     TMC src                 op=0x22 I=0
     TMC imm                 op=0x22 I=1
       if user mode flag is set, atomically execute the following:
-        1. *(R6--) := R7
-        2. *(R6--) := SW
-        3. *(R6--) := <src|imm>
-        4. R7 = 0x0004
-        5. clear user mode flag
+        1. temp := R6
+        2. R6 := CR2
+        3. *(R6--) := temp
+        4. *(R6--) := R7
+        5. *(R6--) := SW
+        6. *(R6--) := <src|imm>
+        7. R7 := CR0
+        8. clear user mode flag
 
       if user mode flag is cleared, atomically execute the following:
         1. SW := *(++R6)
         2. R7 := *(++R6)
+        3. R6 := *(++R6)
 
     CMP dst, src            op=0x23 I=0     compare register values
     CMP dst, imm            op=0x23 I=1     compare register with immediate
@@ -323,20 +350,24 @@
     MOV dst, >imm           op=0x26 I=1     read from immediate I/O address
         If used in user mode, a trap number 1 is generated.
 
+    MOV dst, Vxx            op=0x08 I=0     read a constant or
+    MOV dst, CRx                            control register
+
+    MOV CRx, src            op=0x27 I=0     write a control register
+    MOV CRx, imm            op=0x27,I=1
+        If used in user mode, a trap number 1 is generated
 
     unused opcodes with immediate:
         0x17, 0x18, 0x19, 0x1A, 0x1B, 0x1C, 0x20
 
     entirely unused opcodes:
-        0x27, 0x28, 0x29, 0x2A, 0x2B, 0x2C, 0x2D, 0x2E, 0x2F,
+        0x28, 0x29, 0x2A, 0x2B, 0x2C, 0x2D, 0x2E, 0x2F,
         0x30, 0x31, 0x32, 0x33, 0x34, 0x35, 0x36, 0x37, 0x38, 0x39,
         0x3A, 0x3B, 0x3C, 0x3D, 0x3E, 0x3F
 
 
   4) Pseudo instruction and assembler directives
 
-    .usr                user mode               assume stack pointer is R5
-    .sys                kernel mode             assume stack pointer is R6
     .org <exp>          set base address        assume program base address
 
     .def <name> <exp>
@@ -377,12 +408,13 @@
     <name> ':'                                  label definition
 
     NOP                 no operation            MOV R0, R0
+    NUL dst             clear register          MOV dst, V0
 
-    SEX reg                                     SEX SP, reg
-    SEX imm                                     SEX SP, imm
+    SEX reg                                     SEX R6, reg
+    SEX imm                                     SEX R6, imm
 
     RET reg             return from subroutine  MOV R7, @+reg
-    RET                                         MOV R7, @+SP
+    RET                                         MOV R7, @+R6
 
     JMP reg                                     MOV R7, reg
     JMP @reg                                    MOV R7, @reg
@@ -417,15 +449,15 @@
     PSH dst, imm        push immediate value    MOV @dst-, imm
     PSH dst, $SW        push status word        MOV @dst-, SW
 
-    PSH src                                     MOV @SP-, src
-    PSH imm                                     MOV @SP-, imm
-    PSH SW                                      MOV @SP-, SW
+    PSH src                                     MOV @R6-, src
+    PSH imm                                     MOV @R6-, imm
+    PSH SW                                      MOV @R6-, SW
 
     POP dst, src        pop register            MOV dst, @+src
     POP SW, src         pop status word         MOV SW, @+src
 
-    POP dst                                     MOV dst, @+SP
-    POP SW                                      MOV SW, @+SP
+    POP dst                                     MOV dst, @+R6
+    POP SW                                      MOV SW, @+R6
 
     NAY C               clear flag              SFL 0
     NAY Z                                       SFL 1
@@ -579,23 +611,43 @@
 
   5) Interrupts and Traps
 
-    When an interrupt is triggered, the register R7 is pushed to the kernel
-    stack (R6 used as stack pointer), followed by the status word. The
-    processor then writes the value 0x0002 to the register R7 (the interrupt
-    vector adress) and finally clears both the user mode and interrupt enable
-    flags. Thus an interrupt behaves similar to the TMC instruction, except
-    that it jumps to a different adress and changes more flags. The TMC
-    instruction can be used to return from an interrupt.
+    When a hardware interrupt or a processor trap (e.g. illegal op-code) is
+    triggered, the CPU effectively performs the following operations:
 
-    A trap occours when the TMC instruction is issued in user mode, user mode
-    code attempts to execute a privileged instruction or an invalid opcode is
-    encountered. Traps behave exactely like interrupts, except the CPU jumps
-    to adress 0x0004 and does NOT clear the interrupt enable flag (only the
-    user mode flag). The trap number pushed onto the stack is either generated
-    by the CPU or by the TMC instruction.
+        If user mode flag is set:
+            1. temp := R6
+            2. R6 := CR2
+            3. *(R6--) := temp
+            4. *(R6--) := R7
+            5. *(R6--) := SW
+            6. *(R6--) := <trap number>
+            7. R7 := CR1
+            8. clear user mode and interrupt enable flags
+        otherwise:
+            1. *(R6--) := R6
+            2. *(R6--) := R7
+            3. *(R6--) := SW
+            4. *(R6--) := <trap number>
+            4. R7 := CR1
+            5. clear interrupt enable flags
 
-    The following trap numbers are generated by the CPU internally:
-        0   Illegal OP-Code encountered
-        1   Privileged instruction encountered in user mode
-        2   MMU Page fault
+
+    The following trap numbers are generated by the CPU:
+        0   A hardware interrupt occoured
+        1   Illegal OP-Code encountered
+        2   Privileged instruction encountered in user mode
+        3   MMU Page fault
+
+
+
+    A handler routine can return from an interrupt or trap by using the
+    TMC instruction after removing the trap number from the stack.
+
+    In case of a trap, execution of the current instruction is aborted.
+    Returning from the trap hadler causes the same instruction to be
+    executed again.
+
+    In case of a hardware interrupt, execution of the current instruction
+    is completed before jumping into the handler routine. Returning from
+    the interrupt handler causes the next instruction to be executed.
 
