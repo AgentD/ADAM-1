@@ -65,6 +65,7 @@
     REGW  - Pulled high to write to a GP register
     BWR   - Pulled low to write to the B operand
     AWR   - Pulled low to write to the A operand
+    WC    - Pulled high to write to a control register
 
 
  3) Carry and shift register ripple lines
