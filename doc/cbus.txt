@@ -58,14 +58,19 @@
   The following control lines are driven directly by the CPU control logic,
   or one of the front panel switches:
 
-    IOWD  - Pulled low to write to the I/O bus
-    MEMW  - Pulled low to write to the memory bus
+    IOWD  - Pulled low to write to the I/O bus, connected to the external bus
+    MEMW  - Pulled low to write to the memory bus, connected to the
+            external bus
     AINV  - Pulled high to invert the second adder operand when writing
             to the B register
-    REGW  - Pulled high to write to a GP register
-    BWR   - Pulled low to write to the B operand
-    AWR   - Pulled low to write to the A operand
-    WC    - Pulled high to write to a control register
+    REGW  - Pulled high to write to a GP register. Falling edge actually
+            triggers the latches.
+    BWR   - Pulled low to write to the B operand. Rising edge actualy triggers
+            the latches.
+    AWR   - Pulled low to write to the A operand. Rising edge actualy triggers
+            the latches.
+    WC    - Pulled high to write to a control register. Falling edge actually
+            triggers the latches.
 
 
  3) Carry and shift register ripple lines
