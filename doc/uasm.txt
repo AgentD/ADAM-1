@@ -1,0 +1,101 @@
+
+  Micro Assembler
+  ***************
+
+ A single source line in the micro assembly specifies the state of the control
+ lines during a clock cycle.
+
+ A line consists of a pipe seperated sequence of keywords in the shape of:
+
+    <RDMOD>|<SRC>|<DST>|<FLAGS>
+
+ An arbitrary number of space charactes can be inserted between keywords.
+
+
+
+ RDMOD specifies a module to switch onto the bus (upper 2 bit of "src") and
+ may consist of one of the following keywords:
+      CWD   - constant and control register module
+      ADD   - adder module (ALU 0)
+      AND   - and logic module (ALU 1)
+      ORV   - or logic module (ALU 2)
+      XOR   - xor logic module (ALU 3)
+      TMP   - temp register
+      SHV   - shift register
+      IOR   - I/O read
+      MEM   - memory read
+      REG   - regster
+      PSW   - status word
+      *     - hold the state of the previous line
+
+
+ The values for SRC and DST specify the lower 3 bit of "src" and "dst" on
+ the control bus respecitively.
+
+ The can either be numeric values in the range 0 to 7, the letter 'S'
+ specifes the source index from the current instruction word, the letter 'D'
+ specifies the destination index. The character '*' specifies that the
+ previous sate should be held.
+
+ SRC and DST cannot be both 'D' or 'S'.
+
+
+ The <FLAGS> field is itself a pipe ('|') seperated list of one or more of
+ the following keywords:
+
+    FIN     - load next instruction after this cycle
+
+    IOWD    - write bus word to I/O address in A operand
+    MEMW    - write bus word to memory location in A operand
+    AINV    - invert adder B operand when latching
+    REGW    - write bus word to register
+    BWR     - write bus word to B operand
+    AWR     - write bus word to A operand
+    WC      - write bus word to control register
+
+    TPW     - toggle psw value (depending on DST)
+    CLU     - clear user bit
+    SEU     - set user bit
+    CINH    - inhibit carry (temporarily force to 0)
+    COV     - override carry (temporarily force to 1)
+    WSW     - set entire status word to bus word
+    WSU     - set unprivileged status bits to bus word
+    UAF     - update all ALU flags
+    ULF     - update logic flags
+
+
+
+ In addition to such bus state lines, a line can also contain meta directives
+ for the micro assembler. Those directives tart with a '%' sign.
+
+ The following directives are currently supported:
+
+
+    %opdef <opcode>
+
+        Start defining the instruction sequence for an opcode. The opcode
+        number is specified in two digit hexadecimal notation wihtout any
+        kind of prefix.
+
+    %include <filename>
+
+        Process the contents of the given file and treat it, as if they
+        were listed instead of the directive.
+
+    %if <user|pagefault|immediate>
+
+        Execute the following statements if:
+         - the user mode flag is set
+         - a pagefault is asserted
+         - an immediate value was specifed for this opcode
+
+    %else
+
+        Execute the following statements if the condition of the previous
+        "%if" does not hold.
+
+    %endif
+
+        Termianate an %if/%else conditional block and execute the following
+        statements independend of that condition.
+
