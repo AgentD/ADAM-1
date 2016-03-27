@@ -249,10 +249,11 @@
         zero:  set if result is 0
         sign:  set to MSB of result
 
-    ASS dst, src            op=0x12 I=0     dst += src
-    ASS dst, imm            op=0x12 I=1     dst += imm
-    ASS dst, src, imm       op=0x13 I=1     dst = src + imm
-        Add without carry, status bits are left unchanged
+    CAA dst, src            op=0x12 I=0     dst += src
+    CAA dst, imm            op=0x12 I=1     dst += imm
+    CAA dst, src, imm       op=0x13 I=1     dst = src + imm
+        Compute Absolute Address. Add without carry, status bits are left
+        unchanged.
 
     SUB dst, src            op=0x13 I=0     dst += twos_comp(src)
     SBC dst, src            op=0x14 I=0     dst += not(src) + carry
@@ -312,8 +313,7 @@
         1. MOV @dst-, R7
         2. MOV R7, src|imm
 
-    TMC                     op=0x22 I=0     transfer machine control
-    TMC src                 op=0x22 I=0
+    TMC src                 op=0x22 I=0     transfer machine control
     TMC imm                 op=0x22 I=1
       if user mode flag is set, atomically execute the following:
         1. temp := R6
@@ -343,18 +343,18 @@
               cleared if they do have overlapping bits
         sign: set to MSB of destination ANDed to MSB of source
 
-    MOV >imm, src           op=0x0D I=1     write to immediate I/O address
-    MOV >dst, src           op=0x25 I=0     write register to I/O bus
-    MOV >dst, imm           op=0x25 I=1     write immediate to I/O bus
-    MOV dst, >src           op=0x26 I=0     read from I/O bus
-    MOV dst, >imm           op=0x26 I=1     read from immediate I/O address
+    IOW >imm, src           op=0x0D I=1     write to immediate I/O address
+    IOW >dst, src           op=0x25 I=0     write register to I/O bus
+    IOW >dst, imm           op=0x25 I=1     write immediate to I/O bus
+    IOR dst, >src           op=0x26 I=0     read from I/O bus
+    IOR dst, >imm           op=0x26 I=1     read from immediate I/O address
         If used in user mode, a trap number 1 is generated.
 
-    MOV dst, Vxx            op=0x08 I=0     read a constant or
-    MOV dst, CRx                            control register
+    LSD dst, Vxx            op=0x08 I=0     Load System Data
+    LSD dst, CRx
 
-    MOV CRx, src            op=0x27 I=0     write a control register
-    MOV CRx, imm            op=0x27,I=1
+    SSD CRx, src            op=0x27 I=0     Set System Data
+    SSD CRx, imm            op=0x27 I=1
         If used in user mode, a trap number 1 is generated
 
     unused opcodes with immediate:
@@ -405,7 +405,7 @@
     <name> ':'                                  label definition
 
     NOP                 no operation            MOV R0, R0
-    NUL dst             clear register          MOV dst, V0
+    NUL dst             clear register          LSD dst, V0
 
     SEX reg                                     SEX R6, reg
     SEX imm                                     SEX R6, imm
@@ -419,9 +419,9 @@
     JMP @imm                                    MOV R7, @imm
     JMP @reg+imm                                MOV R7, @reg+imm
 
-    HOP reg             relative jump           ASS R7, reg
-    HOP imm             relative jump           ASS R7, imm
-    HOP label           relative jump to label  ASS R7, label-$$
+    HOP reg             relative jump           CAA R7, reg
+    HOP imm             relative jump           CAA R7, imm
+    HOP label           relative jump to label  CAA R7, label-$$
 
     SUB dst, imm                                ADD dst, -imm
     SBC dst, imm                                ADC dst, ~imm
