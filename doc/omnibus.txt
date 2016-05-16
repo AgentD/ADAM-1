@@ -1,0 +1,129 @@
+
+ OMNIBUS
+ *******
+
+  The CPU has been redesigned to use a single 64 pin DIN41612 backplane bus.
+  The previous prototype used a split control & data bus with one ribbon cable
+  each and had the CPU split into a high-half and a low-half, connected by a
+  single module that attached to all four cables (it was cheap but turned out
+  quite messy).
+
+  The unified bus "OMNIBUS" contains data & address lines, control lines
+  and supply voltage. The pinout is as follows:
+
+           65   1
+        VCC o   o VCC
+         D0 o   o
+         D1 o   o
+         D2 o   o
+         D3 o   o
+         D4 o   o
+         D5 o   o
+         D6 o   o
+         D7 o   o
+         D8 o   o
+         D9 o   o
+        D10 o   o
+        D11 o   o
+        D12 o   o
+        D13 o   o
+        D14 o   o
+        D15 o   o
+         A0 o   o
+         A1 o   o
+         A2 o   o
+         A3 o   o
+         A4 o   o
+         B2 o   o MEMW
+         B1 o   o
+         B1 o   o
+        CIN o   o MMU
+       COUT o   o USR
+       AINV o   o PF
+       REGW o   o INT
+        BWR o   o WC
+        AWR o   o SOUT
+        GND o   o GND
+           96   32
+
+ 1) Address line
+
+  There are 8 address lines on the bus, 5 source select lines (A0...A4) and
+  3 destination select lines (B0...B2).
+
+  The source address determines what module output to write onto the bus:
+
+        000   constant 0
+        001   constant 1
+        002   constant 2
+        003   constant 3
+        004   constant 4
+        005   control register 0
+        006   control register 1
+        007   control register 2
+        010   adder output
+        011   logic board output 0
+        012   logic board output 1
+        013   logic board output 2
+        014   operand B, byte swapped
+        015   operand B
+        016   operand B, rotated right through carry
+        017   operand A
+        020   GP register 0
+        021   GP register 1
+        022   GP register 2
+        023   GP register 3
+        024   GP register 4
+        025   GP register 5
+        026   GP register 6
+        027   GP register 7
+        030   status word
+        031   --unassigned--
+        032   --unassigned--
+        033   --unassigned--
+        034   --unassigned--
+        035   --unassigned--
+        036   --unassigned--
+        037   memory read
+
+
+  The destination address is used by the register and control register module
+  as destination register address and by the status word module for
+  addressing bits.
+
+
+ 2) Control lines driven by the control logic
+
+  The following control lines are driven directly by the CPU control logic
+  or one of the front panel switches:
+
+    MEMW  - Pulled low to write to the memory bus, connected to the
+            external bus
+    AINV  - Pulled high to invert the second adder operand when writing
+            to the B register
+    REGW  - Pulled high to write to a GP register. Falling edge actually
+            triggers the latches.
+    BWR   - Pulled low to write to the B operand. Rising edge actualy triggers
+            the latches.
+    AWR   - Pulled low to write to the A operand. Rising edge actualy triggers
+            the latches.
+    WC    - Pulled high to write to a control register. Falling edge actually
+            triggers the latches.
+
+
+ 3) Status bits
+
+    CIN  - Current carry from status word, used by adder and shift modules
+
+    COUT - Carry output of the adder module
+
+    SOUT - MSB shifted out by shift module
+
+    MMU  - MMU enable flag from status word
+
+    USR  - User mode flag from status word
+
+    PF   - Pulled low by peripheral logic to trigger a pagefault
+
+    INT  - Pulled low by peripheral logic to trigger a hardware interrupt
+

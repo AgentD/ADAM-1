@@ -18,19 +18,23 @@
   Directory Layout
   ****************
 
-    README       - This file
-    pcb/         - Contains geda PCB files for the CPU modules
-    doc/         - Contains all the documentation
-    doc/pcb/     - Contains circuit descriptions for the files in "pcb/"
-    doc/man.txt  - Programmers Manual
-    doc/cbus.txt - Information on the CPU control bus
+    README          - This file
+    pcb/            - Contains geda PCB files for the CPU modules
+    doc/            - Contains all the documentation
+    doc/pcb/        - Contains circuit descriptions for the files in "pcb/"
+    doc/man.txt     - Programmers Manual
+    doc/omnibus.txt - Information on the CPU backplane bus
 
   CPU Design
   **********
       _____________________________________
      |  _________________________________  |
-     | |    ___              _____       | |       ____
-     | |_|\|   |__________|\|     |/|__|\| |      |_R0_|
+     | |                                 | |
+     | |               ________________|\| |
+     | |              |  ______________  | |
+     | |              | |              |/| |
+     | |    ___       | |    _____       | |       ____
+     | |_|\|   |______| |_|\|     |/|__|\| |      |_R0_|
      |  _  | A |______   _  | I/O |  __  | |      |_R1_|
      | | |/|___|      | | |/|_____|\|  |/| |      |_R2_|
      | |              | |    _____       | |/|__|\|_R3_|
@@ -50,10 +54,10 @@
                  | |  |  _  | AND |____|\| |/|____|           |
                  | |  | | |/| OR  |____  | |  ____| Constants |
                  | |__|_|_|\| XOR |    |/| |\|    |___________|
-                 |  ______  |     |      | |
-                 | |  | | |/|_____|      | |
-                 | |  | |    _____       | |
-                 | |  | |_|\|     \      | |
+                 |  ______  |     |      | |       ___________________
+                 | |  | | |/|_____|      | |/|__|\|                   |
+                 | |  | |    _____       | |  __  | Control Registers |
+                 | |  | |_|\|     \      | |\|  |/|___________________|
                  | |  |___  |__    \ __|\| |
                  | |      |/   \ +  \__  | |
                  | |______|\ __/ -  /  |/|_|
@@ -68,13 +72,16 @@
     storing operands and intermediate results.
 
     The "PSW" register contains the processor status word and the block
-    "Constants" contains various constant values used by the CPU, some hard
-    wired and some control registers that can be set by kernel mode code.
+    "Constants" contains various hard wired constant values used by the CPU.
+
+    The block "Control Registers" contains registers that are used by the
+    CPU like the constants, but can be changed by kernel mode code.
 
     The CPU has a register file containing 8 registers. Most of them can be
     used for general purpose computations. The register R7 is used by the
     control logic as program counter and R6 is used by the control logic as
-    stack pointer for interrupts and traps (kernel mode stack pointer).
+    stack pointer for interrupts and traps (after restoring the kernel mode
+    stack pointer from a control register).
 
     Using GP registers as program counter and stack pointer saves a lot of
     hardware and simplifies the instruction set design. The registers can be
@@ -97,7 +104,6 @@
     a tri-state buffer (typically 74HC245).
 
 
-         DATA
          BUS
          | |
          | |/|____________________________________________
@@ -121,68 +127,29 @@
     triggered individually.
 
 
+    Multiple modules are then plugged into a DIN41612 backplane bus with
+    an 5 bit source address, 3 bit destination address, 16 bit tri-state
+    data bus and various control lines:
 
-    For simplicity, the modules are further split up into two halves,
-    i.e two PCBs where each implements an operation for 8 bit instead
-    of 16 bit. Wiring the modules up symetrically and cross connecting
-    lines like carry output from the lower half to carry input of the
-    upper half yields a 16 bit CPU that could theoretically be further
-    extended to 24 or 32 bit.
+                         BUS
+      __________          _          ________
+     |  SHIFT   |/|____|\| |/|____|\| LOGIC  |
+     | REGISTER |  ____  | |  ____  | MODULE |
+     |__________|\|    |/| |\|    |/|________|
+        ________         | |         ___________
+       | ADDER  |/|____|\| |/|____|\| CONSTANTS |
+       | MODULE |  ____  | |  ____  |  MODULE   |
+       |________|\|    |/| |\|    |/|___________|
+      __________         | |         ______________
+     | REGISTER |/|____|\| |/|____|\| MEMORY & I/O |
+     |  MODULE  |  ____  | |  ____  |    MODULE    |
+     |__________|\|    |/| |\|    |/|______________|
+                        _| |_
+                ________\___/________
+               |                     |
+               |    CONTROL LOGIC    |
+               |_____________________|
 
-                                .
-            HIGHER-HALF         .     LOWER-HALF
-                                .
-                                .
-                      TRI-STATE . TRI-STATE
-                         BUS    .    BUS
-             ___          _     .     _          ___
-            |   |/|____|\| |    .    | |/|____|\|   |
-            | S |  ____  | |    .    | |  ____  | S |
-            |___|\|    |/| |    .    | |\|    |/|___|
-            SHIFT        | |    .    | |        SHIFT
-          REGISTER       | |    .    | |      REGISTER
-        ________         | |    .    | |         ________
-       | LOGIC  |/|____|\| |    .    | |/|____|\| LOGIC  |
-       | MODULE |  ____  | |    .    | |  ____  | MODULE |
-       |________|\|    |/| |    .    | |\|    |/|________|
-        ________         | |    .    | |         ________
-       | ADDER  |/|____|\| |    .    | |/|____|\| ADDER  |
-       | MODULE |  ____  | |    .    | |  ____  | MODULE |
-       |________|\|    |/| |    .    | |\|    |/|________|
-     ___________         | |    .    | |         ___________
-    | CONSTANTS |/|____|\| |    .    | |/|____|\| CONSTANTS |
-    |  MODULE   |  ____  | |    .    | |  ____  |  MODULE   |
-    |___________|\|    |/| |    .    | |\|    |/|___________|
-      __________         | |    .    | |         __________
-     | REGISTER |/|____|\| |    .    | |/|____|\| REGISTER |
-     |  MODULE  |  ____  | |    .    | |  ____  |  MODULE  |
-     |__________|\|    |/| |    .    | |\|    |/|__________|
-  ______________         | |    .    | |         ______________
- | MEMORY & I/O |/|____|\| |    .    | |/|____|\| MEMORY & I/O |
- |    MODULE    |  ____  | |    .    | |  ____  |    MODULE    |
- |______________|\|    |/| |    .    | |\|    |/|______________|
-                         | |    .    | |         ________
-                         | |    .    | |/|______| DECODE |
-                         | |    .    | |  ______| MODULE |
-                         | |    .    | |\|      |________|
-                         | |    .    | |           A
-                        _| |_   .   _| |_          |
-                      __\___/_______\___/__        |
-                     |                     |       |
-                     |    BRIDGE MODULE    |       |
-                     |_____________________|       |
-                                A                  |
-                                |                  |
-                      __________V__________        |
-                     |                     |<------+
-                     |    CONTROL LOGIC    |
-                     |_____________________|
-
-
-    The "bridge module" implements the cross wiring of lines like carry input
-    and output. To further simplify the control logic, a "decode module"
-    decodes a 5 bit source select address into individual output enable lines
-    for the modules.
 
 
   1) Shift register module
@@ -200,23 +167,33 @@
      | |            | |    |___________|   | |
      | |            | |     ___________    | |
      | |            | |__|\|           |___| |
+     | |            |  __  | Tri-state |___  |
+     | |            | |  |/|   Buffer  |   | |
+     | |            | |    |           |   | |
+     | |            | |    | BYTESWAP  |   | |
+     | |            | |    |___________|   | |
+     | |            | |     ___________    | |
+     | |            | |__|\|           |___| |
      | |            |____  | Tri-state |_____|
-     | | SIN             |/|   Buffer  |
+     | | CIN             |/|   Buffer  |
      | |------------------>|___________|
-     | |              MSB
+     | |       ___    MSB
+     | |/|__|\|   |
+     | |  __  | A |
+     | |\|  |/|___|
 
-    The shift register module contains only a B register (74HC574), connected
-    to a 74HC245 output buffer, displaced by one line to implement a right
-    shift operation. The MSB of the 74HC245 input is connected with the SIN
-    line of the bus to ripple the LSB of the next stage through, while the LSB
-    of the 74HC574 is connected to the SOUT line of the bus to get rippled
-    through to the next lower stage.
+    The shift register module contains a 74HC574 B register, connected to
+    multiple 74HC245 output buffers:
+      - Displaced by one line to implement a right shift operation.
+        The MSB is connected with the carry input.
+      - Directly connected to the bus 1:1 (write B back unchanged)
+      - Byte swapped (i.e. bit rotated 8 times)
 
-    There is a second 74HC245, connected directly to the 74HC574 without
-    displacement to allow the register to be used as temporary register for
-    intermediate results. The two buffers can be triggered seperately, the
-    shift buffer via the bus SHIFT line, the temporary register buffer via the
-    bus TEMP line.
+    The LSB of the B register that would be shifted out is connected to the
+    SOUT line of the BUS.
+
+    A 74HC574 based A register is provided to write the A unchanged operand
+    back to the bus.
 
     The module only implements right shift/rotate as a left shift/rotate can
     be implemented via the adder module by loading a number into both
@@ -238,7 +215,7 @@
      | |
 
 
-    The logic module has the A and B registers wired up to two 74HC logic
+    The logic module has the A and B registers wired up to four 74HC logic
     gate ICs, like a 74HC08, 74HC32, 74HC86 or anything pin compatible.
 
     The logic module output enable is connected to a set of jumpers, allowing
@@ -249,34 +226,32 @@
 
      BUS
      | |
-     | |/|_______________________________________________________
+     | |<-------------------------+ COUT
+     | |                          |
+     | |/|________________________|______________________________
      | |  _____________________________________________________  |
-     | |\|             ___      _____           ___________    | |
-     | |____________|\|   |__|\|     \         |           |___| |
-     | |____________  | A |__  |__    \ _____|\| Tri-state |_____|
-     | |    _____   |/|___|  |/   \ +  \_____  |   Buffer  |
-     | |_|\|     |__|\|   |__|\ __/    /     |/|___________|
-     | |_  | XOR |__  | B |__  |      /
-     | | |/|_____|  |/|___|  |/|_____/
-     | |      A
-     | |      |
-     | |------+
+     | |\|  ___                 __|__           ___________    | |
+     | |_|\|   |_____________|\|     \         |           |___| |
+     | |_  | A |_____________  |__    \ _____|\| Tri-state |_____|
+     | | |/|___|     _____   |/   \ +  \_____  |   Buffer  |
+     | |_|\|   |__|\|     |__|\ __/    /     |/|___________|
+     | |_  | B |__  | XOR |__  |      /
+     | | |/|___|  |/|_____|  |/|_____/
+     | |               A         A
+     | |               | AINV    | CIN
+     | |---------------+         |
+     | |-------------------------+
      | |
 
 
-    The adder module feeds the A and B register through two cascaded 74HC283
-    adder ICs.
+    The adder module feeds the A and B register through four cascaded
+    74HC283 adder ICs.
 
     In addition to the A, B and output control lines, the adder module has the
-    total carry input and carry output connected to the control bus to allow
-    cascading of multiple adder modules.
+    total carry input and carry output connected to the control bus.
 
-    An additional control line allows the B register to be inverted BEFORE
-    being latched, allowing the adder to be used for twos complement
-    subtracting.
-
-    The output enable for the adder is also connected to the bus via a jumper
-    that can be set to one of the four ALU select lines.
+    An additional control line allows the B register to be inverted, allowing
+    the adder to be used for twos complement subtracting.
 
   4) Register module
 
@@ -300,8 +275,9 @@
     | |   |/|____|
     | |
 
-    The register module has a total of 8 74HC574 registers wired up in
-    parallel and connected to the data bus.
+    The register module has a total of 16 74HC574 registers wired up
+    (8 in parallel, 2 groups for low and high half) and connected to
+    the data bus.
 
     The lower 3 bit of the source index are connected to a 74HC138 for
     selecting a register to write onto the bus. The 74HC138 is triggered
@@ -352,14 +328,15 @@
     used by the control logic.
 
     It connects the lower 3 bit of the source select address to a 74HC138 to
-    select a constant to write onto the bus. The control signal for the
-    output enable is generated by the decode module, mapping up to 8 constant
-    values to the source address range 00***.
+    select a constant to write onto the bus, mapped to source address
+    range 00***.
 
     There are 5 hard-wired constants implemented by a diode matrix and 3
     control registers that can be set by kernel mode code. For the control
     registers, a second 74HC138 is used to control the clock lines, similar
-    to the register module.
+    to the register module. The write decoder is wired to the user mode flag
+    and only allows writing control registers when the user mode flag is
+    cleared.
 
     Since the constant values are different for lower and higher order bytes,
     the diode rows have to be soldered in different ways for the intended use
@@ -370,7 +347,7 @@
         000: 0
         001: 1      (for incrementing/decrementing, trap number)
         010: 2      (trap number)
-        011: 3      (trap number)
+        011: 0xFF00 (for high byte masking using the AND logic module)
         100: 0x00FF (for low byte masking using the AND logic module)
         101: control register 0, system call handler address
         110: control register 1, interrupt/trap handler address
@@ -390,50 +367,10 @@
 
 
     The Memory & I/O module connects the CPU to the external memory & I/O
-    bus. The A register holds the memory or I/O device address, a tri-state
-    buffer is used to connect either the external data bus to the internal
-    bus or vice-versa (74HC245, direction controlable).
+    bus. The A register holds the memory address, a tri-state buffer is used
+    to connect either the external data bus to the internal bus or vice-versa
+    (74HC245, direction controlable).
 
-    The actual memory read & I/O read signals are generated by the decode
-    module. The memory write & I/O write lines are generated directly by
-    the control logic.
-
-  7) Decode module
-
-    The decode module decodes the 5 bit source address to individual control
-    lines for the modules. The individual moduels are mapped into the address
-    range 01***, where two addresses are used for memory read and I/O read.
-    The decode module generates the propper bus direction and output enable
-    signals for the memory & I/O module. The registers are mapped into the
-    address range 10***, but the mapping is done by the register file itself
-    instead of the decode module.
-
-    The decode module also generates the propper bus direction and output
-    enable signals for the I/O write and memory write signals triggered by
-    the control logic.
-
-    The decode module does not have to be built symetrically. Only one has to
-    be installed, as the control lines can be simply connected to the second
-    half of the bus.
-
-  8) Bridge module
-
-    The bridge module connects two control busses together. Most control lines
-    are simply wired together. Except for the carry and shift ripple lines.
-
-    The carry out of the lower half is connected to the carry in of the higher
-    half. The shift out of the higher half is connected to the shift in of the
-    lower half.
-
-    The status word carry flag is connected to the shift in of the higher half
-    and to the carry in of the lower half. If the shift module is selected,
-    the shift out of the lower half is connected to the new carry value,
-    otherwise the carry out of the higher half is connected.
-
-    The 16 bit bus word from the two data bus connectors is compared with 0
-    using 2 cascaded 74HC688. The total output (entire word is zero) is
-    connected to the control bus.
-
-    The MSB of the higher half data bus is connected to the MSB line of the
-    control busses.
+    The actual memory read signal is generated by the source address select.
+    The memory write signal is generated directly by the control logic.
 
