@@ -1,39 +1,48 @@
 
-                  74HC138
-                   WSEL
-                  ______
-CBUS-B0 -------->|A0  Y0|---> R0-CLK
-CBUS-B1 -------->|A1  Y1|---> R1-CLK
-CBUS-B2 -------->|A2  Y2|---> R2-CLK
-                 |    Y3|---> R3-CLK
-      GND ------o|E0  Y4|---> R4-CLK
-      GND ------o|E1  Y5|---> R5-CLK
-CBUS-REGW -------|E2  Y6|---> R6-CLK
-                 |    Y7|---> R7-CLK
-                 |______|
-              
-                 74HC138
-                   RSEL
-                  ______
-CBUS-A0 -------->|A0  Y0|---> R0-OE
-CBUS-A1 -------->|A1  Y1|---> R1-OE
-CBUS-A2 -------->|A2  Y2|---> R2-OE
-                 |    Y3|---> R3-OE
-CBUS-A3 --------o|E0  Y4|---> R4-OE
-CBUS-A3 --------o|E1  Y5|---> R5-OE
-CBUS-A4 ---------|E2  Y6|---> R6-OE
-                 |    Y7|---> R7-OE
-                 |______|
+            74HC138_R
+             ______
+    BUS-A0 -|A0  Y0|- R0_L-OE, R0_H-OE
+    BUS-A1 -|A1  Y1|- R1_L-OE, R1_H-OE
+    BUS-A2 -|A2  Y2|- R2_L-OE, R2_H-OE
+            |    Y3|- R3_L-OE, R3_H-OE
+ BUS-A3 -+-o|E0  Y4|- R4_L-OE, R4_H-OE
+         +-o|E1  Y5|- R5_L-OE, R5_H-OE
+ BUS-A4 ----|E2  Y6|- R6_L-OE, R6_H-OE
+            |    Y7|- R7_L-OE, R7_H-OE
+            |______|
+
+
+            74HC138_W
+             ______
+    BUS-B0 -|A0  Y0|- R0_H-CLK, R0_L-CLK
+    BUS-B1 -|A1  Y1|- R1_H-CLK, R1_L-CLK
+    BUS-B2 -|A2  Y2|- R2_H-CLK, R2_L-CLK
+            |    Y3|- R3_H-CLK, R3_L-CLK
+      GND -o|E0  Y4|- R4_H-CLK, R4_L-CLK
+      GND -o|E1  Y5|- R5_H-CLK, R5_L-CLK
+ BUS-REGW --|E2  Y6|- R6_H-CLK, R6_L-CLK
+            |    Y7|- R7_H-CLK, R7_L-CLK
+            |______|
 
 
 
 
-DBUS-D[0..7] -> R0-D[0..7] R0-Q[0..7]
-                R1-D[0..7] R1-Q[0..7]
-                R2-D[0..7] R2-Q[0..7]
-                R3-D[0..7] R3-Q[0..7]
-                R4-D[0..7] R4-Q[0..7]
-                R5-D[0..7] R5-Q[0..7]
-                R6-D[0..7] R6-Q[0..7]
-                R7-D[0..7] R7-Q[0..7]
+BUS-D{0..7} -> R0_L-D{0..7}, R0_L-Q{0..7}
+               R1_L-D{0..7}, R1_L-Q{0..7}
+               R2_L-D{0..7}, R2_L-Q{0..7}
+               R3_L-D{0..7}, R3_L-Q{0..7}
+               R4_L-D{0..7}, R4_L-Q{0..7}
+               R5_L-D{0..7}, R5_L-Q{0..7}
+               R6_L-D{0..7}, R6_L-Q{0..7}
+               R7_L-D{0..7}, R7_L-Q{0..7}
+
+BUS-D{8..15} -> R0_H-D{0..7}, R0_H-Q{0..7}
+                R1_H-D{0..7}, R1_H-Q{0..7}
+                R2_H-D{0..7}, R2_H-Q{0..7}
+                R3_H-D{0..7}, R3_H-Q{0..7}
+                R4_H-D{0..7}, R4_H-Q{0..7}
+                R5_H-D{0..7}, R5_H-Q{0..7}
+                R6_H-D{0..7}, R6_H-Q{0..7}
+                R7_H-D{0..7}, R7_H-Q{0..7}
+
 
