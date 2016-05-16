@@ -13,39 +13,38 @@
 
 
 
- RDMOD specifies a module to switch onto the bus (upper 2 bit of "src") and
- may consist of one of the following keywords:
-      CWD   - constant and control register module
-      ADD   - adder module (ALU 0)
-      AND   - and logic module (ALU 1)
-      ORV   - or logic module (ALU 2)
-      XOR   - xor logic module (ALU 3)
-      TMP   - temp register
-      SHV   - shift register
-      IOR   - I/O read
-      MEM   - memory read
-      REG   - regster
-      PSW   - status word
+ RDMOD specifies a module to switch onto the bus and may consist of one of
+ the following keywords:
+      CWD   - constant and control register module (00x)
+      ADD   - adder module (010)
+      AND   - and logic module (011)
+      ORV   - or logic module (012)
+      XOR   - xor logic module (013)
+      BSW   - byte swapped B (014)
+      BOP   - B operand (015)
+      SHV   - right shift/rotated B operand register (016)
+      AOP   - A operand (017)
+      REG   - GP regster (02x)
+      PSW   - status word (030)
+      MEM   - memory read (037)
       *     - hold the state of the previous line
-
 
  The values for SRC and DST specify the lower 3 bit of "src" and "dst" on
  the control bus respecitively.
 
- The can either be numeric values in the range 0 to 7, the letter 'S'
+ They can either be numeric values in the range 0 to 7, the letter 'S'
  specifes the source index from the current instruction word, the letter 'D'
  specifies the destination index. The character '*' specifies that the
- previous sate should be held.
+ previous state should be held.
 
  SRC and DST cannot be both 'D' or 'S'.
+
+ If RDMOD is not REG or CWD, SRC has no meaning and must be '-'.
 
 
  The <FLAGS> field is itself a pipe ('|') seperated list of one or more of
  the following keywords:
 
-    FIN     - load next instruction after this cycle
-
-    IOWD    - write bus word to I/O address in A operand
     MEMW    - write bus word to memory location in A operand
     AINV    - invert adder B operand when latching
     REGW    - write bus word to register
@@ -56,17 +55,19 @@
     TPW     - toggle psw value (depending on DST)
     CLU     - clear user bit
     SEU     - set user bit
+    UOV     - override user flag
     CINH    - inhibit carry (temporarily force to 0)
     COV     - override carry (temporarily force to 1)
     WSW     - set entire status word to bus word
-    WSU     - set unprivileged status bits to bus word
+    WSU     - set status word but flag out privileged bits
     UAF     - update all ALU flags
     ULF     - update logic flags
 
+    FIN     - fetch next instruction after this line
 
 
- In addition to such bus state lines, a line can also contain meta directives
- for the micro assembler. Those directives tart with a '%' sign.
+ In addition to such bus state lines, a line can also contain meta directive
+ for the micro assembler. Those directives start with a '%' sign.
 
  The following directives are currently supported:
 
@@ -74,20 +75,19 @@
     %opdef <opcode>
 
         Start defining the instruction sequence for an opcode. The opcode
-        number is specified in two digit hexadecimal notation wihtout any
-        kind of prefix.
+        number is specified as a 3 digit octal number (1st value is immediate
+        flag).
 
     %include <filename>
 
         Process the contents of the given file and treat it, as if they
         were listed instead of the directive.
 
-    %if <user|pagefault|immediate>
+    %if <user>
 
         Execute the following statements if:
          - the user mode flag is set
-         - a pagefault is asserted
-         - an immediate value was specifed for this opcode
+         - a pagefault is asserted and the MMU enable flag is set
 
     %else
 
