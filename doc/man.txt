@@ -243,18 +243,15 @@
         if user mode flag is set, only ALU flags (C, Z, S) can be ovewritten
 
     ADD dst, src            017xxx          dst += src
-    ADD dst, imm            117xxx          dst += imm
+    ADD dst, src, imm       117xxx          dst += imm
     ADC dst, src            020xxx          dst += src + carry
-    ADC dst, imm            120xxx          dst += imm + carry
-    ADD dst, src, imm       115xxx          dst = src + imm
-    ADC dst, src, imm       116xxx          dst = src + imm + carry
+    ADC dst, src, imm       120xxx          dst += imm + carry
         carry: carry output of adder
         zero:  set if result is 0
         sign:  set to MSB of result
 
     CAA dst, src            021xxx          dst += src
-    CAA dst, imm            121xxx          dst += imm
-    CAA dst, src, imm       122xxx          dst = src + imm
+    CAA dst, src, imm       121xxx          dst = src + imm
         Compute Absolute Address. Add without carry, status bits are left
         unchanged.
 
@@ -292,14 +289,11 @@
         sign:  set to MSB of result
 
     ANL dst, src            023xxx          dst &= src
-    ANL dst, imm            123xxx          dst &= imm
-    ANL dst, src, imm       130xxx          dst = src & imm
+    ANL dst, src, imm       123xxx          dst = src & imm
     ORL dst, src            024xxx          dst |= src
-    ORL dst, imm            124xxx          dst |= imm
-    ORL dst, src, imm       131xxx          dst = src | imm
+    ORL dst, src, imm       124xxx          dst = src | imm
     XOR dst, src            025xxx          dst ^= src
-    XOR dst, imm            125xxx          dst ^= imm
-    XOR dst, src, imm       132xxx          dst = src ^ imm
+    XOR dst, src, imm       125xxx          dst = src ^ imm
         zero: set if result is 0
         sign: set to MSB of result
 
@@ -356,15 +350,23 @@
 
     SWA dst, src            044xxx          swap src and dst register values
 
+    TST dst, Cxx            047xxx          test against constant
+        zero: set if destination and source register have no overlapping bits,
+              cleared if they do have overlapping bits
+        sign: set to MSB of destination ANDed to MSB of source
+
+
     unused opcodes with immediate:
-                 33 34 35 36 37
-        40 41 42    44 45
+                       15 16
+              22
+        30 31 32 33 34 35 36 37
+        40 41 42    44 45    47
 
 
                              77
 
     entirely unused opcodes:
-                          46 47
+                          46
         50 51 52 53 54 55 56 57
         60 61 62 63 64 65    67
         70 71 72 73 74 75 76
@@ -409,6 +411,13 @@
 
     <name> ':'                                  label definition
 
+    ADD dst, imm                                ADD dst, dst, imm
+    ADC dst, imm                                ADC dst, dst, imm
+    CAA dst, imm                                CAA dst, dst, imm
+    ANL dst, imm                                ANL dst, dst, imm
+    ORL dst, imm                                ORL dst, dst, imm
+    XOR dst, imm                                XOR dst, dst, imm
+
     NOP                 no operation            MOV R0, R0
     NUL dst             clear register          LSD dst, C0
 
@@ -428,8 +437,8 @@
     HOP imm             relative jump           CAA R7, imm
     HOP label           relative jump to label  CAA R7, label-$$
 
-    SUB dst, imm                                ADD dst, -imm
-    SBC dst, imm                                ADC dst, ~imm
+    SUB dst, imm                                ADD dst, dst, -imm
+    SBC dst, imm                                ADC dst, dst, ~imm
 
     SUB dst, src, imm                           ADD dst, src, -imm
     SBC dst, src, imm                           ADC dst, src, ~imm
