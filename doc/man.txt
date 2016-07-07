@@ -57,7 +57,16 @@
 
 
     In addition to the GP registers, the CPU has 1 status register, 3 control
-    registers and 5 hard wired constants.
+    registers and 5 constants that are used by the control logic for special
+    purposes.
+
+    The constants are actually just control registers, totaling to 8 control
+    registers that can be written in kernel mode and are read only in user
+    mode.
+
+    The constants have to be initialized propperly during machine bootstrap,
+    as the control logic assumes them to have special values.
+
 
   1.1) Status Word
 
@@ -100,13 +109,28 @@
   1.2) Constants and Control Registers
 
     The CPU has a number of "constants" that are used by the control logic.
-    Some of them are hard wired (e.g. 0 for clearing registers or +1 for
-    incrementing/decrementing) and some are actually registers (e.g.
-    interrupt/trap handler address). Those registers are referred to as
-    "control registers".
+    The constants are actually just registers that are read only in user mode
+    and can be written in kernel mode. Some (e.g. interrupt/trap handler
+    address) can be freely configured, while others have to be initialized to
+    specific values during bootstrap as the control logic assumes them to have
+    specific values.
 
-    There are 5 hard wired constants and 3 control registers. The control
-    registers can be written only if the user mode flag is cleared.
+    Those freely configureable ones are referred to as "control registers",
+    the others that need to have specific values are just called "constants".
+
+    There are 5 constants and 3 control registers. The constants have to be
+    initialized with the given values:
+
+     Constant number | hex value or description
+    -----------------+----------------------------------
+                   0 | 0x0000
+                   1 | 0x0001
+                   2 | 0x0002
+                   3 | 0xFF00
+                   4 | 0x00FF
+                   5 | syscall address
+                   6 | interrupt/trap handler address
+                   7 | kernel stack pointer backup
 
   1.3) Assembly names
 
@@ -123,14 +147,14 @@
         R6  | General purpose register 6
         R7  | General purpose register 7 (program counter)
             |
-        C0  | Constant value 0x0000
-        C1  | Constant value 0x0001
-        C2  | Constant value 0x0002
-        CH  | Constant value 0xFF00 (high byte mask)
-        CL  | Constant value 0x00FF (low byte mask)
-        CR0 | Control register 0 (syscall handler address)
-        CR1 | Control register 1 (interrupt/trap handler address)
-        CR2 | Control register 2 (kernel stack pointer backup)
+        C0  | Constant 0 (value 0x0000)
+        C1  | Constant 1 (value 0x0001)
+        C2  | Constant 2 (value 0x0002)
+        CH  | Constant 3 (value 0xFF00, high byte mask)
+        CL  | Constant 4 (value 0x00FF, low byte mask)
+        CR0 | Control register 5 (syscall handler address)
+        CR1 | Control register 6 (interrupt/trap handler address)
+        CR2 | Control register 7 (kernel stack pointer backup)
             |
         SW  | Processor status word
             |
@@ -172,9 +196,8 @@
 
 
     In most cases, register indices 0 to 7 refere to GP resiters R0 to R7.
-    When accessing the constant/control register module, the values 0 to 4
-    refere to the 5 constant values (0, 1, 2, 0xFF00, 0x00FF) and values
-    5 to 7 refere to the control registers CR0 to CR2.
+    When accessing the constant/control register module, the values are mapped
+    to constants/control registers as in the table in section 1.2.
 
     If the destination index is used for addressing flag bits, the
     destionation values are interpreted as follows:

@@ -51,13 +51,13 @@
                  | |  | | |/|_______|  |/| |\|  |/|_____|
                  | |  | |    _____       | |
                  | |  | |_|\|     |      | |       ___________
-                 | |  |  _  | AND |____|\| |/|____|           |
-                 | |  | | |/| OR  |____  | |  ____| Constants |
-                 | |__|_|_|\| XOR |    |/| |\|    |___________|
-                 |  ______  |     |      | |       ___________________
-                 | |  | | |/|_____|      | |/|__|\|                   |
-                 | |  | |    _____       | |  __  | Control Registers |
-                 | |  | |_|\|     \      | |\|  |/|___________________|
+                 | |  |  _  | AND |____|\| |/|__|\|  Control  |
+                 | |  | | |/| OR  |____  | |  __  | Registers |
+                 | |__|_|_|\| XOR |    |/| |\|  |/|___________|
+                 |  ______  |     |      | |
+                 | |  | | |/|_____|      | |
+                 | |  | |    _____       | |
+                 | |  | |_|\|     \      | |
                  | |  |___  |__    \ __|\| |
                  | |      |/   \ +  \__  | |
                  | |______|\ __/ -  /  |/|_|
@@ -71,8 +71,7 @@
     directly accessible by software and are used by the control logic for
     storing operands and intermediate results.
 
-    The "PSW" register contains the processor status word and the block
-    "Constants" contains various hard wired constant values used by the CPU.
+    The "PSW" register contains the processor status word.
 
     The block "Control Registers" contains registers that are used by the
     CPU like the constants, but can be changed by kernel mode code.
@@ -124,7 +123,8 @@
     all B operands.
 
     The output enable lines of the tri-state buffers on the modules are
-    triggered individually.
+    triggered individually by address decoders on each module mapping
+    5 bit addresses to module outputs.
 
 
     Multiple modules are then plugged into a DIN41612 backplane bus with
@@ -137,8 +137,8 @@
      | REGISTER |  ____  | |  ____  | MODULE |
      |__________|\|    |/| |\|    |/|________|
         ________         | |         ___________
-       | ADDER  |/|____|\| |/|____|\| CONSTANTS |
-       | MODULE |  ____  | |  ____  |  MODULE   |
+       | ADDER  |/|____|\| |/|____|\|  CONTROL  |
+       | MODULE |  ____  | |  ____  | REGISTERS |
        |________|\|    |/| |\|    |/|___________|
       __________         | |         ______________
      | REGISTER |/|____|\| |/|____|\| MEMORY & I/O |
@@ -253,7 +253,7 @@
     An additional control line allows the B register to be inverted, allowing
     the adder to be used for twos complement subtracting.
 
-  4) Register module
+  4) GP & Control Register module
 
     BUS
     | |/|_____________
@@ -275,77 +275,36 @@
     | |   |/|____|
     | |
 
-    The register module has a total of 16 74HC574 registers wired up
-    (8 in parallel, 2 groups for low and high half) and connected to
-    the data bus.
+    The register module has a total of 16 74HC574 registers connected to the
+    data bus (8 in parallel, 2 groups for low and high half).
 
     The lower 3 bit of the source index are connected to a 74HC138 for
-    selecting a register to write onto the bus. The 74HC138 is triggered
-    by A4=1 and A3=0, mapping the 8 registers to the address range 10***
-    for the source select.
+    selecting a register to write onto the bus. Two jumpers can be used
+    to select if the 74HC138 triggers to A4=1 and A3=0 for GP registers
+    or A4=0 and A3=0 for control registers/constants, mapping the 8 registers
+    either to the address range 10*** or 00*** for the source select.
 
     The 3 bit destination register index is connected to another 74HC138,
-    with one positive enable control line, i.e. a falling edege on the enable
+    with one positive enable control line, i.e. a falling edge on the enable
     line triggers a rising edge on the register clock, latching the current
     bus word in a register.
 
-  5) Constant module
+    A second set of jumpers can configure if the register write triggers on
+    the GP register write line or the control register write and if the user
+    mode flag has to be cleared for writing.
 
 
-    BUS
-    | |/|_____________
-    | |  __________  |
-    | |\|          | |
-    | |      ____  | |
-    | |___|\|    |_| |
-    |  ___  | C0 |_  |
-    | |   |/|____| | |
-    | |      ____  | |
-    | |___|\|    |_| |
-    |  ___  | C1 |_  |
-    | |   |/|____| | |
-    | |      ____  | |
-    | |___|\|    |_| |
-    |  ___  | C2 |___|
-    | |   |/|____|                     VCC
-    | |                                 A
-    | |     ___________    Diode Matrix |
-    | |    |           |-----|-|-|-|-|--+
-    | |    |           |-----|-|-|-|-|--+
-    | |/|__|           |-----|-|-|-|-|--+
-    | |  __| Tri-state |-----|-|-|-|-|--+
-    | |\|  |   Buffer  |-----|-|-|-|-|--+
-    | |    |           |-----|-|-|-|-|--+
-    | |    |           |-----|-|-|-|-|--+
-    | |    |___________|-----|-|-|-|-|--+
-    | |                   ___|_|_|_|_|___
-    | |                  |               |
-    | |----------------->| Column-Select |
-    | |                  |_______________|
+    Thus, the same PCB design is used for both GP register module and control
+    register module.
 
+    The control registers are simply mapped to a different bus address range
+    and can only be written in kernel mode.
 
-    The constant module allows writing numeric constants to the bus that are
-    used by the control logic.
+    The constant values have to be initialized to specific values as the CPU
+    uses them internally and assumes them to have the following assignment:
 
-    It connects the lower 3 bit of the source select address to a 74HC138 to
-    select a constant to write onto the bus, mapped to source address
-    range 00***.
-
-    There are 5 hard-wired constants implemented by a diode matrix and 3
-    control registers that can be set by kernel mode code. For the control
-    registers, a second 74HC138 is used to control the clock lines, similar
-    to the register module. The write decoder is wired to the user mode flag
-    and only allows writing control registers when the user mode flag is
-    cleared.
-
-    Since the constant values are different for lower and higher order bytes,
-    the diode rows have to be soldered in different ways for the intended use
-    of the module.
-
-    The currently intended constants are:
-
-        000: 0
-        001: 1      (for incrementing/decrementing, trap number)
+        000: 0      (for clearing/decrementing/testing, trap number)
+        001: 1      (for incrementing/testing, trap number)
         010: 2      (trap number)
         011: 0xFF00 (for high byte masking using the AND logic module)
         100: 0x00FF (for low byte masking using the AND logic module)
@@ -353,7 +312,7 @@
         110: control register 1, interrupt/trap handler address
         111: control register 2, backup of kernel stack pointer
 
-  6) Memory & I/O module
+  5) Memory & I/O module
 
      BUS
      | |
