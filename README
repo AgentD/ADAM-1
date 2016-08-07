@@ -155,9 +155,12 @@
   1) Shift register module
 
      BUS
-     | | SOUT
-     | |<---------+
-     | |          |
+     | | SOUT   _____
+     | |<------|     |
+     | |       | MUX |
+     | | COUT  |     |
+     | |------>|_____|
+     | |          A
      | |/|________|__________________________
      | |  _________________________________  |
      | |\|   ___  |LSB      ___________    | |
@@ -181,6 +184,20 @@
      | |/|__|\|   |
      | |  __  | A |
      | |\|  |/|___|
+     | |       _____
+     | |____|\|     |
+     | |____  | ==0 |o-+
+     | |    |/|_____|  |
+     | |               |
+     | |<--------------+
+     | | NZERO
+
+
+    The module implements right shift/rotate (left shift/rotate can be
+    implemented via the adder) and byteswap. Due to a limited number of
+    backplane slots and PCB area, some functionality of the status word
+    has crept onto the shift board which had the most unused PCB area
+    left.
 
     The shift register module contains a 74HC574 B register, connected to
     multiple 74HC245 output buffers:
@@ -189,15 +206,18 @@
       - Directly connected to the bus 1:1 (write B back unchanged)
       - Byte swapped (i.e. bit rotated 8 times)
 
-    The LSB of the B register that would be shifted out is connected to the
-    SOUT line of the BUS.
-
     A 74HC574 based A register is provided to write the A unchanged operand
     back to the bus.
 
-    The module only implements right shift/rotate as a left shift/rotate can
-    be implemented via the adder module by loading a number into both
-    A and B operand simultaneously (x<<1 = x*2 = x+x).
+    The shift register selects the new carry value for the status word. If
+    the right shift value is written onto the bus, the LSB of the of the B
+    register that would be shifted out is connected to the SOUT line on the
+    BUS via a multiplexer (actually some 74HC00 logic circuitry). In all other
+    cases, the mux writes the COUT line (adder carry output) to SOUT.
+
+    In addition to that, the module detects whether the current BUS word is
+    zero, using 2 * 74HC688).
+
 
   2) Logic module
 

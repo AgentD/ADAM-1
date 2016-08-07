@@ -36,7 +36,7 @@
          A4 o   o
          B2 o   o MEMW
          B1 o   o
-         B1 o   o
+         B1 o   o NZERO
         CIN o   o MMU
        COUT o   o USR
        AINV o   o PF
