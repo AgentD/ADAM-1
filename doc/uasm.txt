@@ -54,14 +54,13 @@
 
     TPW     - toggle psw value (depending on DST)
     CLU     - clear user bit
-    SEU     - set user bit
-    UOV     - override user flag
+    UOV     - override user flag (temporarily force to 0)
     CINH    - inhibit carry (temporarily force to 0)
     COV     - override carry (temporarily force to 1)
-    WSW     - set entire status word to bus word
-    WSU     - set status word but flag out privileged bits
-    UAF     - update all ALU flags
+    UCF     - update carry flag
     ULF     - update logic flags
+    WSW     - write bus word to status word.
+              In user mode, only ALU flas are written.
 
     FIN     - fetch next instruction after this line
 

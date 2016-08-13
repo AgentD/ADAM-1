@@ -23,20 +23,20 @@
          D7 o   o
          D8 o   o
          D9 o   o
-        D10 o   o
-        D11 o   o
-        D12 o   o
-        D13 o   o
-        D14 o   o
-        D15 o   o
-         A0 o   o
-         A1 o   o
-         A2 o   o
-         A3 o   o
-         A4 o   o
+        D10 o   o UCF
+        D11 o   o ULF
+        D12 o   o PSWR
+        D13 o   o PSEL
+        D14 o   o CLU
+        D15 o   o UOV
+         A0 o   o COV
+         A1 o   o CINH
+         A2 o   o TPW
+         A3 o   o SIGN
+         A4 o   o IEN
          B2 o   o MEMW
-         B1 o   o
-         B1 o   o NZERO
+         B1 o   o ZERO
+         B0 o   o NZERO
         CIN o   o MMU
        COUT o   o USR
        AINV o   o PF
@@ -99,8 +99,7 @@
 
     MEMW  - Pulled low to write to the memory bus, connected to the
             external bus
-    AINV  - Pulled high to invert the second adder operand when writing
-            to the B register
+    AINV  - Pulled high to invert the second adder operand of the adder
     REGW  - Pulled high to write to a GP register. Falling edge actually
             triggers the latches.
     BWR   - Pulled low to write to the B operand. Rising edge actualy triggers
@@ -110,6 +109,29 @@
     WC    - Pulled high to write to a control register. Falling edge actually
             triggers the latches.
 
+    UCF   - Rising edge triggers overwrite of carry flag
+
+    ULF   - Rising edge triggers overwrite of zero & sign flags
+
+    PSWR  - Rising edge triggers overwrite of all status flags. If user mode
+            flag is set, only carry, zero & sign are overwritten.
+
+    PSEL  - Select what to write into carry, zero & sing flag if write is
+            triggered. Pulled low to write the lower 3 bits of the bus word,
+            high to write the new values from the ALU modules.
+
+    CLU   - Pulled low to clear the user mode flag.
+
+    UOV   - Pulled low to temporarily force the user mode flag to zero.
+
+    CINH  - Pulled low to temporarily force the carry flag to zero.
+
+    COV   - Pulled high to temporarily force the carry flag to one.
+
+    TPW   - Pulled low to toggle bits in status word. B1 & B0 select the bit
+            to toggle (0=carry, 1=zero, 2=sign, 3=interrupt enable) and B2
+            selects the value to set it to. The interrupt enable value cannot
+            be changed if the user mode flag is set.
 
  3) Status bits
 
@@ -117,7 +139,8 @@
 
     COUT - Carry output of the adder module
 
-    SOUT - MSB shifted out by shift module
+    SOUT - LSB shifted out by shift module if shift module is latched onto
+           bus, same as COUT if output is disabled.
 
     MMU  - MMU enable flag from status word
 
@@ -126,4 +149,16 @@
     PF   - Pulled low by peripheral logic to trigger a pagefault
 
     INT  - Pulled low by peripheral logic to trigger a hardware interrupt
+
+    SIGN - The current value of the sign flag
+
+    IEN  - The current value of the interrupt enable flag
+
+    ZERO - The current value of the zero flag
+
+    NZERO- Pulled low if the current bus word is zero
+
+    MMU  - The current value of the MMU enable flag
+
+    USR  - The current value of the user mode flag
 
