@@ -1,0 +1,186 @@
+
+
+
+          74HC688                   74HC245
+          _______                   _______
+    VCC -|Q7   P7|- VCC   BUS-CIN -|A0   B0|- BUS-D0
+    VCC -|Q6   P6|- VCC  BUS-ZERO -|A1   B1|- BUS-D1
+    VCC -|Q5   P5|- VCC  BUS-SIGN -|A2   B2|- BUS-D2
+ BUS-A0 -|Q4   P4|- GND   BUS-IEN -|A3   B3|- BUS-D3
+ BUS-A1 -|Q3   P3|- GND   BUS-USR -|A4   B4|- BUS-D4
+ BUS-A2 -|Q2   P2|- GND   BUS-MMU -|A5   B5|- BUS-D5
+ BUS-A3 -|Q1   P1|- VCC       GND -|A6   B6|- BUS-D6
+ BUS-A4 -|Q0   P0|- VCC       GND -|A7   B7|- BUS-D7
+         |       |                 |       |
+   GND -o|EN    Y|o---------------o|OE  DIR|- VCC
+         |_______|                 |_______|
+
+
+    If the bus address equals 11000, the effective
+    status word is written onto the bus.
+
+
+
+
+
+
+             74HC138              74HC32
+             _______
+    BUS-B0 -|A0   Y0|o- CLC
+    BUS-B1 -|A1   Y1|o- CLZ     4B ___ 4Y
+    BUS-B2 -|A2   Y2|o- CLS   +---|>=1|-- CLI
+            |     Y3|o--------|---|___|
+BUS-TPW -+-o|E0   Y4|o- SEC   | 4A
+         +-o|E1   Y5|o- SEZ   |
+      VCC --|E2   Y6|o- SES   | 3A ___ 3Y
+            |     Y7|o--------|---|>=1|-- SEI
+            |_______|         +---|___|
+                              | 3B
+                              |
+                              |
+                           BUS-USR
+
+    By pulling the TPW bus line low, some of the stored status flags
+    can be toggled. The destination register address specifies what
+    to toggle:
+        000  clear carry flag
+        001  clear zero flag
+        010  clear sign flag
+        011  clear interrupt enable flag
+        100  set carry flag
+        101  set zero flag
+        110  set sign flag
+        111  set interrupt enable flag
+
+    The interrupt flag can only be toggled if the effective
+    user mode flag is 0.
+
+
+
+                                 74HC157
+                                 _______
+                        BUS-D0 -|1A   1Y|- NX_C
+                        BUS-D1 -|2A   2Y|- NX_Z
+                        BUS-D2 -|3A   3Y|- NX_S
+                           GND -|4A   4Y|-
+             74HC04             |       |
+               _      BUS-SOUT -|1B    S|-- BUS-PSEL
+ BUS-NZERO ---|1|o--------------|2B   EN|o- GND
+            6A    6Y   BUS-D15 -|3B     |
+                           GND -|4B     |
+                                |_______|
+
+
+    If the PSEL line is low, the carry, zero and sign flags can be
+    overwritten with the lower 3 bit of the current bus word. If it
+    is high, carry will be overwritten with either shift module LSB
+    or the adder carry (depending on which is connected to the bus),
+    zero will be overwritten with the new zero flag and the sign flag
+    will be overwritten with the MSB of the bus word.
+
+
+
+                                                    74HC74_2
+                                                     ______
+                                           BUS-D4 --|D0  Q0|- UF
+                                        +-----------|>CLK0 |
+                                        |     VCC -o|S0    |
+                                        | BUS-CLU -o|R0    |
+                                        |           |      |
+                                        |  BUS-D5 --|D1  Q1|- BUS-MMU
+                                        +-----------|>CLK1 |
+                                        |     VCC -o|S1    |
+                                        |     VCC -o|R1    |
+                                        |           |______|
+                                        |
+                                        |           74HC74_1
+                                        |            ______
+                                        |    NX_S --|D0  Q0|- BUS-SIGN
+                                        | +---------|>CLK0 |
+                                        | |   SES -o|S0    |
+                                        | |   CLS -o|R0    |
+                    74HC04      74HC08  | |         |      |
+                   3A _ 3Y    3B ___ 3Y | |BUS-D3 --|D1  Q1|- BUS-IEN
+    BUS-USR ---------|1|o-------|  &|---+-|---------|>CLK1 |
+                   +------------|___|     |   SEI -o|S1    |
+                   |          3A          |   CLI -o|R1    |
+                   |                      |         |______|
+                   |                      |
+                   | 74HC32_1             |          74HC74
+   BUS-PSWR -------+                      |          ______
+                   |1A ___ 1Y             |  NX_C --|D0  Q0|- CF
+                   +--|>=1|---------------|---------|>CLK0 |
+    BUS-UCF -------|--|___|               |   SEC -o|S0    |
+                   |1B                    |   CLC -o|R0    |
+                   |                      |         |      |
+                   |2A ___ 2Y             |  NX_Z --|D1  Q1|- BUS-ZERO
+                   +--|>=1|---------------+---------|>CLK1 |
+    BUS-ULF ----------|___|                   SEZ -o|S1    |
+                    2B                        CLZ -o|R1    |
+                                                    |______|
+
+
+    The status flags are stored in 74HC74 RS/D latches.
+
+    A rising edge on the PSWR line or the UCF line triggers an
+    overwrite of the carry.
+
+    A rising edge on the PSWR line or the ULF line triggers an
+    overwrite of the zero and sign flags.
+
+    The interrupt enable, MMU enable and user flag are only
+    overwritten if a rising edge on PSWR happens at the same
+    time as the effective user mode flag is 0.
+
+
+
+                   74HC04     74HC08      74HC32
+
+                  2A _ 2Y   2B ___ 2Y   1A ___ 1Y
+        BUS-CINH ---|1|o------|  &|-------|>=1|-- BUS-CIN
+                          +---|___|   +---|___|
+                          | 2A        | 1B
+                CF -------+           |
+                                      |
+         BUS-COV ---------------------+
+
+    The effective carry flag can pulled high if the COV line is high, or
+    pulled low if the CINH and COV lines are low.
+
+
+
+                UF -------+
+                          | 1A ___ 1Y
+                       _  +---|  &|-------------- BUS-USR
+             BUS-UOV--|1|o----|___|
+                    1A   1Y 1B
+
+
+    The effective user mode flag can be pulled low by pulling
+    the UOV line high.
+
+
+                      74HC08         74HC32
+
+                    4A ___ 4Y      2A ___ 2Y
+                 VCC--|  &|--   VCC--|>=1|--
+                 VCC--|___|     VCC--|___|
+                    4B             2B
+
+                     74HC32_1       74HC32_1
+
+                    3A ___ 3Y      4A ___ 4Y
+                 VCC--|>=1|--   VCC--|>=1|--
+                 VCC--|___|     VCC--|___|
+                    3B             4B
+
+                74HC04
+
+               4A _ 4Y
+          GND ---|1|o---
+               5A _ 5Y
+          GND ---|1|o---
+
+
+    Unused gates remain unused in the most uncreative way.
+
