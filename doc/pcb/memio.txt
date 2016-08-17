@@ -1,58 +1,110 @@
+                                .
+   OMNIBUS               IOBUS  .   OMNIBUS               IOBUS
+             74HC574            .             74HC245
+             _______            .             _______
+     D0 --->|D0   Q0|---> A0    .     D0 <-->|A0   B0|<--> D0
+     D1 --->|D1   Q1|---> A1    .     D1 <-->|A1   B1|<--> D1
+     D2 --->|D2   Q2|---> A2    .     D2 <-->|A2   B2|<--> D2
+     D3 --->|D3   Q3|---> A3    .     D3 <-->|A3   B3|<--> D3
+     D4 --->|D4   Q4|---> A4    .     D4 <-->|A4   B4|<--> D4
+     D5 --->|D5   Q5|---> A5    .     D5 <-->|A5   B5|<--> D5
+     D6 --->|D6   Q6|---> A6    .     D6 <-->|A6   B6|<--> D6
+     D7 --->|D7   Q7|---> A7    .     D7 <-->|A7   B7|<--> D7
+            |       |           .            |       |
+    AWR --->|CLK  OE|o--+       .         +->|DIR  OE|<-+
+            |_______|  _|_      .         |  |_______|  |
+                                .        MEMR         BUSOE
+                                .
+            74HC574_1           .            74HC245_1
+             _______            .             _______
+     D8 --->|D0   Q0|---> A8    .     D8 <-->|A0   B0|<--> D8
+     D9 --->|D1   Q1|---> A9    .     D9 <-->|A1   B1|<--> D9
+    D10 --->|D2   Q2|---> A10   .    D10 <-->|A2   B2|<--> D10
+    D11 --->|D3   Q3|---> A11   .    D11 <-->|A3   B3|<--> D11
+    D12 --->|D4   Q4|---> A12   .    D12 <-->|A4   B4|<--> D12
+    D13 --->|D5   Q5|---> A13   .    D13 <-->|A5   B5|<--> D13
+    D14 --->|D6   Q6|---> A14   .    D14 <-->|A6   B6|<--> D14
+    D15 --->|D7   Q7|---> A15   .    D15 <-->|A7   B7|<--> D15
+            |       |           .            |       |
+    AWR --->|CLK  OE|o--+       .         +->|DIR  OE|<-+
+            |_______|  _|_      .         |  |_______|  |
+                                         MEMR         BUSOE
 
 
-                     74HC574_L
-                      _______
-               ____|\|       |____|\
-     BUS-D0..7 ____  |D     Q|____  > IOBUS-A0..7
-                   |/|       |    |/
-                 +---|CLK  OE|- GND
-                 |   |_______|
-                 |
-                 |   74HC574_H
-                 |    _______
-               __|_|\|       |____|\
-     BUS-D8..15____  |D     Q|____  > IOBUS-A8..15
-                 | |/|       |    |/
-     BUS-AWR ----+---|CLK  OE|- GND
-                     |_______|
 
 
-                     74HC245_L
-                      _______
-             /|______|       |/|___
-  BUS-D0..7<   ______|A     B|  ___ IOBUS-D0..7
-             \|      |       |\|
-                 +---|DIR  OE|-- GND
-                 |   |_______|
-                 |
-                 |   74HC245_H
-                 |    _______
-             /|__|___|       |/|____
- BUS-D8..15<   ______|A     B|  ____ IOBUS-D8..15
-             \|  |   |       |\|
-                 +---|DIR  OE|-- GND
-                 |   |_______|
-                 |
-                 |
-                 |       74HC688
-                 |       _______
-                 | VCC -|P0   Q0|- VCC
-                 | VCC -|P1   Q1|- BUS-A2
-                 | VCC -|P2   Q2|- BUS-A3
-                 | VCC -|P3   Q3|- BUS-A4
-                 | VCC -|P4   Q4|- VCC
-                 | VCC -|P5   Q5|- VCC
-                 | VCC -|P6   Q6|- BUS-A0
-                 | VCC -|P7   Q7|- BUS-A1
-                 |      |       |
-  IOBUS-MEMR <---+------|Y    EN|- GND
-                        |_______|
+  BUS-INT <----- IOBUS-INT
+  BUS-PF <------ IOBUS-PF
+  BUS-USR -----> IOBUS-USR
+  BUS-M1 ------> IOBUS-M1
+  BUS-MEMW ----> IOBUS-MEMW
+
+    MEMR ------> IOBUS-MEMR
 
 
-    IOBUS-INT -> BUS-INT
-    IOBUS-MEMW -> BUS-MEMW
-    IOBUS-PF -> BUS-PF
 
-    BUS-MMU -> IOBUS-MMU
-    BUS-USR -> IOBUS-USR
+         74HC08     74HC08     74HC08     74HC04
+
+       4A ___ 4Y   1A ___ 1Y  2A ___ 2Y     _
+BUS-A0 --|  &|-------|  &|------|  &|--+---|1|o- MEMR
+BUS-A1 --|___|   +---|___|  +---|___|  | 4A   4Y
+       4B        | 1B       | 2B       |
+                 |          |          +-------- NMEMR
+       3A ___ 3B |          |
+BUS-A2 --|  &|---+          |
+BUS-A3 --|___|              |
+       3B                   |
+                            |
+BUS-A4 ---------------------+
+
+
+            NMEMR = ((A0 & A1) & (A2 & A3)) & A4 =
+                  = A0 & A1 & A2 & A3 & A4 =
+                  = A[0..4] == 11111
+
+            MEMR = !NMEMR
+
+
+                 _
+    BUS-MEMW ---|1|o---+
+              5A   5Y  |
+               74HC04  |
+                       |
+              +--------+
+              |
+              |    74HC00
+              |   1A ___ 1Y  4A ___ 4Y
+              +-----|  &|o-----|  &|o-- BUSOE
+           NMEMR ---|___|   +--|___|
+                  1B        |
+                            |
+                  2B ___ 2Y |4B
+            MEMR ---|  &|o--+
+        BUS-MEMW ---|___|
+                  2A
+
+                 3A ___ 3Y    _
+         BUS-MMU --|  &|o----|1|o-- IOBUS-MMU
+       BUS-MMUOV --|___|   6A   6Y
+                 3B
+
+
+            IOBUS-MMU = !!(MMU & MMUOV) = MMU & MMUOV
+
+            BUSOE = !( !(!MEMR & !MEMW) & !(MEMR & MEMW) ) =
+                  =     (!MEMR & !MEMW) |  (MEMR & MEMW) =
+                  = !(MEMR ^ MEMW)
+
+
+
+              74HC04
+                 _
+        GND ----|1|o---
+             1A     1Y
+                 _
+        GND ----|1|o---
+             2A     2Y
+                 _
+        GND ----|1|o---
+             3Y     3Y
 
