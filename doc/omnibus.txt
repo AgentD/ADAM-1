@@ -21,8 +21,8 @@
          D5 o   o
          D6 o   o
          D7 o   o
-         D8 o   o
-         D9 o   o
+         D8 o   o M1
+         D9 o   o MMUOV
         D10 o   o UCF
         D11 o   o ULF
         D12 o   o PSWR
@@ -132,6 +132,13 @@
             to toggle (0=carry, 1=zero, 2=sign, 3=interrupt enable) and B2
             selects the value to set it to. The interrupt enable value cannot
             be changed if the user mode flag is set.
+
+    MMUOV - Pulled low to temporarily bypass an external memory management
+            unit, i.e. force the I/O bus MMU enable line to 0.
+
+    M1    - Connected directly to the external I/O bus. Pulled low by the
+            control logic if the a memory read is actually an instruction
+            fetch.
 
  3) Status bits
 
