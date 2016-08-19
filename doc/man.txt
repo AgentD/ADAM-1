@@ -378,10 +378,17 @@
               cleared if they do have overlapping bits
         sign: set to MSB of destination ANDed to MSB of source
 
+    MVA @dst, src           046xxx          Override MMU and access absolute
+    MVA @dst, imm           146xxx          address in the first 64k
+    MVA dst, @src           050xxx
+    MVA dst, @imm           150xxx
+    MVA @imm, src           122xxx
+        Ignored if used in user mode
+
 
     unused opcodes with immediate:
                        15 16
-              22
+
         30 31 32 33 34 35 36 37
         40 41 42    44 45    47
 
@@ -389,7 +396,6 @@
                              77
 
     entirely unused opcodes:
-                          46
         50 51 52 53 54 55 56 57
         60 61 62 63 64 65    67
         70 71 72 73 74 75 76
