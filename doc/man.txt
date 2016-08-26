@@ -273,10 +273,9 @@
         zero:  set if result is 0
         sign:  set to MSB of result
 
-    CAA dst, src            021xxx          dst += src
-    CAA dst, src, imm       121xxx          dst = src + imm
-        Compute Absolute Address. Add without carry, status bits are left
-        unchanged.
+    SUM dst, src            021xxx          dst += src
+    SUM dst, src, imm       121xxx          dst = src + imm
+        Add without carry, status bits are left unchanged.
 
     SUB dst, src            022xxx          dst += twos_comp(src)
     SBC dst, src            030xxx          dst += not(src) + carry
@@ -442,7 +441,7 @@
 
     ADD dst, imm                                ADD dst, dst, imm
     ADC dst, imm                                ADC dst, dst, imm
-    CAA dst, imm                                CAA dst, dst, imm
+    SUM dst, imm                                SUM dst, dst, imm
     ANL dst, imm                                ANL dst, dst, imm
     ORL dst, imm                                ORL dst, dst, imm
     XOR dst, imm                                XOR dst, dst, imm
@@ -462,9 +461,9 @@
     JMP @imm                                    MOV R7, @imm
     JMP @reg+imm                                MOV R7, @reg+imm
 
-    HOP reg             relative jump           CAA R7, reg
-    HOP imm             relative jump           CAA R7, imm
-    HOP label           relative jump to label  CAA R7, label-$$
+    HOP reg             relative jump           SUM R7, reg
+    HOP imm             relative jump           SUM R7, imm
+    HOP label           relative jump to label  SUM R7, label-$$
 
     SUB dst, imm                                ADD dst, dst, -imm
     SBC dst, imm                                ADC dst, dst, ~imm
