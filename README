@@ -24,6 +24,8 @@
     doc/pcb/        - Contains circuit descriptions for the files in "pcb/"
     doc/man.txt     - Programmers Manual
     doc/omnibus.txt - Information on the CPU backplane bus
+    fp/             - Contains front panel design and pcb designs for
+                      front panel interfacing circuitry
 
   CPU Design
   **********
