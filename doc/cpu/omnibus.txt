@@ -53,18 +53,18 @@
 
   The source address determines what module output to write onto the bus:
 
-        000   constant 0
-        001   constant 1
-        002   constant 2
-        003   constant 3
-        004   constant 4
-        005   control register 0
-        006   control register 1
-        007   control register 2
+        000   constant 0 (value 0)
+        001   constant 1 (value 1)
+        002   constant 2 (value 2)
+        003   constant 3 (value 0xFF00)
+        004   constant 4 (value 0x00FF)
+        005   control register 0 (system call handler address)
+        006   control register 1 (interrupt/trap handler address)
+        007   control register 2 (backup of kernel stack pointer)
         010   adder output
-        011   logic board output 0
-        012   logic board output 1
-        013   logic board output 2
+        011   logic board output 0 (bitwise AND)
+        012   logic board output 1 (bitwise OR)
+        013   logic board output 2 (bitwise XOR)
         014   operand B, byte swapped
         015   operand B
         016   operand B, rotated right through carry
