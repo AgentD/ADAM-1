@@ -1,0 +1,8 @@
+This file contains a list of all the files and sub directories in this
+directory and a short description of what they contain.
+
+FONT-LICENSE.txt
+	- The license of the TrueType Font shipped used on the front panel
+
+fp0.txt
+	- Circuit description of the front panel interface PCB

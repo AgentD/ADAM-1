@@ -1,0 +1,14 @@
+This file contains a list of all the files and sub directories in this
+directory and a short description of what they contain.
+
+cpu/
+	- Contains CPU design and descriptions of the CPU module PCBs
+
+fp/
+	- Contains explanations of the stuff in "fp/"
+
+00-INDEX
+	- This file
+
+man.txt
+	- Programmers Manual

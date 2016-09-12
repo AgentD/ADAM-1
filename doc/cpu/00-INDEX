@@ -1,0 +1,29 @@
+This file contains a list of all the files and sub directories in this
+directory and a short description of what they contain.
+
+00-INDEX
+	- This file
+
+adder.txt
+	- Circuit description of the ALU adder module
+
+log.txt
+	- Circuit description of the ALU logic module
+
+memio.txt
+	- Circuit description of the memory & frontpanel interface board
+
+omnibus.txt
+	- Description of the CPU internal backplane bus
+
+psw.txt
+	- Circuit description of the Program Status Word module
+
+reg.txt
+	- Circuit description of the register file module
+
+shift.txt
+	- Circuit description of the ALU shift module
+
+uasm.txt
+	- Description of the CPU micro assembly
