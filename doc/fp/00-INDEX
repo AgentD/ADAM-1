@@ -6,3 +6,7 @@ FONT-LICENSE.txt
 
 fp0.txt
 	- Circuit description of the front panel interface PCB
+
+usage.txt
+	- Explains how to use the fron panel design documents and some rational
+	behind the front panel design.

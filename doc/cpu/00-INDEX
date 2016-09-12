@@ -7,6 +7,9 @@ directory and a short description of what they contain.
 adder.txt
 	- Circuit description of the ALU adder module
 
+design.txt
+	- Describes the overall CPU design
+
 log.txt
 	- Circuit description of the ALU logic module
 

@@ -1,0 +1,424 @@
+
+  CPU Design
+  **********
+      _____________________________________
+     |  _________________________________  |
+     | |                                 | |
+     | |               ________________|\| |
+     | |              |  ______________  | |
+     | |              | |              |/| |
+     | |    ___       | |    _____       | |       ____    __
+     | |_|\|   |______| |_|\|     |/|__|\| |      |_R0_|     |
+     |  _  | A |______   _  | I/O |  __  | |      |_R1_|     |
+     | | |/|___|      | | |/|_____|\|  |/| |      |_R2_|     |  General
+     | |              | |    _____       | |/|__|\|_R3_|      > Purpose 
+     | |              | |_|\|     |/|__|\| |  __  |_R4_|     |  Registers
+     | |              |  _  | RAM |  __  | |\|  |/|_R5_|     |
+     | |              | | |/|_____|\|  |/| |      |_R6_|   __|
+     | |    ___       | |                | |      |_R7_|   __> Program Counter
+     | |_|\|   |______|_|______________|\| |     Register
+     |___  | B |_   ___________________  | |       File
+         |/|___| | |  | |              |/| |
+                 | |  | |    _______     | |       _____
+                 | |__|_|_|\|       |__|\| |/|__|\|     |
+                 |  ______  | SHIFT |__  | |  __  | PSW |
+                 | |  | | |/|_______|  |/| |\|  |/|_____|
+                 | |  | |    _____       | |
+                 | |  | |_|\|     |      | |       _____   __
+                 | |  |  _  | AND |____|\| |      |_C0__|    |
+                 | |  | | |/| OR  |____  | |      |_C1__|    |
+                 | |__|_|_|\| XOR |    |/| |      |_C2__|     > constants
+                 |  ______  |     |      | |/|__|\|_CH__|    |
+                 | |  | | |/|_____|      | |  __  |_CL__|  __|
+                 | |  | |    _____       | |\|  |/|_CR0_|    |
+                 | |  | |_|\|     \      | |      |_CR1_|     > control
+                 | |  |___  |__    \ __|\| |      |_CR2_|  __|  registers
+                 | |      |/   \ +  \__  | |     Register
+                 | |______|\ __/ -  /  |/|_|       File
+                 |________  |      /
+                          |/|_____/
+                         Adder/Subtractor
+
+
+  This drawing outlines the CPU architecture as seen by a programmer. The
+  registers "A" and "B" are internal temporary registers that are not directly
+  accessible by software and are used by the control logic for storing
+  operands and intermediate results.
+
+  The "PSW" register contains the processor status word.
+
+  The block "Control Registers" contains registers that are used by the CPU
+  like the constant values, but can be changed by kernel mode code.
+
+  The CPU has a register file containing 8 registers. Most of them can be used
+  for general purpose computations. The register R7 is used by the control
+  logic as program counter and R6 is used by the control logic as stack
+  pointer for interrupts and traps (after restoring the kernel mode stack
+  pointer from a control register).
+
+
+
+  Using GP registers as program counter and stack pointer saves a lot of
+  hardware and simplifies the instruction set design. The registers can be
+  simply fed through the ALU for incrementing and decrementing. No special
+  treatment or special counter registers are needed. The CPU does not need
+  special jump instructions. A jump can be performed by loading a value
+  into R7 (or a relative jump by adding a value).
+
+  Generic register relative load/store instruction with pre or post
+  increment/decrement can be provided instead of special PUSH/POP
+  instructions. This has the advantage that high level language constructs
+  like x = *(p++) can be implemented in a single instruction which at the
+  same time serves as a stack POP instruction.
+
+
+
+
+  The execution unit of the CPU is actually implemented by a number of PCB
+  modules, where each module has its own copy of the A and B operand registers
+  (74HC574) and the output value is "held back" by 74HC245 tri-state buffers.
+
+
+         BUS    . . . . . . . . . . . . . . . . . . . . . . . . . .
+         | |    .                                                 .
+         | |/|________________________________________________    .
+         | |  ______________________________________________  |   .
+         | |\|  .    ___      _________      ___________    | |   .
+         | |______|\|   |__|\|         |    |           |___| |   .
+         | |______  | A |__  |         |__|\| Tri-state |_____|   .
+         | |    . |/|___|  |/|  Logic  |__  |   Buffer  |         .
+         | |______|\|   |__|\|         |  |/|___________|         .
+         | |______  | B |__  |         |                          .
+         | |    . |/|___|  |/|_________|                          .
+         | |    .                                                 .
+         | |    . . . . . . . . . . . . . . . . . . . . . . . . . .
+      Backplane                       Module PCB
+
+
+  All A operand register on all modules are triggered at the same time and
+  all B operand registers are triggered at the same time, i.e. there is one
+  line on the control bus to latch all A operands, and one to latch all
+  B operands.
+
+  The output enable lines of the tri-state buffers on the modules are
+  triggered individually by address decoders on each module mapping 5 bit
+  addresses to module outputs.
+
+
+  Multiple modules are then plugged into a DIN41612 backplane bus with a 5 bit
+  source address, 3 bit destination address, 16 bit tri-state data bus and
+  various control lines:
+
+                         BUS
+      __________          _          ________
+     |  SHIFT   |/|____|\| |/|____|\| LOGIC  |
+     | REGISTER |  ____  | |  ____  | MODULE |
+     |__________|\|    |/| |\|    |/|________|
+        ________         | |         ___________
+       | ADDER  |/|____|\| |/|____|\|  CONTROL  |
+       | MODULE |  ____  | |  ____  | REGISTERS |
+       |________|\|    |/| |\|    |/|___________|
+      __________         | |         ______________
+     | REGISTER |/|____|\| |/|____|\| MEMORY & I/O |
+     |  MODULE  |  ____  | |  ____  |    MODULE    |
+     |__________|\|    |/| |\|    |/|______________|
+                         | |         _____________
+                         | |/|____|\| STATUS WORD |
+                         | |  ____  |    MODULE   |
+                         | |\|    |/|_____________|
+                        _| |_
+                ________\___/________
+               |                     |
+               |    CONTROL LOGIC    |
+               |_____________________|
+
+
+
+  1) Shift register module
+
+     BUS
+     | | SOUT   _____
+     | |<------|     |
+     | |       | MUX |
+     | | COUT  |     |
+     | |------>|_____|
+     | |          A
+     | |/|________|__________________________
+     | |  _________________________________  |
+     | |\|   ___  |LSB      ___________    | |
+     | |__|\|   |_|______|\|           |___| |
+     | |__  | B |___   __  | Tri-state |___  |
+     | |  |/|___|   | |  |/|   Buffer  |   | |
+     | |            | |    |___________|   | |
+     | |            | |     ___________    | |
+     | |            | |__|\|           |___| |
+     | |            |  __  | Tri-state |___  |
+     | |            | |  |/|   Buffer  |   | |
+     | |            | |    |           |   | |
+     | |            | |    | BYTESWAP  |   | |
+     | |            | |    |___________|   | |
+     | |            | |     ___________    | |
+     | |            | |__|\|           |___| |
+     | |            |____  | Tri-state |_____|
+     | | CIN             |/|   Buffer  |
+     | |------------------>|___________|
+     | |       ___    MSB
+     | |/|__|\|   |
+     | |  __  | A |
+     | |\|  |/|___|
+     | |       _____
+     | |____|\|     |
+     | |____  | ==0 |o-+
+     | |    |/|_____|  |
+     | |               |
+     | |<--------------+
+     | | NZERO
+
+
+  The module implements right shift/rotate (left shift/rotate can be
+  implemented via the adder) and byteswap. Due to a limited number of
+  backplane slots and PCB area, some functionality of the status word
+  has crept onto the shift board which had the most unused PCB area
+  left.
+
+  The shift register module contains a 74HC574 B register, connected to
+  multiple 74HC245 output buffers:
+    - Displaced by one line to implement a right shift operation.
+      The MSB is connected with the carry input.
+    - Directly connected to the bus 1:1 (write B back unchanged)
+    - Byte swapped (i.e. bit rotated 8 times)
+
+  A 74HC574 based A register is provided to write the unchanged A operand
+  back to the bus.
+
+  The shift register selects the new carry value for the status word. If
+  the right shift value is written onto the bus, the LSB of the of the B
+  register that would be shifted out is connected to the SOUT line on the
+  BUS via a multiplexer (actually some 74HC00 logic circuitry). In all other
+  cases, the mux writes the COUT line (adder carry output) to SOUT.
+
+  In addition to that, the module detects whether the current BUS word is
+  zero, using 2 * 74HC688).
+
+
+  2) Logic module
+
+     BUS
+     | |
+     | |/|_____________________________________________
+     | |  ___________________________________________  |
+     | |\|   ___      __________      ___________    | |
+     | |__|\|   |__|\|          |    |           |___| |
+     | |__  | A |__  | Bitwise  |__|\| Tri-state |_____|
+     | |  |/|___|  |/|  Logic   |__  |   Buffer  |
+     | |__|\|   |__|\| Function |  |/|___________|
+     | |__  | B |__  |          |
+     | |  |/|___|  |/|__________|
+     | |
+
+
+  The logic module has the A and B registers wired up to four 74HC logic
+  gate ICs, like a 74HC08, 74HC32, 74HC86 or anything pin compatible.
+
+  The logic module output enable is connected to a set of jumpers to configure
+  the address to which it responds.
+
+  The same PCB design can be manufactured multiple times and reused for all
+  logic modules (AND, OR, XOR).
+
+
+  The logic module outputs can be wirde to the following bus addresses:
+   - 01001 Used for bitwise AND
+   - 01010 Used for bitwise OR
+   - 01011 Used for bitwise XOR
+
+
+  3) Adder module
+
+     BUS
+     | |
+     | |<-------------------------+ COUT
+     | |                          |
+     | |/|________________________|______________________________
+     | |  _____________________________________________________  |
+     | |\|  ___                 __|__           ___________    | |
+     | |_|\|   |_____________|\|     \         |           |___| |
+     | |_  | A |_____________  |__    \ _____|\| Tri-state |_____|
+     | | |/|___|     _____   |/   \ +  \_____  |   Buffer  |
+     | |_|\|   |__|\|     |__|\ __/    /     |/|___________|
+     | |_  | B |__  | XOR |__  |      /
+     | | |/|___|  |/|_____|  |/|_____/
+     | |               A         A
+     | |               | AINV    | CIN
+     | |---------------+         |
+     | |-------------------------+
+     | |
+
+
+  The adder module feeds the A and B register through four cascaded
+  74HC283 adder ICs.
+
+  In addition to the A, B and output control lines, the adder module has the
+  total carry input and carry output connected to the control bus.
+
+  An additional control line allows the B register to be inverted.
+
+  The control logic can temporarily force the carry input to high or low
+  (implemented on PSW module). Furthermore, constant values can be added
+  to an operand (implemented by control register module), allowing the
+  adder module to be used for a wide range of applications.
+
+  The adder module is used to perform the following operations:
+    - Addition
+       - Requires the carry input to be forced to low
+    - Addition of multi-word integers
+       - By using the carry input from the last operation stored in the
+         status word
+    - Two's complement subtraction
+       - By inverting the second operand and forcing the carry input high
+    - Two's complement subtraction of multi-word integers
+       - By using the carry output from the last operation and
+         inverting the second operand
+    - Left shift 
+       - By adding a value to itself, forcing carry input to low
+    - Left rotate
+       - By adding a value to itself with carry from the last operation
+    - Bitwise inverting
+       - By inverting the second operand, carry in forced low,
+         and using 0 for the first operand
+    - Computing the two's complement
+       - Same as above but carry forced to high
+    - Incrementing 
+       - By adding zero to a value, and forcing carry in high
+       - Used to increment program counter and stack pointer
+    - Decrementing
+       - By adding zero to a value, carry in forced low,
+         second operand inverted
+       - Used to decrement the stack pointer
+
+
+  The adder output is hard wired to bus address 01000.
+
+
+
+  4) GP & Control Register module
+
+    BUS
+    | |/|_____________
+    | |  __________   |
+    | |\|          |  |
+    | |      ____  |  |
+    | |___|\|    |_|  |
+    |  ___  | R0 |_   |
+    | |   |/|____| |  |
+    | |      ____  |  |
+    | |___|\|    |_|  |
+    |  ___  | R1 |_   |
+    | |   |/|____| |  |
+    | |             \/
+    | |      ....  .  .
+    | |      ____  .  .
+    | |___|\|    |_|\/|
+    |  ___  | R7 |____|
+    | |   |/|____|
+    | |
+
+  The register module has a total of 16 74HC574 registers connected to the
+  data bus (8 in parallel, groups of 2 for low and high half).
+
+  The lower 3 bit of the source index are connected to a 74HC138 for selecting
+  a register to write onto the bus. Two jumpers can be used to select if the
+  74HC138 triggers to A4=1 and A3=0 for GP registers or A4=0 and A3=0 for
+  control registers/constants, mapping the 8 registers either to the address
+  range 10*** or 00*** for the source select.
+
+
+  The 3 bit destination register index is connected to another 74HC138, with
+  one positive enable control line, i.e. a falling edge on the enable line
+  triggers a rising edge on the register clock, latching the current bus word
+  in a register.
+
+
+  A second set of jumpers can configure if the register write triggers on the
+  GP register write line or the control register write and if the user mode
+  flag has to be cleared to allow writing (for control registers).
+
+
+  Thus, the same PCB design is used for both GP registers and control
+  registers. The control registers are simply mapped to a different bus
+  address range and can only be written in kernel mode.
+
+
+  The constant values have to be initialized to specific values as the CPU
+  uses them internally and assumes them to have the following assignment:
+
+      00000: 0      (for clearing/arithmetic, trap number)
+      00001: 1      (trap number)
+      00010: 2      (trap number)
+      00011: 0xFF00 (for high byte masking using the AND logic module)
+      00100: 0x00FF (for low byte masking using the AND logic module)
+      00101: control register 0, system call handler address
+      00110: control register 1, interrupt/trap handler address
+      00111: control register 2, backup of kernel stack pointer
+
+
+  The initial design actually used a diode matrix for the constant values,
+  but since PCBs have to be ordered in bulk, it was decided to slightly
+  modify the GP register PCB so the same design can be used in multiple
+  ways with the trade off that the operator of the machine has to initialize
+  some constant values during machine boot strapping.
+
+
+  The register file design is also reused as a simple RAM for the MMU
+  page table.
+
+
+
+  5) Memory & I/O module
+
+     BUS
+     | |
+     | |/|______________________________________________
+     | |  ____________________________________________  |
+     | |\|   ___       _______         ___________    | |
+     | |__|\|   |___|\|       |/|___|\|           |/|_| |
+     | |__  | A |___  |  BUS  |  ___  | Tri-state |  ___|
+     | |  |/|___|   |/|_______|\|   |/|   Buffer  |\|
+     | |           Address    Data    |___________|
+
+
+  The Memory & I/O module connects the CPU to the external memory & I/O bus
+  (I/O devices are memory mapped).
+
+  The A register holds the memory address, a tri-state buffer is used to
+  connect either the external data bus to the internal bus or vice-versa
+  (74HC245, direction controlable).
+
+  The actual memory read signal is generated by the source address select
+  (bus address 11111).
+
+  The memory write signal is generated directly by the control logic.
+
+  This module also connects data & control lines to the frontpanel.
+
+
+
+ 6) Status word module
+
+
+  The status word module stores 6 status flags in 3 * 74HC74 flip flops:
+    - A carry, zero and sign flag from ALU operations
+    - Interrupt enable
+    - User mode
+    - MMU enable
+
+  Logic circuitry is provided to toggle individual bits. The status word can
+  be overwritten with the current bus value or itself written onto the bus
+  (address 11000).
+
+  The ALU flags can be updated to the current ALU results.
+
+  If the user mode flag is set, only the ALU flags can be altered.
+
+  User mode and carry flag can be temporarily overruled by the control logic.
+
