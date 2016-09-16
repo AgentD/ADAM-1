@@ -9,9 +9,9 @@
   quite messy).
 
   The unified bus "OMNIBUS" contains data & address lines, control lines
-  and supply voltage. The pinout is as follows:
+  and supply voltage. The pinout of the male PCB connector is as follows:
 
-           65   1
+           33   1
         VCC o   o VCC
          D0 o   o
          D1 o   o
@@ -44,7 +44,11 @@
         BWR o   o WC
         AWR o   o SOUT
         GND o   o GND
-           96   32
+           64   32
+
+
+  The female connector on the back plane has the sides flipped.
+
 
  1) Address line
 
