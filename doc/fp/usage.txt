@@ -29,8 +29,15 @@
   up resistors and the module "wins", pulling the bus to its desired state.
 
 
+  A similar board (fp1.pcb) is provided that can latch a bus word, 8 wires
+  at a time, and connects the latched value to a number of LEDs. This can be
+  used, for instance, to latch the bus contents when the A register is written
+  for displaying the current A register contents.
+
+
   The current front pane design requires:
-   - 14 of those tiny interface PCBs
+   - 8 of the fp0 led-switch-button interface PCBs
+   - 6 of the fp1 bus-register-led interface PCBs
    - 99 LEDs (8mm drill hole for LED holders with 5mm LEDs)
    - 30 dip switches (6mm drill hole, 12mm ring)
    - 10 push buttons (16 mm drill hole)
